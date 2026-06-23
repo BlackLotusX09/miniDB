@@ -1,0 +1,5 @@
+/Users/jaswanth/Desktop/miniDB/build/CMakeFiles/minidb.dir
+/Users/jaswanth/Desktop/miniDB/build/CMakeFiles/disk_manager_test.dir
+/Users/jaswanth/Desktop/miniDB/build/CMakeFiles/test.dir
+/Users/jaswanth/Desktop/miniDB/build/CMakeFiles/edit_cache.dir
+/Users/jaswanth/Desktop/miniDB/build/CMakeFiles/rebuild_cache.dir
