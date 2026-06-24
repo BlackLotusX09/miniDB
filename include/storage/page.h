@@ -1,16 +1,38 @@
 #pragma once
 #include<iostream>
 #include<cstdint>
-constexpr size_t PAGE_SIZE=4096;
+static const uint32_t PAGE_SIZE = 4096;
 #define INVALID_PAGE_ID -1
-using page_id_t = int32_t;
-class Page{
-    public:
-    static const size_t SIZE = 4096;
-    page_id_t page_id_;
-    char data_[SIZE];
 
-    char* GetData(){return data_;}
-    page_id_t GetPageId(){return page_id_;}
-    
+using slot_id_t= int32_t;
+
+struct PageHeader{
+    uint32_t page_id;
+    uint16_t num_slots;
+    uint16_t free_space_ptr;
+};
+struct SlotEntry{ 
+    uint16_t offset; 
+    uint16_t length;
+};
+class SlottedPage{
+private:
+    char data_[PAGE_SIZE];
+public:
+    explicit SlottedPage(uint32_t page_id=0);
+    uint16_t GetFreeSpace() const;
+
+    bool InsertRecord(const char* record,uint16_t len,slot_id_t* out_slot);
+
+    const char* GetRecord(slot_id_t slot_id,uint16_t* len)const;
+
+    PageHeader* Header();
+    const PageHeader* Header() const;
+
+    SlotEntry* Slots();
+    const SlotEntry* Slots() const;
+
+    char* GetData();
+    const char* GetData()const;
+
 };
