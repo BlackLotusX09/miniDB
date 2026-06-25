@@ -18,12 +18,23 @@ target_include_directories(
 
 add_executable(
     disk_manager_test
+    
     test/disk_manager_test.cpp
     src/storage/DiskManager.cpp
+    src/storage/page.cpp
+)
+add_executable(
+    slottedPage_test
+    test/slottedPage_test.cpp
+    src/storage/page.cpp
 )
 
 target_include_directories(
     disk_manager_test
+    PRIVATE include
+)
+target_include_directories(
+    slottedPage_test
     PRIVATE include
 )
 

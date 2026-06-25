@@ -2,54 +2,155 @@
 #include "storage/page.h"
 
 #include <cassert>
-#include <cstring>
 #include <iostream>
+#include <string>
+#include <vector>
+
+using namespace std;
 
 int main() {
+    vector<string> expected;
+    vector<string> actual;
 
+    size_t num_pages = 0;
+
+    // =========================
+    // PHASE 1: INSERT + WRITE
+    // =========================
     {
         DiskManager dm("data/test.db");
 
-        char page0[PAGE_SIZE];
-        char page1[PAGE_SIZE];
-        char page2[PAGE_SIZE];
+        vector<SlottedPage> pages;
+        pages.emplace_back(0);
 
-        memset(page0, 'A', PAGE_SIZE);
-        memset(page1, 'B', PAGE_SIZE);
-        memset(page2, 'C', PAGE_SIZE);
+        vector<string> records;
 
-        dm.WritePage(0, page0);
-        dm.WritePage(1, page1);
-        dm.WritePage(2, page2);
+        // Generate 500 variable-length records
+        for(int i = 0; i < 500; i++) {
+            records.push_back(
+                "record_" +
+                to_string(i) +
+                "_" +
+                string((i % 150) + 1, 'A' + (i % 26))
+            );
+        }
 
-        std::cout << "Pages written\n";
+        for(const auto& record : records) {
+            bool inserted = false;
+            slot_id_t slot_id;
+
+            for(auto& page : pages) {
+                if(page.InsertRecord(
+                        record.c_str(),
+                        record.size() + 1,
+                        &slot_id))
+                {
+                    inserted = true;
+                    expected.push_back(record);
+                    break;
+                }
+            }
+
+            if(!inserted) {
+                page_id_t new_page_id = pages.size();
+
+                pages.emplace_back(new_page_id);
+
+                bool ok = pages.back().InsertRecord(
+                    record.c_str(),
+                    record.size() + 1,
+                    &slot_id
+                );
+
+                assert(ok);
+
+                expected.push_back(record);
+            }
+        }
+
+        cout << "Pages created: "
+             << pages.size()
+             << "\n";
+
+        for(const auto& page : pages) {
+            dm.WritePage(
+                page.Header()->page_id,
+                page.GetData()
+            );
+        }
+
+        num_pages = pages.size();
+
+        cout << "Pages written to disk.\n";
     }
 
+    // =========================
+    // PHASE 2: RESTART + READ
+    // =========================
     {
         DiskManager dm("data/test.db");
 
-        char read0[PAGE_SIZE];
-        char read1[PAGE_SIZE];
-        char read2[PAGE_SIZE];
+        for(page_id_t pid = 0;
+            pid < num_pages;
+            pid++)
+        {
+            SlottedPage page(pid);
 
-        dm.ReadPage(0, read0);
-        dm.ReadPage(1, read1);
-        dm.ReadPage(2, read2);
+            dm.ReadPage(
+                pid,
+                page.GetData()
+            );
 
-        for(int i = 0; i < PAGE_SIZE; i++) {
-            assert(read0[i] == 'A');
+            cout << "Read Page "
+                 << pid
+                 << " Slots="
+                 << page.Header()->num_slots
+                 << "\n";
+
+            for(slot_id_t sid = 0;
+                sid < page.Header()->num_slots;
+                sid++)
+            {
+                uint16_t len;
+
+                const char* rec =
+                    page.GetRecord(sid, &len);
+
+                if(rec == nullptr)
+                    continue;
+
+                actual.push_back(string(rec));
+                cout
+            << "Recovered Page "
+            << pid
+            << " Slot "
+            << sid
+            << " -> "
+            << rec
+            << endl;
+            }
         }
-
-        for(int i = 0; i < PAGE_SIZE; i++) {
-            assert(read1[i] == 'B');
-        }
-
-        for(int i = 0; i < PAGE_SIZE; i++) {
-            assert(read2[i] == 'C');
-        }
-
-        std::cout << "All pages verified\n";
     }
+
+    // =========================
+    // PHASE 3: VERIFY
+    // =========================
+    assert(expected.size() == actual.size());
+    cout << expected.size() << endl;
+    cout << actual.size() << endl;
+
+    sort(expected.begin(), expected.end());
+    sort(actual.begin(), actual.end());
+
+    assert(expected == actual);
+    cout << "\n=================================\n";
+    cout << "Persistence Test PASSED\n";
+    cout << "Recovered "
+         << actual.size()
+         << " records successfully.\n";
+    cout << "=================================\n";
+
+
 
     return 0;
 }

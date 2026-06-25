@@ -5,7 +5,7 @@ static const uint32_t PAGE_SIZE = 4096;
 #define INVALID_PAGE_ID -1
 
 using slot_id_t= int32_t;
-
+using page_id_t = uint32_t;
 struct PageHeader{
     uint32_t page_id;
     uint16_t num_slots;
@@ -19,7 +19,7 @@ class SlottedPage{
 private:
     char data_[PAGE_SIZE];
 public:
-    explicit SlottedPage(uint32_t page_id=0);
+    explicit SlottedPage(page_id_t page_id=0);
     uint16_t GetFreeSpace() const;
 
     bool InsertRecord(const char* record,uint16_t len,slot_id_t* out_slot);
@@ -34,5 +34,7 @@ public:
 
     char* GetData();
     const char* GetData()const;
+
+    bool DeleteRecord(slot_id_t slot_id);
 
 };

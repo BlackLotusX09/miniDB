@@ -8,9 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/Users/jaswanth/Desktop/miniDB/src/storage/DiskManager.cpp" "CMakeFiles/disk_manager_test.dir/src/storage/DiskManager.cpp.o" "gcc" "CMakeFiles/disk_manager_test.dir/src/storage/DiskManager.cpp.o.d"
-  "/Users/jaswanth/Desktop/miniDB/src/storage/page.cpp" "CMakeFiles/disk_manager_test.dir/src/storage/page.cpp.o" "gcc" "CMakeFiles/disk_manager_test.dir/src/storage/page.cpp.o.d"
-  "/Users/jaswanth/Desktop/miniDB/test/disk_manager_test.cpp" "CMakeFiles/disk_manager_test.dir/test/disk_manager_test.cpp.o" "gcc" "CMakeFiles/disk_manager_test.dir/test/disk_manager_test.cpp.o.d"
+  "/Users/jaswanth/Desktop/miniDB/src/storage/page.cpp" "CMakeFiles/slottedPage_test.dir/src/storage/page.cpp.o" "gcc" "CMakeFiles/slottedPage_test.dir/src/storage/page.cpp.o.d"
+  "/Users/jaswanth/Desktop/miniDB/test/slottedPage_test.cpp" "CMakeFiles/slottedPage_test.dir/test/slottedPage_test.cpp.o" "gcc" "CMakeFiles/slottedPage_test.dir/test/slottedPage_test.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

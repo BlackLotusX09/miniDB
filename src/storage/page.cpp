@@ -1,6 +1,6 @@
-#include<page.h>
+#include "storage/page.h"
 
-SlottedPage::SlottedPage(uint32_t page_id){
+SlottedPage::SlottedPage(page_id_t page_id){
     memset(data_,0,PAGE_SIZE);
 
     Header()->page_id=page_id;
@@ -38,13 +38,10 @@ const char* SlottedPage::GetRecord(slot_id_t slot_id,uint16_t* len)const {
         Slots();
 
     *len = slots[slot_id].length;
-
+    if(*len==0)return nullptr;
     return data_ +slots[slot_id].offset;
 }
-bool SlottedPage::InsertRecord(
-    const char* record,
-    uint16_t len,
-    slot_id_t* out_slot)
+bool SlottedPage::InsertRecord(const char* record,uint16_t len,slot_id_t* out_slot)
 {
     uint16_t needed =
         len + sizeof(SlotEntry);
@@ -57,22 +54,24 @@ bool SlottedPage::InsertRecord(
     uint16_t offset =
         Header()->free_space_ptr;
 
-    memcpy(
-        data_ + offset,
-        record,
-        len);
+    memcpy( data_ + offset,record,len);
 
     SlotEntry* slots = Slots();
 
-    slots[Header()->num_slots] =
-    {
-        offset,
-        len
-    };
+    slots[Header()->num_slots] ={offset,len};
 
     *out_slot = Header()->num_slots;
 
     Header()->num_slots++;
 
+    return true;
+}
+
+bool SlottedPage::DeleteRecord(slot_id_t slot_id){
+    if(slot_id>=Header()->num_slots){
+        return false;
+    }
+    SlotEntry* slot= Slots();
+    slot[slot_id].length=0;
     return true;
 }

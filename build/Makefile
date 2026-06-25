@@ -152,6 +152,19 @@ disk_manager_test/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/disk_manager_test.dir/build.make CMakeFiles/disk_manager_test.dir/build
 .PHONY : disk_manager_test/fast
 
+#=============================================================================
+# Target rules for targets named slottedPage_test
+
+# Build rule for target.
+slottedPage_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 slottedPage_test
+.PHONY : slottedPage_test
+
+# fast build rule for target.
+slottedPage_test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/slottedPage_test.dir/build.make CMakeFiles/slottedPage_test.dir/build
+.PHONY : slottedPage_test/fast
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -203,6 +216,33 @@ src/storage/DiskManager.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/disk_manager_test.dir/build.make CMakeFiles/disk_manager_test.dir/src/storage/DiskManager.cpp.s
 .PHONY : src/storage/DiskManager.cpp.s
 
+src/storage/page.o: src/storage/page.cpp.o
+.PHONY : src/storage/page.o
+
+# target to build an object file
+src/storage/page.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/disk_manager_test.dir/build.make CMakeFiles/disk_manager_test.dir/src/storage/page.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/slottedPage_test.dir/build.make CMakeFiles/slottedPage_test.dir/src/storage/page.cpp.o
+.PHONY : src/storage/page.cpp.o
+
+src/storage/page.i: src/storage/page.cpp.i
+.PHONY : src/storage/page.i
+
+# target to preprocess a source file
+src/storage/page.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/disk_manager_test.dir/build.make CMakeFiles/disk_manager_test.dir/src/storage/page.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/slottedPage_test.dir/build.make CMakeFiles/slottedPage_test.dir/src/storage/page.cpp.i
+.PHONY : src/storage/page.cpp.i
+
+src/storage/page.s: src/storage/page.cpp.s
+.PHONY : src/storage/page.s
+
+# target to generate assembly for a file
+src/storage/page.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/disk_manager_test.dir/build.make CMakeFiles/disk_manager_test.dir/src/storage/page.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/slottedPage_test.dir/build.make CMakeFiles/slottedPage_test.dir/src/storage/page.cpp.s
+.PHONY : src/storage/page.cpp.s
+
 test/disk_manager_test.o: test/disk_manager_test.cpp.o
 .PHONY : test/disk_manager_test.o
 
@@ -227,6 +267,30 @@ test/disk_manager_test.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/disk_manager_test.dir/build.make CMakeFiles/disk_manager_test.dir/test/disk_manager_test.cpp.s
 .PHONY : test/disk_manager_test.cpp.s
 
+test/slottedPage_test.o: test/slottedPage_test.cpp.o
+.PHONY : test/slottedPage_test.o
+
+# target to build an object file
+test/slottedPage_test.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/slottedPage_test.dir/build.make CMakeFiles/slottedPage_test.dir/test/slottedPage_test.cpp.o
+.PHONY : test/slottedPage_test.cpp.o
+
+test/slottedPage_test.i: test/slottedPage_test.cpp.i
+.PHONY : test/slottedPage_test.i
+
+# target to preprocess a source file
+test/slottedPage_test.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/slottedPage_test.dir/build.make CMakeFiles/slottedPage_test.dir/test/slottedPage_test.cpp.i
+.PHONY : test/slottedPage_test.cpp.i
+
+test/slottedPage_test.s: test/slottedPage_test.cpp.s
+.PHONY : test/slottedPage_test.s
+
+# target to generate assembly for a file
+test/slottedPage_test.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/slottedPage_test.dir/build.make CMakeFiles/slottedPage_test.dir/test/slottedPage_test.cpp.s
+.PHONY : test/slottedPage_test.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -238,15 +302,22 @@ help:
 	@echo "... test"
 	@echo "... disk_manager_test"
 	@echo "... minidb"
+	@echo "... slottedPage_test"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
 	@echo "... src/storage/DiskManager.o"
 	@echo "... src/storage/DiskManager.i"
 	@echo "... src/storage/DiskManager.s"
+	@echo "... src/storage/page.o"
+	@echo "... src/storage/page.i"
+	@echo "... src/storage/page.s"
 	@echo "... test/disk_manager_test.o"
 	@echo "... test/disk_manager_test.i"
 	@echo "... test/disk_manager_test.s"
+	@echo "... test/slottedPage_test.o"
+	@echo "... test/slottedPage_test.i"
+	@echo "... test/slottedPage_test.s"
 .PHONY : help
 
 

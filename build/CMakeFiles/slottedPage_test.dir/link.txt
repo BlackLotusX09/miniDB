@@ -1,0 +1,1 @@
+/usr/bin/c++  -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/slottedPage_test.dir/test/slottedPage_test.cpp.o CMakeFiles/slottedPage_test.dir/src/storage/page.cpp.o -o slottedPage_test

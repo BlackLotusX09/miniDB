@@ -50,4 +50,5 @@ set(CMAKE_MAKEFILE_PRODUCTS
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/minidb.dir/DependInfo.cmake"
   "CMakeFiles/disk_manager_test.dir/DependInfo.cmake"
+  "CMakeFiles/slottedPage_test.dir/DependInfo.cmake"
   )
