@@ -1,30 +1,43 @@
 #include "storage/page.h"
 
 SlottedPage::SlottedPage(page_id_t page_id){
-    memset(data_,0,PAGE_SIZE);
+    memset(GetData(),0,PAGE_SIZE);
 
     Header()->page_id=page_id;
     Header()->num_slots=0;
     Header()->free_space_ptr=PAGE_SIZE;
 }
-
+void SlottedPage::Init(page_id_t page_id) {
+    memset(GetData(), 0, PAGE_SIZE);
+    Header()->page_id = page_id;
+    Header()->num_slots = 0;
+    Header()->free_space_ptr = PAGE_SIZE; // Set to 4096, not 0!
+}
+char* Page::GetData(){
+    return data_;
+}
+const char* Page::GetData()const{
+    return data_;
+}
 PageHeader* SlottedPage::Header(){
-    return reinterpret_cast<PageHeader*>(data_);
+    PageHeader* header = reinterpret_cast<PageHeader*>(GetData());
+    if (header->free_space_ptr == 0 && header->num_slots == 0) {
+        header->free_space_ptr = PAGE_SIZE;
+    }
+    return header;
 }
 const PageHeader* SlottedPage::Header() const{
-    return reinterpret_cast<const PageHeader*>(data_);
+    const PageHeader* header = reinterpret_cast<const PageHeader*>(GetData());
+    if (header->free_space_ptr == 0 && header->num_slots == 0) {
+        const_cast<PageHeader*>(header)->free_space_ptr = PAGE_SIZE;
+    }
+    return header;
 }
 SlotEntry* SlottedPage::Slots(){
-    return reinterpret_cast<SlotEntry*>(data_+sizeof(PageHeader));
+    return reinterpret_cast<SlotEntry*>(GetData()+sizeof(PageHeader));
 }
 const SlotEntry* SlottedPage::Slots()const {
-    return reinterpret_cast<const SlotEntry*>(data_+sizeof(PageHeader));
-}
-char* SlottedPage::GetData(){
-    return data_;
-}
-const char* SlottedPage::GetData()const{
-    return data_;
+    return reinterpret_cast<const SlotEntry*>(GetData()+sizeof(PageHeader));
 }
 uint16_t SlottedPage::GetFreeSpace()const{
     uint16_t slot_array_end=sizeof(PageHeader)+Header()->num_slots*sizeof(SlotEntry);
@@ -39,7 +52,7 @@ const char* SlottedPage::GetRecord(slot_id_t slot_id,uint16_t* len)const {
 
     *len = slots[slot_id].length;
     if(*len==0)return nullptr;
-    return data_ +slots[slot_id].offset;
+    return GetData() +slots[slot_id].offset;
 }
 bool SlottedPage::InsertRecord(const char* record,uint16_t len,slot_id_t* out_slot)
 {
@@ -54,7 +67,7 @@ bool SlottedPage::InsertRecord(const char* record,uint16_t len,slot_id_t* out_sl
     uint16_t offset =
         Header()->free_space_ptr;
 
-    memcpy( data_ + offset,record,len);
+    memcpy( GetData() + offset,record,len);
 
     SlotEntry* slots = Slots();
 

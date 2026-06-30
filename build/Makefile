@@ -189,6 +189,30 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/minidb.dir/build.make CMakeFiles/minidb.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/storage/BufferPool.o: src/storage/BufferPool.cpp.o
+.PHONY : src/storage/BufferPool.o
+
+# target to build an object file
+src/storage/BufferPool.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/disk_manager_test.dir/build.make CMakeFiles/disk_manager_test.dir/src/storage/BufferPool.cpp.o
+.PHONY : src/storage/BufferPool.cpp.o
+
+src/storage/BufferPool.i: src/storage/BufferPool.cpp.i
+.PHONY : src/storage/BufferPool.i
+
+# target to preprocess a source file
+src/storage/BufferPool.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/disk_manager_test.dir/build.make CMakeFiles/disk_manager_test.dir/src/storage/BufferPool.cpp.i
+.PHONY : src/storage/BufferPool.cpp.i
+
+src/storage/BufferPool.s: src/storage/BufferPool.cpp.s
+.PHONY : src/storage/BufferPool.s
+
+# target to generate assembly for a file
+src/storage/BufferPool.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/disk_manager_test.dir/build.make CMakeFiles/disk_manager_test.dir/src/storage/BufferPool.cpp.s
+.PHONY : src/storage/BufferPool.cpp.s
+
 src/storage/DiskManager.o: src/storage/DiskManager.cpp.o
 .PHONY : src/storage/DiskManager.o
 
@@ -306,6 +330,9 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/storage/BufferPool.o"
+	@echo "... src/storage/BufferPool.i"
+	@echo "... src/storage/BufferPool.s"
 	@echo "... src/storage/DiskManager.o"
 	@echo "... src/storage/DiskManager.i"
 	@echo "... src/storage/DiskManager.s"

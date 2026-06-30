@@ -22,6 +22,7 @@ add_executable(
     test/disk_manager_test.cpp
     src/storage/DiskManager.cpp
     src/storage/page.cpp
+    src/storage/BufferPool.cpp
 )
 add_executable(
     slottedPage_test

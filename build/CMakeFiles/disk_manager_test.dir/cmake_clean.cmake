@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/disk_manager_test.dir/src/storage/BufferPool.cpp.o"
+  "CMakeFiles/disk_manager_test.dir/src/storage/BufferPool.cpp.o.d"
   "CMakeFiles/disk_manager_test.dir/src/storage/DiskManager.cpp.o"
   "CMakeFiles/disk_manager_test.dir/src/storage/DiskManager.cpp.o.d"
   "CMakeFiles/disk_manager_test.dir/src/storage/page.cpp.o"

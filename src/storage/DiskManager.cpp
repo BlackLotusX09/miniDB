@@ -8,14 +8,16 @@ DiskManager::DiskManager(string filename) : next_page_id(0){
     }
 }
 void DiskManager::WritePage(page_id_t page_id, const char* data){
+    db_file.clear();
     streamoff offset=PAGE_SIZE*page_id;
-    db_file.seekg(offset);
+    db_file.seekp(offset);
     db_file.write(data,PAGE_SIZE);
     db_file.flush();
 }
 void DiskManager::ReadPage(page_id_t page_id, char* data){
+    db_file.clear();
     streamoff offset=PAGE_SIZE*page_id;
-    db_file.seekp(offset);
+    db_file.seekg(offset);
     if(!db_file.read(data,PAGE_SIZE)){
         streamsize bytes_read = db_file.gcount();
 

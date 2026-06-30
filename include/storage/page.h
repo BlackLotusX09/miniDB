@@ -15,9 +15,17 @@ struct SlotEntry{
     uint16_t offset; 
     uint16_t length;
 };
-class SlottedPage{
+class Page {
 private:
     char data_[PAGE_SIZE];
+
+public:
+    char* GetData();
+    const char* GetData() const;
+
+    //void ResetMemory();
+};
+class SlottedPage:public Page{
 public:
     explicit SlottedPage(page_id_t page_id=0);
     uint16_t GetFreeSpace() const;
@@ -32,9 +40,7 @@ public:
     SlotEntry* Slots();
     const SlotEntry* Slots() const;
 
-    char* GetData();
-    const char* GetData()const;
-
     bool DeleteRecord(slot_id_t slot_id);
+    void Init(page_id_t page_id);
 
 };
