@@ -66,5 +66,6 @@ public:
     frame_id_t GetFreeFrame();
     void UnpinPage(page_id_t pid, bool is_dirty);
     void flushAllPages();
+    Page* NewPage(page_id_t* pid);
 };
 

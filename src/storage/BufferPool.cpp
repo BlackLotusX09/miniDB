@@ -48,7 +48,8 @@ Page* BufferPoolManager::FetchPage(page_id_t pid)
     
 
 }
-frame_id_t BufferPoolManager::GetFreeFrame() {
+frame_id_t BufferPoolManager::GetFreeFrame() 
+{
     if (!freePageList.empty()) {
         int fid = freePageList.front();
         freePageList.pop();
@@ -179,4 +180,30 @@ void BufferPoolManager::flushAllPages(){
         }
         
     }
+}
+
+Page* BufferPoolManager::NewPage(page_id_t* page_id)
+{
+    frame_id_t fid = GetFreeFrame();
+    if (fid == 255) {
+        return nullptr; // Buffer pool is full and everything is pinned!
+    }
+    page_id_t new_pid = disk_manager_->AllocatePages(); 
+    *page_id = new_pid; // Write it back to the output pointer for the TableHeap
+
+    // 3. Clear out and initialize the frame memory inside your buffer pool
+    Frame& target_frame = frames_[fid];
+    
+    // Clear old data in the raw page array
+    memset(target_frame.page.GetData(), 0, PAGE_SIZE); 
+    
+    // Setup metadata
+    target_frame.page_id = new_pid;
+    target_frame.pin_count = 1; // Pinned immediately because TableHeap is writing to it
+    target_frame.is_dirty = true;
+    page_table_[new_pid] = fid;
+
+    lru_replacer.pin(fid);
+
+    return &target_frame.page;
 }

@@ -10,6 +10,7 @@ struct PageHeader{
     uint32_t page_id;
     uint16_t num_slots;
     uint16_t free_space_ptr;
+    page_id_t next_page_id;
 };
 struct SlotEntry{ 
     uint16_t offset; 
