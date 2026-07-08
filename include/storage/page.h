@@ -2,10 +2,9 @@
 #include<iostream>
 #include<cstdint>
 static const uint32_t PAGE_SIZE = 4096;
-#define INVALID_PAGE_ID -1
-
 using slot_id_t= int32_t;
-using page_id_t = uint32_t;
+using page_id_t = int32_t;
+static constexpr page_id_t INVALID_PAGE_ID = -1;
 struct PageHeader{
     uint32_t page_id;
     uint16_t num_slots;
