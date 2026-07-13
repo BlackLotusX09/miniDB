@@ -1,90 +1,97 @@
 #include "storage/page.h"
+#include <cstring>
 
-SlottedPage::SlottedPage(page_id_t page_id){
-    memset(GetData(),0,PAGE_SIZE);
+// ─── Page ─────────────────────────────────────────────────────────────────────
 
-    Header()->page_id=page_id;
-    Header()->num_slots=0;
-    Header()->free_space_ptr=PAGE_SIZE;
+char* Page::GetData() {
+    return data_;
 }
-void SlottedPage::Init(page_id_t page_id) {
+
+const char* Page::GetData() const {
+    return data_;
+}
+
+// ─── SlottedPage ──────────────────────────────────────────────────────────────
+
+SlottedPage::SlottedPage(page_id_t pid) {
+    Init(pid);
+}
+
+void SlottedPage::Init(page_id_t pid) {
     memset(GetData(), 0, PAGE_SIZE);
-    Header()->page_id = page_id;
-    Header()->num_slots = 0;
-    Header()->free_space_ptr = PAGE_SIZE; // Set to 4096, not 0!
+    PageHeader* h = reinterpret_cast<PageHeader*>(GetData());
+    h->page_id       = pid;
+    h->num_slots     = 0;
+    h->free_space_ptr = PAGE_SIZE;
+    h->next_page_id  = INVALID_PAGE_ID;   // ← critical: 0 is a valid page!
 }
-char* Page::GetData(){
-    return data_;
-}
-const char* Page::GetData()const{
-    return data_;
-}
-PageHeader* SlottedPage::Header(){
-    PageHeader* header = reinterpret_cast<PageHeader*>(GetData());
-    if (header->free_space_ptr == 0 && header->num_slots == 0) {
-        header->free_space_ptr = PAGE_SIZE;
+
+PageHeader* SlottedPage::Header() {
+    PageHeader* h = reinterpret_cast<PageHeader*>(GetData());
+    // Defensive fixup: if free_space_ptr is 0 and no slots exist, the page
+    // was never explicitly Init'd (e.g. raw zeroed frame). Fix it in place.
+    if (h->free_space_ptr == 0 && h->num_slots == 0) {
+        h->free_space_ptr = PAGE_SIZE;
+        h->next_page_id   = INVALID_PAGE_ID;
     }
-    return header;
+    return h;
 }
-const PageHeader* SlottedPage::Header() const{
-    const PageHeader* header = reinterpret_cast<const PageHeader*>(GetData());
-    if (header->free_space_ptr == 0 && header->num_slots == 0) {
-        const_cast<PageHeader*>(header)->free_space_ptr = PAGE_SIZE;
+
+const PageHeader* SlottedPage::Header() const {
+    const PageHeader* h = reinterpret_cast<const PageHeader*>(GetData());
+    if (h->free_space_ptr == 0 && h->num_slots == 0) {
+        PageHeader* mh = const_cast<PageHeader*>(h);
+        mh->free_space_ptr = PAGE_SIZE;
+        mh->next_page_id   = INVALID_PAGE_ID;
     }
-    return header;
+    return h;
 }
-SlotEntry* SlottedPage::Slots(){
-    return reinterpret_cast<SlotEntry*>(GetData()+sizeof(PageHeader));
+
+SlotEntry* SlottedPage::Slots() {
+    return reinterpret_cast<SlotEntry*>(GetData() + sizeof(PageHeader));
 }
-const SlotEntry* SlottedPage::Slots()const {
-    return reinterpret_cast<const SlotEntry*>(GetData()+sizeof(PageHeader));
+
+const SlotEntry* SlottedPage::Slots() const {
+    return reinterpret_cast<const SlotEntry*>(GetData() + sizeof(PageHeader));
 }
-uint16_t SlottedPage::GetFreeSpace()const{
-    uint16_t slot_array_end=sizeof(PageHeader)+Header()->num_slots*sizeof(SlotEntry);
-    return Header()->free_space_ptr-slot_array_end;
+
+uint16_t SlottedPage::GetFreeSpace() const {
+    uint16_t slot_array_end =
+        static_cast<uint16_t>(sizeof(PageHeader)) +
+        Header()->num_slots * static_cast<uint16_t>(sizeof(SlotEntry));
+    return Header()->free_space_ptr - slot_array_end;
 }
-const char* SlottedPage::GetRecord(slot_id_t slot_id,uint16_t* len)const {
-    if (slot_id >= Header()->num_slots)
+
+const char* SlottedPage::GetRecord(slot_id_t slot_id, uint16_t* len) const {
+    if (slot_id >= static_cast<slot_id_t>(Header()->num_slots))
         return nullptr;
 
-    const SlotEntry* slots =
-        Slots();
-
+    const SlotEntry* slots = Slots();
     *len = slots[slot_id].length;
-    if(*len==0)return nullptr;
-    return GetData() +slots[slot_id].offset;
+    if (*len == 0) return nullptr;   // tombstoned slot
+    return GetData() + slots[slot_id].offset;
 }
-bool SlottedPage::InsertRecord(const char* record,uint16_t len,slot_id_t* out_slot)
-{
-    uint16_t needed =
-        len + sizeof(SlotEntry);
 
-    if (GetFreeSpace() < needed)
-        return false;
+bool SlottedPage::InsertRecord(const char* record, uint16_t len, slot_id_t* out_slot) {
+    uint16_t needed = len + static_cast<uint16_t>(sizeof(SlotEntry));
+    if (GetFreeSpace() < needed) return false;
 
     Header()->free_space_ptr -= len;
+    uint16_t offset = Header()->free_space_ptr;
 
-    uint16_t offset =
-        Header()->free_space_ptr;
-
-    memcpy( GetData() + offset,record,len);
+    memcpy(GetData() + offset, record, len);
 
     SlotEntry* slots = Slots();
-
-    slots[Header()->num_slots] ={offset,len};
-
+    slots[Header()->num_slots] = {offset, len};
     *out_slot = Header()->num_slots;
-
     Header()->num_slots++;
 
     return true;
 }
 
-bool SlottedPage::DeleteRecord(slot_id_t slot_id){
-    if(slot_id>=Header()->num_slots){
+bool SlottedPage::DeleteRecord(slot_id_t slot_id) {
+    if (slot_id >= static_cast<slot_id_t>(Header()->num_slots))
         return false;
-    }
-    SlotEntry* slot= Slots();
-    slot[slot_id].length=0;
+    Slots()[slot_id].length = 0;   // tombstone
     return true;
 }

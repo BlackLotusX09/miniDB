@@ -1,0 +1,1 @@
+/usr/bin/c++ -g -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/tableIterator.dir/test/tableIterator.cpp.o CMakeFiles/tableIterator.dir/src/storage/tableHeap.cpp.o -o tableIterator

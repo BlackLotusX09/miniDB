@@ -1,4 +1,4 @@
-#include "TableIterator.h"
+#include "storage/TableIterator.h"
 
 TableIterator::TableIterator(BufferPoolManager* bpm, page_id_t start_page){
     this->bpm=bpm;

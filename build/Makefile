@@ -165,6 +165,19 @@ slottedPage_test/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/slottedPage_test.dir/build.make CMakeFiles/slottedPage_test.dir/build
 .PHONY : slottedPage_test/fast
 
+#=============================================================================
+# Target rules for targets named integration_test
+
+# Build rule for target.
+integration_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 integration_test
+.PHONY : integration_test
+
+# fast build rule for target.
+integration_test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/build
+.PHONY : integration_test/fast
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -194,7 +207,9 @@ src/storage/BufferPool.o: src/storage/BufferPool.cpp.o
 
 # target to build an object file
 src/storage/BufferPool.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minidb.dir/build.make CMakeFiles/minidb.dir/src/storage/BufferPool.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/disk_manager_test.dir/build.make CMakeFiles/disk_manager_test.dir/src/storage/BufferPool.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/storage/BufferPool.cpp.o
 .PHONY : src/storage/BufferPool.cpp.o
 
 src/storage/BufferPool.i: src/storage/BufferPool.cpp.i
@@ -202,7 +217,9 @@ src/storage/BufferPool.i: src/storage/BufferPool.cpp.i
 
 # target to preprocess a source file
 src/storage/BufferPool.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minidb.dir/build.make CMakeFiles/minidb.dir/src/storage/BufferPool.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/disk_manager_test.dir/build.make CMakeFiles/disk_manager_test.dir/src/storage/BufferPool.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/storage/BufferPool.cpp.i
 .PHONY : src/storage/BufferPool.cpp.i
 
 src/storage/BufferPool.s: src/storage/BufferPool.cpp.s
@@ -210,7 +227,9 @@ src/storage/BufferPool.s: src/storage/BufferPool.cpp.s
 
 # target to generate assembly for a file
 src/storage/BufferPool.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minidb.dir/build.make CMakeFiles/minidb.dir/src/storage/BufferPool.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/disk_manager_test.dir/build.make CMakeFiles/disk_manager_test.dir/src/storage/BufferPool.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/storage/BufferPool.cpp.s
 .PHONY : src/storage/BufferPool.cpp.s
 
 src/storage/DiskManager.o: src/storage/DiskManager.cpp.o
@@ -220,6 +239,7 @@ src/storage/DiskManager.o: src/storage/DiskManager.cpp.o
 src/storage/DiskManager.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/minidb.dir/build.make CMakeFiles/minidb.dir/src/storage/DiskManager.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/disk_manager_test.dir/build.make CMakeFiles/disk_manager_test.dir/src/storage/DiskManager.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/storage/DiskManager.cpp.o
 .PHONY : src/storage/DiskManager.cpp.o
 
 src/storage/DiskManager.i: src/storage/DiskManager.cpp.i
@@ -229,6 +249,7 @@ src/storage/DiskManager.i: src/storage/DiskManager.cpp.i
 src/storage/DiskManager.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/minidb.dir/build.make CMakeFiles/minidb.dir/src/storage/DiskManager.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/disk_manager_test.dir/build.make CMakeFiles/disk_manager_test.dir/src/storage/DiskManager.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/storage/DiskManager.cpp.i
 .PHONY : src/storage/DiskManager.cpp.i
 
 src/storage/DiskManager.s: src/storage/DiskManager.cpp.s
@@ -238,15 +259,72 @@ src/storage/DiskManager.s: src/storage/DiskManager.cpp.s
 src/storage/DiskManager.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/minidb.dir/build.make CMakeFiles/minidb.dir/src/storage/DiskManager.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/disk_manager_test.dir/build.make CMakeFiles/disk_manager_test.dir/src/storage/DiskManager.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/storage/DiskManager.cpp.s
 .PHONY : src/storage/DiskManager.cpp.s
+
+src/storage/TableHeap.o: src/storage/TableHeap.cpp.o
+.PHONY : src/storage/TableHeap.o
+
+# target to build an object file
+src/storage/TableHeap.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minidb.dir/build.make CMakeFiles/minidb.dir/src/storage/TableHeap.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/storage/TableHeap.cpp.o
+.PHONY : src/storage/TableHeap.cpp.o
+
+src/storage/TableHeap.i: src/storage/TableHeap.cpp.i
+.PHONY : src/storage/TableHeap.i
+
+# target to preprocess a source file
+src/storage/TableHeap.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minidb.dir/build.make CMakeFiles/minidb.dir/src/storage/TableHeap.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/storage/TableHeap.cpp.i
+.PHONY : src/storage/TableHeap.cpp.i
+
+src/storage/TableHeap.s: src/storage/TableHeap.cpp.s
+.PHONY : src/storage/TableHeap.s
+
+# target to generate assembly for a file
+src/storage/TableHeap.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minidb.dir/build.make CMakeFiles/minidb.dir/src/storage/TableHeap.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/storage/TableHeap.cpp.s
+.PHONY : src/storage/TableHeap.cpp.s
+
+src/storage/TableIterator.o: src/storage/TableIterator.cpp.o
+.PHONY : src/storage/TableIterator.o
+
+# target to build an object file
+src/storage/TableIterator.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minidb.dir/build.make CMakeFiles/minidb.dir/src/storage/TableIterator.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/storage/TableIterator.cpp.o
+.PHONY : src/storage/TableIterator.cpp.o
+
+src/storage/TableIterator.i: src/storage/TableIterator.cpp.i
+.PHONY : src/storage/TableIterator.i
+
+# target to preprocess a source file
+src/storage/TableIterator.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minidb.dir/build.make CMakeFiles/minidb.dir/src/storage/TableIterator.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/storage/TableIterator.cpp.i
+.PHONY : src/storage/TableIterator.cpp.i
+
+src/storage/TableIterator.s: src/storage/TableIterator.cpp.s
+.PHONY : src/storage/TableIterator.s
+
+# target to generate assembly for a file
+src/storage/TableIterator.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minidb.dir/build.make CMakeFiles/minidb.dir/src/storage/TableIterator.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/storage/TableIterator.cpp.s
+.PHONY : src/storage/TableIterator.cpp.s
 
 src/storage/page.o: src/storage/page.cpp.o
 .PHONY : src/storage/page.o
 
 # target to build an object file
 src/storage/page.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minidb.dir/build.make CMakeFiles/minidb.dir/src/storage/page.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/disk_manager_test.dir/build.make CMakeFiles/disk_manager_test.dir/src/storage/page.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/slottedPage_test.dir/build.make CMakeFiles/slottedPage_test.dir/src/storage/page.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/storage/page.cpp.o
 .PHONY : src/storage/page.cpp.o
 
 src/storage/page.i: src/storage/page.cpp.i
@@ -254,8 +332,10 @@ src/storage/page.i: src/storage/page.cpp.i
 
 # target to preprocess a source file
 src/storage/page.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minidb.dir/build.make CMakeFiles/minidb.dir/src/storage/page.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/disk_manager_test.dir/build.make CMakeFiles/disk_manager_test.dir/src/storage/page.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/slottedPage_test.dir/build.make CMakeFiles/slottedPage_test.dir/src/storage/page.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/storage/page.cpp.i
 .PHONY : src/storage/page.cpp.i
 
 src/storage/page.s: src/storage/page.cpp.s
@@ -263,9 +343,65 @@ src/storage/page.s: src/storage/page.cpp.s
 
 # target to generate assembly for a file
 src/storage/page.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minidb.dir/build.make CMakeFiles/minidb.dir/src/storage/page.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/disk_manager_test.dir/build.make CMakeFiles/disk_manager_test.dir/src/storage/page.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/slottedPage_test.dir/build.make CMakeFiles/slottedPage_test.dir/src/storage/page.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/storage/page.cpp.s
 .PHONY : src/storage/page.cpp.s
+
+src/storage/rid.o: src/storage/rid.cpp.o
+.PHONY : src/storage/rid.o
+
+# target to build an object file
+src/storage/rid.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minidb.dir/build.make CMakeFiles/minidb.dir/src/storage/rid.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/storage/rid.cpp.o
+.PHONY : src/storage/rid.cpp.o
+
+src/storage/rid.i: src/storage/rid.cpp.i
+.PHONY : src/storage/rid.i
+
+# target to preprocess a source file
+src/storage/rid.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minidb.dir/build.make CMakeFiles/minidb.dir/src/storage/rid.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/storage/rid.cpp.i
+.PHONY : src/storage/rid.cpp.i
+
+src/storage/rid.s: src/storage/rid.cpp.s
+.PHONY : src/storage/rid.s
+
+# target to generate assembly for a file
+src/storage/rid.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minidb.dir/build.make CMakeFiles/minidb.dir/src/storage/rid.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/storage/rid.cpp.s
+.PHONY : src/storage/rid.cpp.s
+
+src/storage/tuple.o: src/storage/tuple.cpp.o
+.PHONY : src/storage/tuple.o
+
+# target to build an object file
+src/storage/tuple.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minidb.dir/build.make CMakeFiles/minidb.dir/src/storage/tuple.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/storage/tuple.cpp.o
+.PHONY : src/storage/tuple.cpp.o
+
+src/storage/tuple.i: src/storage/tuple.cpp.i
+.PHONY : src/storage/tuple.i
+
+# target to preprocess a source file
+src/storage/tuple.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minidb.dir/build.make CMakeFiles/minidb.dir/src/storage/tuple.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/storage/tuple.cpp.i
+.PHONY : src/storage/tuple.cpp.i
+
+src/storage/tuple.s: src/storage/tuple.cpp.s
+.PHONY : src/storage/tuple.s
+
+# target to generate assembly for a file
+src/storage/tuple.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minidb.dir/build.make CMakeFiles/minidb.dir/src/storage/tuple.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/storage/tuple.cpp.s
+.PHONY : src/storage/tuple.cpp.s
 
 test/disk_manager_test.o: test/disk_manager_test.cpp.o
 .PHONY : test/disk_manager_test.o
@@ -290,6 +426,30 @@ test/disk_manager_test.s: test/disk_manager_test.cpp.s
 test/disk_manager_test.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/disk_manager_test.dir/build.make CMakeFiles/disk_manager_test.dir/test/disk_manager_test.cpp.s
 .PHONY : test/disk_manager_test.cpp.s
+
+test/integration_test.o: test/integration_test.cpp.o
+.PHONY : test/integration_test.o
+
+# target to build an object file
+test/integration_test.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/test/integration_test.cpp.o
+.PHONY : test/integration_test.cpp.o
+
+test/integration_test.i: test/integration_test.cpp.i
+.PHONY : test/integration_test.i
+
+# target to preprocess a source file
+test/integration_test.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/test/integration_test.cpp.i
+.PHONY : test/integration_test.cpp.i
+
+test/integration_test.s: test/integration_test.cpp.s
+.PHONY : test/integration_test.s
+
+# target to generate assembly for a file
+test/integration_test.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/test/integration_test.cpp.s
+.PHONY : test/integration_test.cpp.s
 
 test/slottedPage_test.o: test/slottedPage_test.cpp.o
 .PHONY : test/slottedPage_test.o
@@ -325,6 +485,7 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... test"
 	@echo "... disk_manager_test"
+	@echo "... integration_test"
 	@echo "... minidb"
 	@echo "... slottedPage_test"
 	@echo "... src/main.o"
@@ -336,12 +497,27 @@ help:
 	@echo "... src/storage/DiskManager.o"
 	@echo "... src/storage/DiskManager.i"
 	@echo "... src/storage/DiskManager.s"
+	@echo "... src/storage/TableHeap.o"
+	@echo "... src/storage/TableHeap.i"
+	@echo "... src/storage/TableHeap.s"
+	@echo "... src/storage/TableIterator.o"
+	@echo "... src/storage/TableIterator.i"
+	@echo "... src/storage/TableIterator.s"
 	@echo "... src/storage/page.o"
 	@echo "... src/storage/page.i"
 	@echo "... src/storage/page.s"
+	@echo "... src/storage/rid.o"
+	@echo "... src/storage/rid.i"
+	@echo "... src/storage/rid.s"
+	@echo "... src/storage/tuple.o"
+	@echo "... src/storage/tuple.i"
+	@echo "... src/storage/tuple.s"
 	@echo "... test/disk_manager_test.o"
 	@echo "... test/disk_manager_test.i"
 	@echo "... test/disk_manager_test.s"
+	@echo "... test/integration_test.o"
+	@echo "... test/integration_test.i"
+	@echo "... test/integration_test.s"
 	@echo "... test/slottedPage_test.o"
 	@echo "... test/slottedPage_test.i"
 	@echo "... test/slottedPage_test.s"

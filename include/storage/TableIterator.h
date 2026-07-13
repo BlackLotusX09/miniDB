@@ -1,10 +1,10 @@
 #pragma once
-#include"BufferPool.h"
-#include"TableHeap.h"
-#include"tuple.h"
+#include "storage/BufferPool.h"
+#include "storage/tuple.h"
+
 using namespace std;
 
-class TableIterator{
+class TableIterator {
 private:
     BufferPoolManager* bpm;
     page_id_t page_id;

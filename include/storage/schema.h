@@ -16,7 +16,7 @@ class Schema {
 private:
     vector<Column> columns_;
 public:
-    Schema(vector<Column> columns) : columns_(move(columns)) {}
+    Schema(vector<Column> columns) : columns_(std::move(columns)) {}
     const vector<Column>& GetColumns() const { return columns_; }
     size_t GetColumnCount() const { return columns_.size(); }
 };

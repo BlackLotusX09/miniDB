@@ -25,18 +25,9 @@ Page* BufferPoolManager::FetchPage(page_id_t pid)
             lru_replacer.pin(fid);
         }
         frames_[fid].pin_count++;
-        std::cout << "PID: " << pid << " pin_count shifted to: " << frames_[fid].pin_count << std::endl;
         return &frames_[fid].page;
     }
-    if(freePageList.empty()){
-    for (size_t i = 0; i < BUFFER_SIZE; ++i) {
-    cout << "Frame " << i 
-              << " -> Page ID: " << frames_[i].page_id
-              << ", Pin Count: " << frames_[i].pin_count
-              << ", Is Dirty: " << frames_[i].is_dirty <<endl;
-                
-    }
-}
+
     frame_id_t fid=GetFreeFrame();
     if(fid==255)return nullptr;
     disk_manager_->ReadPage(pid,frames_[fid].page.GetData());
@@ -77,7 +68,6 @@ void BufferPoolManager::UnpinPage(page_id_t pid, bool is_dirty)
     }
     
     assert(frames_[frame_id].pin_count > 0 && "Double-unpin bug detected! Pin count went negative.");
-    std::cout << "PID: " << pid << " pin_count shifted to: " << frames_[frame_id].pin_count << std::endl;
     
     frames_[frame_id].pin_count--;
     if(frames_[frame_id].pin_count==0){
@@ -174,13 +164,16 @@ void LRUReplacer::pin(frame_id_t fid){
 }
 void BufferPoolManager::flushAllPages(){
     for(int i=0;i<BUFFER_SIZE;i++){
-        if(frames_[i].page_id !=0 && frames_[i].is_dirty){
-            disk_manager_->WritePage(frames_[i].page_id,frames_[i].page.GetData());
+        // Use page_table_ to determine if this frame actually holds a valid page.
+        // The old guard `page_id != 0` was wrong — page 0 is a legitimate page ID!
+        page_id_t pid = frames_[i].page_id;
+        if(frames_[i].is_dirty && page_table_.count(pid)){
+            disk_manager_->WritePage(pid, frames_[i].page.GetData());
             frames_[i].is_dirty = false;
         }
-        
     }
 }
+
 
 Page* BufferPoolManager::NewPage(page_id_t* page_id)
 {

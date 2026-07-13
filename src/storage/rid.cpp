@@ -1,4 +1,4 @@
-#include"include/storage/rid.h"
+#include "storage/rid.h"
 
 RID::RID(page_id_t pid, slot_id_t slot_id){
     this->page_id=pid;
