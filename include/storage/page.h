@@ -22,8 +22,6 @@ private:
 public:
     char* GetData();
     const char* GetData() const;
-
-    //void ResetMemory();
 };
 class SlottedPage:public Page{
 public:
