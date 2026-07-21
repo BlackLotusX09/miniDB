@@ -52,3 +52,16 @@ file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/data
 
 enable_testing()
 add_test(NAME IntegrationTest COMMAND integration_test)
+# ── Test: Day 9-10 B+ Tree Stress + Validation ────────────────────────────────
+add_executable(BplusTreeTest
+    test/BplusTreeTest.cpp
+    src/storage/DiskManager.cpp
+    src/storage/BufferPool.cpp
+    src/storage/page.cpp
+    src/storage/rid.cpp
+    src/storage/b_tree.cpp
+    src/storage/b_tree_leaf_page.cpp
+    src/storage/b_tree_internal_page.cpp
+)
+target_include_directories(BplusTreeTest PRIVATE include include/storage src/storage)
+add_test(NAME BplusTreeTest COMMAND BplusTreeTest)

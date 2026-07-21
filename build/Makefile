@@ -178,6 +178,19 @@ integration_test/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/build
 .PHONY : integration_test/fast
 
+#=============================================================================
+# Target rules for targets named BplusTreeTest
+
+# Build rule for target.
+BplusTreeTest: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 BplusTreeTest
+.PHONY : BplusTreeTest
+
+# fast build rule for target.
+BplusTreeTest/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BplusTreeTest.dir/build.make CMakeFiles/BplusTreeTest.dir/build
+.PHONY : BplusTreeTest/fast
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -210,6 +223,7 @@ src/storage/BufferPool.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/minidb.dir/build.make CMakeFiles/minidb.dir/src/storage/BufferPool.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/disk_manager_test.dir/build.make CMakeFiles/disk_manager_test.dir/src/storage/BufferPool.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/storage/BufferPool.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BplusTreeTest.dir/build.make CMakeFiles/BplusTreeTest.dir/src/storage/BufferPool.cpp.o
 .PHONY : src/storage/BufferPool.cpp.o
 
 src/storage/BufferPool.i: src/storage/BufferPool.cpp.i
@@ -220,6 +234,7 @@ src/storage/BufferPool.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/minidb.dir/build.make CMakeFiles/minidb.dir/src/storage/BufferPool.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/disk_manager_test.dir/build.make CMakeFiles/disk_manager_test.dir/src/storage/BufferPool.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/storage/BufferPool.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BplusTreeTest.dir/build.make CMakeFiles/BplusTreeTest.dir/src/storage/BufferPool.cpp.i
 .PHONY : src/storage/BufferPool.cpp.i
 
 src/storage/BufferPool.s: src/storage/BufferPool.cpp.s
@@ -230,6 +245,7 @@ src/storage/BufferPool.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/minidb.dir/build.make CMakeFiles/minidb.dir/src/storage/BufferPool.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/disk_manager_test.dir/build.make CMakeFiles/disk_manager_test.dir/src/storage/BufferPool.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/storage/BufferPool.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BplusTreeTest.dir/build.make CMakeFiles/BplusTreeTest.dir/src/storage/BufferPool.cpp.s
 .PHONY : src/storage/BufferPool.cpp.s
 
 src/storage/DiskManager.o: src/storage/DiskManager.cpp.o
@@ -240,6 +256,7 @@ src/storage/DiskManager.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/minidb.dir/build.make CMakeFiles/minidb.dir/src/storage/DiskManager.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/disk_manager_test.dir/build.make CMakeFiles/disk_manager_test.dir/src/storage/DiskManager.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/storage/DiskManager.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BplusTreeTest.dir/build.make CMakeFiles/BplusTreeTest.dir/src/storage/DiskManager.cpp.o
 .PHONY : src/storage/DiskManager.cpp.o
 
 src/storage/DiskManager.i: src/storage/DiskManager.cpp.i
@@ -250,6 +267,7 @@ src/storage/DiskManager.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/minidb.dir/build.make CMakeFiles/minidb.dir/src/storage/DiskManager.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/disk_manager_test.dir/build.make CMakeFiles/disk_manager_test.dir/src/storage/DiskManager.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/storage/DiskManager.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BplusTreeTest.dir/build.make CMakeFiles/BplusTreeTest.dir/src/storage/DiskManager.cpp.i
 .PHONY : src/storage/DiskManager.cpp.i
 
 src/storage/DiskManager.s: src/storage/DiskManager.cpp.s
@@ -260,6 +278,7 @@ src/storage/DiskManager.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/minidb.dir/build.make CMakeFiles/minidb.dir/src/storage/DiskManager.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/disk_manager_test.dir/build.make CMakeFiles/disk_manager_test.dir/src/storage/DiskManager.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/storage/DiskManager.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BplusTreeTest.dir/build.make CMakeFiles/BplusTreeTest.dir/src/storage/DiskManager.cpp.s
 .PHONY : src/storage/DiskManager.cpp.s
 
 src/storage/TableHeap.o: src/storage/TableHeap.cpp.o
@@ -316,6 +335,78 @@ src/storage/TableIterator.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/storage/TableIterator.cpp.s
 .PHONY : src/storage/TableIterator.cpp.s
 
+src/storage/b_tree.o: src/storage/b_tree.cpp.o
+.PHONY : src/storage/b_tree.o
+
+# target to build an object file
+src/storage/b_tree.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BplusTreeTest.dir/build.make CMakeFiles/BplusTreeTest.dir/src/storage/b_tree.cpp.o
+.PHONY : src/storage/b_tree.cpp.o
+
+src/storage/b_tree.i: src/storage/b_tree.cpp.i
+.PHONY : src/storage/b_tree.i
+
+# target to preprocess a source file
+src/storage/b_tree.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BplusTreeTest.dir/build.make CMakeFiles/BplusTreeTest.dir/src/storage/b_tree.cpp.i
+.PHONY : src/storage/b_tree.cpp.i
+
+src/storage/b_tree.s: src/storage/b_tree.cpp.s
+.PHONY : src/storage/b_tree.s
+
+# target to generate assembly for a file
+src/storage/b_tree.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BplusTreeTest.dir/build.make CMakeFiles/BplusTreeTest.dir/src/storage/b_tree.cpp.s
+.PHONY : src/storage/b_tree.cpp.s
+
+src/storage/b_tree_internal_page.o: src/storage/b_tree_internal_page.cpp.o
+.PHONY : src/storage/b_tree_internal_page.o
+
+# target to build an object file
+src/storage/b_tree_internal_page.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BplusTreeTest.dir/build.make CMakeFiles/BplusTreeTest.dir/src/storage/b_tree_internal_page.cpp.o
+.PHONY : src/storage/b_tree_internal_page.cpp.o
+
+src/storage/b_tree_internal_page.i: src/storage/b_tree_internal_page.cpp.i
+.PHONY : src/storage/b_tree_internal_page.i
+
+# target to preprocess a source file
+src/storage/b_tree_internal_page.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BplusTreeTest.dir/build.make CMakeFiles/BplusTreeTest.dir/src/storage/b_tree_internal_page.cpp.i
+.PHONY : src/storage/b_tree_internal_page.cpp.i
+
+src/storage/b_tree_internal_page.s: src/storage/b_tree_internal_page.cpp.s
+.PHONY : src/storage/b_tree_internal_page.s
+
+# target to generate assembly for a file
+src/storage/b_tree_internal_page.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BplusTreeTest.dir/build.make CMakeFiles/BplusTreeTest.dir/src/storage/b_tree_internal_page.cpp.s
+.PHONY : src/storage/b_tree_internal_page.cpp.s
+
+src/storage/b_tree_leaf_page.o: src/storage/b_tree_leaf_page.cpp.o
+.PHONY : src/storage/b_tree_leaf_page.o
+
+# target to build an object file
+src/storage/b_tree_leaf_page.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BplusTreeTest.dir/build.make CMakeFiles/BplusTreeTest.dir/src/storage/b_tree_leaf_page.cpp.o
+.PHONY : src/storage/b_tree_leaf_page.cpp.o
+
+src/storage/b_tree_leaf_page.i: src/storage/b_tree_leaf_page.cpp.i
+.PHONY : src/storage/b_tree_leaf_page.i
+
+# target to preprocess a source file
+src/storage/b_tree_leaf_page.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BplusTreeTest.dir/build.make CMakeFiles/BplusTreeTest.dir/src/storage/b_tree_leaf_page.cpp.i
+.PHONY : src/storage/b_tree_leaf_page.cpp.i
+
+src/storage/b_tree_leaf_page.s: src/storage/b_tree_leaf_page.cpp.s
+.PHONY : src/storage/b_tree_leaf_page.s
+
+# target to generate assembly for a file
+src/storage/b_tree_leaf_page.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BplusTreeTest.dir/build.make CMakeFiles/BplusTreeTest.dir/src/storage/b_tree_leaf_page.cpp.s
+.PHONY : src/storage/b_tree_leaf_page.cpp.s
+
 src/storage/page.o: src/storage/page.cpp.o
 .PHONY : src/storage/page.o
 
@@ -325,6 +416,7 @@ src/storage/page.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/disk_manager_test.dir/build.make CMakeFiles/disk_manager_test.dir/src/storage/page.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/slottedPage_test.dir/build.make CMakeFiles/slottedPage_test.dir/src/storage/page.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/storage/page.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BplusTreeTest.dir/build.make CMakeFiles/BplusTreeTest.dir/src/storage/page.cpp.o
 .PHONY : src/storage/page.cpp.o
 
 src/storage/page.i: src/storage/page.cpp.i
@@ -336,6 +428,7 @@ src/storage/page.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/disk_manager_test.dir/build.make CMakeFiles/disk_manager_test.dir/src/storage/page.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/slottedPage_test.dir/build.make CMakeFiles/slottedPage_test.dir/src/storage/page.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/storage/page.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BplusTreeTest.dir/build.make CMakeFiles/BplusTreeTest.dir/src/storage/page.cpp.i
 .PHONY : src/storage/page.cpp.i
 
 src/storage/page.s: src/storage/page.cpp.s
@@ -347,6 +440,7 @@ src/storage/page.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/disk_manager_test.dir/build.make CMakeFiles/disk_manager_test.dir/src/storage/page.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/slottedPage_test.dir/build.make CMakeFiles/slottedPage_test.dir/src/storage/page.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/storage/page.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BplusTreeTest.dir/build.make CMakeFiles/BplusTreeTest.dir/src/storage/page.cpp.s
 .PHONY : src/storage/page.cpp.s
 
 src/storage/rid.o: src/storage/rid.cpp.o
@@ -356,6 +450,7 @@ src/storage/rid.o: src/storage/rid.cpp.o
 src/storage/rid.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/minidb.dir/build.make CMakeFiles/minidb.dir/src/storage/rid.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/storage/rid.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BplusTreeTest.dir/build.make CMakeFiles/BplusTreeTest.dir/src/storage/rid.cpp.o
 .PHONY : src/storage/rid.cpp.o
 
 src/storage/rid.i: src/storage/rid.cpp.i
@@ -365,6 +460,7 @@ src/storage/rid.i: src/storage/rid.cpp.i
 src/storage/rid.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/minidb.dir/build.make CMakeFiles/minidb.dir/src/storage/rid.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/storage/rid.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BplusTreeTest.dir/build.make CMakeFiles/BplusTreeTest.dir/src/storage/rid.cpp.i
 .PHONY : src/storage/rid.cpp.i
 
 src/storage/rid.s: src/storage/rid.cpp.s
@@ -374,6 +470,7 @@ src/storage/rid.s: src/storage/rid.cpp.s
 src/storage/rid.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/minidb.dir/build.make CMakeFiles/minidb.dir/src/storage/rid.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/storage/rid.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BplusTreeTest.dir/build.make CMakeFiles/BplusTreeTest.dir/src/storage/rid.cpp.s
 .PHONY : src/storage/rid.cpp.s
 
 src/storage/tuple.o: src/storage/tuple.cpp.o
@@ -402,6 +499,30 @@ src/storage/tuple.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/minidb.dir/build.make CMakeFiles/minidb.dir/src/storage/tuple.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/storage/tuple.cpp.s
 .PHONY : src/storage/tuple.cpp.s
+
+test/BplusTreeTest.o: test/BplusTreeTest.cpp.o
+.PHONY : test/BplusTreeTest.o
+
+# target to build an object file
+test/BplusTreeTest.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BplusTreeTest.dir/build.make CMakeFiles/BplusTreeTest.dir/test/BplusTreeTest.cpp.o
+.PHONY : test/BplusTreeTest.cpp.o
+
+test/BplusTreeTest.i: test/BplusTreeTest.cpp.i
+.PHONY : test/BplusTreeTest.i
+
+# target to preprocess a source file
+test/BplusTreeTest.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BplusTreeTest.dir/build.make CMakeFiles/BplusTreeTest.dir/test/BplusTreeTest.cpp.i
+.PHONY : test/BplusTreeTest.cpp.i
+
+test/BplusTreeTest.s: test/BplusTreeTest.cpp.s
+.PHONY : test/BplusTreeTest.s
+
+# target to generate assembly for a file
+test/BplusTreeTest.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BplusTreeTest.dir/build.make CMakeFiles/BplusTreeTest.dir/test/BplusTreeTest.cpp.s
+.PHONY : test/BplusTreeTest.cpp.s
 
 test/disk_manager_test.o: test/disk_manager_test.cpp.o
 .PHONY : test/disk_manager_test.o
@@ -484,6 +605,7 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... test"
+	@echo "... BplusTreeTest"
 	@echo "... disk_manager_test"
 	@echo "... integration_test"
 	@echo "... minidb"
@@ -503,6 +625,15 @@ help:
 	@echo "... src/storage/TableIterator.o"
 	@echo "... src/storage/TableIterator.i"
 	@echo "... src/storage/TableIterator.s"
+	@echo "... src/storage/b_tree.o"
+	@echo "... src/storage/b_tree.i"
+	@echo "... src/storage/b_tree.s"
+	@echo "... src/storage/b_tree_internal_page.o"
+	@echo "... src/storage/b_tree_internal_page.i"
+	@echo "... src/storage/b_tree_internal_page.s"
+	@echo "... src/storage/b_tree_leaf_page.o"
+	@echo "... src/storage/b_tree_leaf_page.i"
+	@echo "... src/storage/b_tree_leaf_page.s"
 	@echo "... src/storage/page.o"
 	@echo "... src/storage/page.i"
 	@echo "... src/storage/page.s"
@@ -512,6 +643,9 @@ help:
 	@echo "... src/storage/tuple.o"
 	@echo "... src/storage/tuple.i"
 	@echo "... src/storage/tuple.s"
+	@echo "... test/BplusTreeTest.o"
+	@echo "... test/BplusTreeTest.i"
+	@echo "... test/BplusTreeTest.s"
 	@echo "... test/disk_manager_test.o"
 	@echo "... test/disk_manager_test.i"
 	@echo "... test/disk_manager_test.s"

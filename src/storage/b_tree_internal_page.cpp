@@ -1,9 +1,10 @@
 #include "b_tree_internal_page.h"
+#include <cassert>
 
 BTreeInternalPage::BTreeInternalPage(Page* page) : data_(page->GetData()) {
-    // Optionally set the page type flag in header to INTERNAL if it's a new page
-    int32_t type = 1; // e.g., 0 = Leaf, 1 = Internal
-    std::memcpy(data_ + 4, &type, sizeof(int32_t));
+    // Only bind the data pointer — do NOT overwrite the page type here.
+    // The caller is responsible for initializing the type via SetPageType().
+    // Blindly writing type=1 would corrupt leaf pages if ever wrapped by this class.
 }
 
 // --- Header Management ---
@@ -64,13 +65,51 @@ void BTreeInternalPage::SetChildId(int i, int32_t child_id) {
     size_t off = INTERNAL_HEADER_SIZE + (i * (KEY_SIZE + CHILD_PTR_SIZE));
     std::memcpy(data_ + off, &child_id, CHILD_PTR_SIZE);
 }
+// Returns the page type integer (1 = INTERNAL)
+int32_t BTreeInternalPage::GetPageType() const {
+    int32_t type;
+    // Read 4 bytes starting at offset 4
+    std::memcpy(&type, data_ + 4, sizeof(int32_t));
+    return type;
+}
 
+// Sets the page type integer in the page header
+void BTreeInternalPage::SetPageType(int32_t type) {
+    // Write 4 bytes starting at offset 4
+    std::memcpy(data_+ 4, &type, sizeof(int32_t));
+}
 // --- High Level Operations ---
 
 bool BTreeInternalPage::IsFull() const {
     return GetNumKeys() >= static_cast<int>(MAX_KEYS);
 }
-page_id_t BTreeInternalPage::InternalFindChild(page_id_t pid, int32_t key){
+void BTreeInternalPage::InsertAfterChild(page_id_t old_child, int32_t new_key, page_id_t new_child) {
+    int size = GetNumKeys();
+    int target_idx = -1;
+
+    // Find the position of old_child among child pointers
+    for (int i = 0; i <= size; ++i) {
+        if (GetChildId(i) == old_child) {
+            target_idx = i;
+            break;
+        }
+    }
+    assert(target_idx != -1 && "InsertAfterChild: old_child not found");
+
+    // Shift keys right: key[target_idx..size-1] → key[target_idx+1..size]
+    // Shift right children right: child[target_idx+1..size] → child[target_idx+2..size+1]
+    for (int i = size - 1; i >= target_idx; --i) {
+        SetKey(i + 1, GetKey(i));
+        SetChildId(i + 2, GetChildId(i + 1));
+    }
+
+    // Place the new separator key and new right child
+    SetKey(target_idx, new_key);
+    SetChildId(target_idx + 1, new_child);
+
+    SetNumKeys(size + 1);
+}
+page_id_t BTreeInternalPage::InternalFindChild(int32_t key){
     int num_keys = GetNumKeys();
     int low = 0;
     int high = num_keys-1;

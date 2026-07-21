@@ -3,9 +3,9 @@
 #include <cstring>
 
 BTreeLeafPage::BTreeLeafPage(Page* page) : data_(page->GetData()) {
-    // Set page type flag to LEAF (e.g., 0) upon binding if initializing
-    int32_t type = 0; 
-    std::memcpy(data_ + 4, &type, sizeof(int32_t));
+    // Only bind the data pointer — do NOT overwrite the page type here.
+    // The caller is responsible for initializing the type via SetPageType().
+    // Blindly writing type=0 here would corrupt internal pages fetched during traversal.
 }
 
 BTreeLeafPage::BTreeLeafPage(char* raw_data) : data_(raw_data) {}
@@ -44,14 +44,28 @@ void BTreeLeafPage::SetParentPageId(int32_t parent_page_id) {
 
 int32_t BTreeLeafPage::GetNextPageId() const {
     int32_t next_page_id;
-    std::memcpy(&next_page_id, data_ + HEADER_SIZE, sizeof(int32_t)); // Offset 20
+    // next_leaf_id lives at offset 16, inside the 20B base header (matches CreateLeafRoot)
+    std::memcpy(&next_page_id, data_ + 16, sizeof(int32_t));
     return next_page_id;
 }
 
 void BTreeLeafPage::SetNextPageId(int32_t next_page_id) {
-    std::memcpy(data_ + HEADER_SIZE, &next_page_id, sizeof(int32_t));
+    std::memcpy(data_ + 16, &next_page_id, sizeof(int32_t));
 }
 
+// Returns the page type integer (0 = LEAF)
+int32_t BTreeLeafPage::GetPageType() const {
+    int32_t type;
+    // Read 4 bytes starting at offset 4
+    std::memcpy(&type, data_ + 4, sizeof(int32_t));
+    return type;
+}
+
+// Sets the page type integer in the page header
+void BTreeLeafPage::SetPageType(int32_t type) {
+    // Write 4 bytes starting at offset 4
+    std::memcpy(data_+ 4, &type, sizeof(int32_t));
+}
 // --- Key/RID Processing ---
 
 int32_t BTreeLeafPage::GetKey(int i) const {
@@ -74,25 +88,70 @@ void BTreeLeafPage::SetKeyRID(int i, int32_t key, RID rid) {
     std::memcpy(data_ + pair_off + KEY_SIZE, &rid, RID_SIZE);
 }
 
-RID BTreeLeafPage::LeafSearch(page_id_t pid, int32_t key){
+bool BTreeLeafPage::LeafSearch(int32_t key, RID* result) {
     int num_keys = GetNumKeys();
     int low = 0;
-    int high = num_keys-1;
+    int high = num_keys - 1;
 
-    while(low<=high){
-        int mid = (low+high)/2;
+    while (low <= high) {
+        int mid = low + (high - low) / 2; // Prevents potential overflow
         int mid_key = GetKey(mid);
+        
         if (mid_key == key) {
-            return GetRID(mid);
+            if (result != nullptr) {
+                *result = GetRID(mid);
+            }
+            return true;
         } 
         else if (mid_key > key) {
-            high = mid - 1; // Move the ceiling down
+            high = mid - 1; 
         } 
         else {
-            low = mid + 1;  // Move the floor up
+            low = mid + 1;  
+        }
+    }
+    
+    return false;
+}
+bool BTreeLeafPage::isFull() {
+    int num_keys = GetNumKeys();
+    return num_keys >= MAX_KEYS;
+}
+void BTreeLeafPage::insert(int32_t key, RID rid){
+    if(!isFull()){
+        int num_key = GetNumKeys();
+        if (num_key == 0 || GetKey(num_key - 1) < key) {
+            SetKeyRID(num_key, key, rid);
+            SetNumKeys(num_key + 1);
+            return;
+        }
+        int low = 0;
+        int high = num_key - 1;
+        while(low <= high){
+            int mid = (low + high) / 2;
+            int32_t mid_key = GetKey(mid);
+            
+            if(key == mid_key){
+                SetKeyRID(mid, key, rid);
+                return;
+            }
+            else if(key < mid_key){
+                high = mid - 1;
+            }
+            else{
+                low = mid + 1;
+            }
         }
         
-    }
-    return RID{-1,-1};
+        int target_idx = low;
 
+        for(int i = num_key - 1; i >= target_idx; i--){
+            int32_t next_key = GetKey(i);
+            RID next_rid = GetRID(i);
+            SetKeyRID(i + 1, next_key, next_rid);
+        }
+        
+        SetKeyRID(target_idx, key, rid);
+        SetNumKeys(num_key + 1);
+    }
 }

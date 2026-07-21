@@ -39,9 +39,10 @@
 class Page; 
 
 class BTreeInternalPage {
+private:
+    
 public:
     explicit BTreeInternalPage(Page* page);
-
     // --- Header Getters/Setters ---
     int32_t GetPageId() const;
     void SetPageId(int32_t page_id);
@@ -51,6 +52,9 @@ public:
 
     int32_t GetParentPageId() const;
     void SetParentPageId(int32_t parent_page_id);
+
+    int32_t GetPageType() const;
+    void SetPageType(int32_t type);
 
     // --- Core Internal Node API ---
     int32_t GetKey(int i) const;
@@ -64,7 +68,7 @@ public:
 
     // Insert a new key and child pair right after an existing child pointer
     void InsertAfterChild(int32_t old_child, int32_t new_key, int32_t new_child);
-    page_id_t InternalFindChild(page_id_t pid, int32_t key);
+    page_id_t InternalFindChild( int32_t key);
 
     bool IsFull() const;
 
