@@ -50,8 +50,8 @@ set(CMAKE_MAKEFILE_PRODUCTS
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/minidb.dir/DependInfo.cmake"
   "CMakeFiles/disk_manager_test.dir/DependInfo.cmake"
-  "CMakeFiles/slottedPage_test.dir/DependInfo.cmake"
+  "CMakeFiles/slotted_page_test.dir/DependInfo.cmake"
   "CMakeFiles/integration_test.dir/DependInfo.cmake"
-  "CMakeFiles/BplusTreeTest.dir/DependInfo.cmake"
+  "CMakeFiles/bplus_tree_test.dir/DependInfo.cmake"
   "CMakeFiles/btree_benchmark.dir/DependInfo.cmake"
   )

@@ -821,7 +821,7 @@ CMakeFiles/btree_benchmark.dir/test/btree_benchmark.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__filesystem/u8path.h \
   /Users/jaswanth/Desktop/miniDB/include/storage/page.h \
   /Users/jaswanth/Desktop/miniDB/include/storage/BufferPool.h \
-  /Users/jaswanth/Desktop/miniDB/include/storage/b+tree.h \
+  /Users/jaswanth/Desktop/miniDB/include/storage/b_tree.h \
   /Users/jaswanth/Desktop/miniDB/include/storage/b_tree_internal_page.h \
   /Users/jaswanth/Desktop/miniDB/include/storage/b_tree_leaf_page.h \
   /Users/jaswanth/Desktop/miniDB/include/storage/rid.h \

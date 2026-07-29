@@ -1,0 +1,1 @@
+/usr/bin/c++ -O2 -g -DNDEBUG -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/slotted_page_test.dir/test/slotted_page_test.cpp.o CMakeFiles/slotted_page_test.dir/src/storage/page.cpp.o -o slotted_page_test

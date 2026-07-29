@@ -4,9 +4,9 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/Users/jaswanth/Desktop/miniDB/include -I/Users/jaswanth/Desktop/miniDB/include/storage -I/Users/jaswanth/Desktop/miniDB/src/storage
+CXX_INCLUDES = -I/Users/jaswanth/Desktop/miniDB/include
 
-CXX_FLAGSarm64 = -O3 -DNDEBUG -std=gnu++17 -arch arm64 -O2
+CXX_FLAGSarm64 = -O2 -g -DNDEBUG -std=gnu++17 -arch arm64 -O2
 
-CXX_FLAGS = -O3 -DNDEBUG -std=gnu++17 -arch arm64 -O2
+CXX_FLAGS = -O2 -g -DNDEBUG -std=gnu++17 -arch arm64 -O2
 
