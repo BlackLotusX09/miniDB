@@ -65,3 +65,20 @@ add_executable(BplusTreeTest
 )
 target_include_directories(BplusTreeTest PRIVATE include include/storage src/storage)
 add_test(NAME BplusTreeTest COMMAND BplusTreeTest)
+
+# ── Day 17: Benchmark ─────────────────────────────────────────────────────
+add_executable(btree_benchmark
+    test/btree_benchmark.cpp
+    src/storage/DiskManager.cpp
+    src/storage/BufferPool.cpp
+    src/storage/page.cpp
+    src/storage/rid.cpp
+    src/storage/tuple.cpp
+    src/storage/TableHeap.cpp
+    src/storage/TableIterator.cpp
+    src/storage/b_tree.cpp
+    src/storage/b_tree_leaf_page.cpp
+    src/storage/b_tree_internal_page.cpp
+)
+target_include_directories(btree_benchmark PRIVATE include include/storage src/storage)
+target_compile_options(btree_benchmark PRIVATE -O2)
