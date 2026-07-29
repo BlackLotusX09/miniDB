@@ -460,6 +460,257 @@ void TestDeleteInterleaved() {
     TeardownTree(fileName, tree, dm, bpm);
     std::cout << "[Passed] TestDeleteInterleaved\n\n";
 }
+// ============================================================================
+// 11. RANGE SCAN — basic smoke test (keys 0..99, scan [25,75])
+// ============================================================================
+void RangeScanTest() {
+    std::cout << "[Running] RangeScanTest (keys 0-99, scan [25,75])...\n";
+    std::string fileName = "rangeScan.db";
+    DiskManager* dm = nullptr;
+    BufferPoolManager* bpm = nullptr;
+    BPlusTree* tree = SetupTree(fileName, dm, bpm);
+
+    for (int i = 0; i < 100; i++) {
+        RID rid(0, static_cast<slot_id_t>(i));
+        tree->insert(i, rid);
+    }
+
+    // Build expected: keys 25..75 inclusive → 51 RIDs
+    std::vector<RID> expected;
+    for (int i = 25; i <= 75; i++) {
+        expected.push_back(RID(0, static_cast<slot_id_t>(i)));
+    }
+
+    std::vector<RID> actual = tree->RangeScan(25, 75);
+
+    assert(actual.size() == expected.size() && "RangeScanTest: result count mismatch");
+    // Verify each RID matches in order (leaf chain preserves sorted order)
+    for (size_t idx = 0; idx < actual.size(); idx++) {
+        assert(actual[idx] == expected[idx] && "RangeScanTest: RID mismatch at position");
+    }
+
+    TeardownTree(fileName, tree, dm, bpm);
+    std::cout << "[Passed] RangeScanTest (51 RIDs returned correctly)\n\n";
+}
+
+// ============================================================================
+// 12. RANGE SCAN — Day 15 Checkpoint
+//     Insert keys 1..1000, RangeScan(250, 750) must return exactly 501 RIDs
+//     (keys 250,251,...,750) in strictly ascending key order.
+// ============================================================================
+void TestRangeScan_Day15Checkpoint() {
+    std::cout << "[Running] TestRangeScan_Day15Checkpoint (keys 1-1000, scan [250,750])...\n";
+    std::string fileName = "test_rangescan_day15.db";
+    DiskManager* dm = nullptr;
+    BufferPoolManager* bpm = nullptr;
+    BPlusTree* tree = SetupTree(fileName, dm, bpm);
+
+    // ── Insert 1..1000 in sequential order ────────────────────────────────────
+    for (int i = 1; i <= 1000; i++) {
+        RID rid(static_cast<page_id_t>(i / 10),   // spread across fake pages
+                static_cast<slot_id_t>(i % 10));
+        tree->insert(i, rid);
+    }
+
+    // ── Verify full leaf chain is sorted ─────────────────────────────────────
+    std::vector<int32_t> all_keys;
+    for (int i = 1; i <= 1000; i++) all_keys.push_back(i);
+    tree->VerifyLeafChain(all_keys);
+    std::cout << "  [+] VerifyLeafChain passed (1000 keys in order).\n";
+
+    // ── RangeScan(250, 750) ───────────────────────────────────────────────────
+    std::vector<RID> results = tree->RangeScan(250, 750);
+
+    // Checkpoint: exactly 501 RIDs (keys 250,251,...,750 inclusive)
+    const int EXPECTED_COUNT = 501;  // 750 - 250 + 1
+    assert(results.size() == static_cast<size_t>(EXPECTED_COUNT) &&
+           "Day15: RangeScan(250,750) did not return 501 RIDs!");
+    std::cout << "  [+] Count check passed: " << results.size() << " RIDs returned.\n";
+
+    // Verify every returned RID corresponds to a key in [250,750] in sorted order
+    for (int idx = 0; idx < EXPECTED_COUNT; idx++) {
+        int expected_key = 250 + idx;  // keys 250,251,...,750
+        // The RID we encoded: page_id = key/10, slot_id = key%10
+        RID expected_rid(static_cast<page_id_t>(expected_key / 10),
+                         static_cast<slot_id_t>(expected_key % 10));
+        assert(results[idx] == expected_rid &&
+               "Day15: RID at position does not match expected key mapping");
+    }
+    std::cout << "  [+] RID content check passed: all 501 RIDs match keys 250..750 in order.\n";
+
+    // ── Edge cases ────────────────────────────────────────────────────────────
+    // Scan a range with a single key
+    std::vector<RID> single = tree->RangeScan(500, 500);
+    assert(single.size() == 1 && "Day15: single-key scan must return exactly 1 RID");
+    assert(single[0] == RID(50, 0) && "Day15: single-key RID wrong");
+    std::cout << "  [+] Single-key scan [500,500] passed.\n";
+
+    // Scan a range outside all keys
+    std::vector<RID> empty_scan = tree->RangeScan(1001, 2000);
+    assert(empty_scan.empty() && "Day15: out-of-range scan must return empty");
+    std::cout << "  [+] Out-of-range scan [1001,2000] returned empty correctly.\n";
+
+    // Validate full tree structure
+    Page* hp = bpm->FetchPage(1);
+    page_id_t root;
+    std::memcpy(&root, hp->GetData(), sizeof(page_id_t));
+    bpm->UnpinPage(1, false);
+    tree->ValidateTree(root, INT32_MIN, INT32_MAX);
+    std::cout << "  [+] ValidateTree passed — all BST invariants hold.\n";
+
+    TeardownTree(fileName, tree, dm, bpm);
+    std::cout << "[Passed] TestRangeScan_Day15Checkpoint ✓\n\n";
+}
+
+// ============================================================================
+// 13. DAY 16 — Pin-leak audit
+//     Every BTree method must leave pin_count == 0 on all frames when done.
+// ============================================================================
+void TestDay16_PinLeakAudit() {
+    std::cout << "[Running] TestDay16_PinLeakAudit (500 keys, pin audit after every op)...\n";
+    std::string fileName = "test_day16_pins.db";
+    DiskManager* dm = nullptr;
+    BufferPoolManager* bpm = nullptr;
+    BPlusTree* tree = SetupTree(fileName, dm, bpm);
+
+    for (int i = 1; i <= 500; i++) {
+        RID rid(0, static_cast<slot_id_t>(i));
+        tree->insert(i, rid);
+    }
+    bpm->CheckAllUnpinned();
+    std::cout << "  [+] After 500 inserts: all frames unpinned.\n";
+
+    for (int i = 1; i <= 500; i++) {
+        std::vector<RID> r;
+        bool found = tree->Search(i, &r);
+        assert(found && "PinAudit: Search missed a key");
+    }
+    bpm->CheckAllUnpinned();
+    std::cout << "  [+] After 500 searches: all frames unpinned.\n";
+
+    std::vector<RID> scan = tree->RangeScan(1, 500);
+    assert(scan.size() == 500 && "PinAudit: RangeScan count wrong");
+    bpm->CheckAllUnpinned();
+    std::cout << "  [+] After RangeScan(1,500): all frames unpinned.\n";
+
+    for (int i = 1; i <= 250; i++) {
+        bool ok = tree->Remove(i);
+        assert(ok && "PinAudit: Remove returned false");
+    }
+    bpm->CheckAllUnpinned();
+    std::cout << "  [+] After 250 deletes: all frames unpinned.\n";
+
+    Page* hp = bpm->FetchPage(1);
+    page_id_t root;
+    std::memcpy(&root, hp->GetData(), sizeof(page_id_t));
+    bpm->UnpinPage(1, false);
+    tree->ValidateTree(root, INT32_MIN, INT32_MAX);
+    bpm->CheckAllUnpinned();
+    std::cout << "  [+] After ValidateTree: all frames unpinned.\n";
+
+    TeardownTree(fileName, tree, dm, bpm);
+    std::cout << "[Passed] TestDay16_PinLeakAudit\n\n";
+}
+
+// ============================================================================
+// 14. DAY 16 — Restart persistence
+//     Build tree with 500 keys, flush, destroy, reopen, verify Search works.
+// ============================================================================
+void TestDay16_RestartPersistence() {
+    std::cout << "[Running] TestDay16_RestartPersistence (500 keys survive restart)...\n";
+    const std::string DB_FILE = "test_day16_restart.db";
+    const int N = 500;
+    page_id_t header_id = INVALID_PAGE_ID;
+
+    // Phase A: build and flush
+    {
+        std::remove(DB_FILE.c_str());
+        DiskManager* dm = new DiskManager(DB_FILE);
+        BufferPoolManager* bpm = new BufferPoolManager(dm);
+
+        Page* raw_hdr = bpm->NewPage(&header_id);
+        assert(raw_hdr != nullptr);
+        bpm->UnpinPage(header_id, false);
+
+        BPlusTree* tree = new BPlusTree(bpm, header_id);
+        for (int i = 1; i <= N; i++) {
+            RID rid(static_cast<page_id_t>(i / 10), static_cast<slot_id_t>(i % 10));
+            tree->insert(i, rid);
+        }
+        bpm->flushAllPages();
+        std::cout << "  [+] Phase A: " << N << " keys inserted and flushed (header=" << header_id << ").\n";
+        delete tree; delete bpm; delete dm;
+    }
+
+    // Phase B: reopen and verify
+    {
+        DiskManager* dm = new DiskManager(DB_FILE);
+        BufferPoolManager* bpm = new BufferPoolManager(dm);
+        BPlusTree* tree = new BPlusTree(bpm, header_id);
+
+        for (int i = 1; i <= N; i++) {
+            std::vector<RID> r;
+            assert(tree->Search(i, &r) && "Restart: key missing after reopen");
+            RID expected(static_cast<page_id_t>(i / 10), static_cast<slot_id_t>(i % 10));
+            assert(r[0] == expected && "Restart: RID value wrong after reopen");
+        }
+        bpm->CheckAllUnpinned();
+        std::cout << "  [+] Phase B: all " << N << " keys verified after restart.\n";
+
+        btreeMetaPage meta = tree->ReadMeta();
+        assert(meta.root_page_id != INVALID_PAGE_ID && "Restart: root lost");
+        assert(meta.total_key_count == N && "Restart: key count wrong");
+        std::cout << "  [+] Meta after restart: root=" << meta.root_page_id
+                  << "  keys=" << meta.total_key_count
+                  << "  height=" << meta.tree_height << "\n";
+
+        delete tree; delete bpm; delete dm;
+        std::remove(DB_FILE.c_str());
+    }
+    std::cout << "[Passed] TestDay16_RestartPersistence\n\n";
+}
+
+// ============================================================================
+// 15. DAY 16 — Metadata page struct
+//     Build 300-key tree, read btreeMetaPage, assert all fields are correct.
+// ============================================================================
+void TestDay16_MetadataPage() {
+    std::cout << "[Running] TestDay16_MetadataPage (300 keys, verify btreeMetaPage)...\n";
+    std::string fileName = "test_day16_meta.db";
+    DiskManager* dm = nullptr;
+    BufferPoolManager* bpm = nullptr;
+    BPlusTree* tree = SetupTree(fileName, dm, bpm);
+
+    const int N = 300;
+    for (int i = 1; i <= N; i++) {
+        RID rid(0, static_cast<slot_id_t>(i));
+        tree->insert(i, rid);
+    }
+
+    btreeMetaPage meta = tree->ReadMeta();
+
+    assert(meta.root_page_id != INVALID_PAGE_ID && "Meta: root_page_id is INVALID");
+    std::cout << "  [+] root_page_id = " << meta.root_page_id << "\n";
+
+    assert(meta.total_key_count == N && "Meta: total_key_count mismatch");
+    std::cout << "  [+] total_key_count = " << meta.total_key_count << " (expected " << N << ")\n";
+
+    assert(meta.tree_height >= 1 && "Meta: tree_height must be >= 1");
+    std::cout << "  [+] tree_height = " << meta.tree_height << "\n";
+
+    bpm->CheckAllUnpinned();
+    std::cout << "  [+] No pin leaks after ReadMeta().\n";
+
+    Page* hp = bpm->FetchPage(1);
+    page_id_t root;
+    std::memcpy(&root, hp->GetData(), sizeof(page_id_t));
+    bpm->UnpinPage(1, false);
+    tree->ValidateTree(root, INT32_MIN, INT32_MAX);
+    std::cout << "  [+] ValidateTree passed after metadata reads.\n";
+
+    TeardownTree(fileName, tree, dm, bpm);
+    std::cout << "[Passed] TestDay16_MetadataPage\n\n";
+}
 
 // ============================================================================
 // MAIN EXECUTION ENTRY POINT
@@ -483,6 +734,15 @@ int main() {
         TestDeleteStress_RandomOrder();
         TestDeleteStress_AscInsDescDel();
         TestDeleteInterleaved();
+
+        // ── RangeScan (Day 15) ────────────────────────────────────────────────
+        RangeScanTest();
+        TestRangeScan_Day15Checkpoint();
+
+        // ── Buffer pool wiring (Day 16) ───────────────────────────────────────
+        TestDay16_PinLeakAudit();
+        TestDay16_RestartPersistence();
+        TestDay16_MetadataPage();
 
         std::cout << "===========================================\n";
         std::cout << "ALL TESTS PASSED SUCCESSFULLY!\n";

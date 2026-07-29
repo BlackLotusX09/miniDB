@@ -663,6 +663,139 @@ bool BPlusTree::Remove(int32_t key) {
         // (grand_id page is still pinned — we'll unpin it at the top of the next iteration)
     }
 }
+
+//RangeScan
+page_id_t BPlusTree::findLeafContaining(int32_t low){
+
+    page_id_t root_pid = getRootPageId();
+    page_id_t page_id = root_pid;
+
+    while (page_id != INVALID_PAGE_ID) { 
+        auto* page = bpm_->FetchPage(page_id);
+        if (page == nullptr) {
+            return INVALID_PAGE_ID;
+        }
+        if (isLeaf(page)) {
+            // Unpin before returning — RangeScan will FetchPage the leaf itself.
+            bpm_->UnpinPage(page_id, false);
+            return page_id;
+        } else {
+            BTreeInternalPage internalPage(page);
+            // Internal find child relies entirely on standard key comparison logic
+            page_id_t next = internalPage.InternalFindChild(low);
+            
+            bpm_->UnpinPage(page_id, false);
+            page_id = next; 
+        } 
+    }
+    
+    return INVALID_PAGE_ID;
+}
+vector<RID> BPlusTree::RangeScan(int32_t low, int32_t high){
+    vector<RID> results;
+    page_id_t pid = findLeafContaining(low);
+    while(pid!=INVALID_PAGE_ID){
+        auto* raw_page = bpm_->FetchPage(pid);
+        BTreeLeafPage leaf(raw_page);
+        int num_keys = leaf.GetNumKeys();
+        for(int i=0;i<num_keys;i++){
+            if(leaf.GetKey(i)>high){
+                bpm_->UnpinPage(pid, false);
+                return results;
+            }
+            if(leaf.GetKey(i)>=low){
+                results.push_back(leaf.GetRID(i));
+            }
+        }
+        page_id_t new_pid = leaf.GetNextPageId();
+        bpm_->UnpinPage(pid,false);
+        pid = new_pid;
+    }
+    return results;
+    
+}
+// ============================================================================
+// METADATA HELPERS (Day 16)
+// ============================================================================
+
+/**
+ * GetTreeHeight — descends through the tree always taking child[0] until a
+ * leaf is reached.  Returns 0 for an empty tree, 1 for a root-leaf, 2+ for
+ * multi-level trees.  Pins/unpins each node exactly once.
+ */
+int BPlusTree::GetTreeHeight() {
+    page_id_t root = getRootPageId();
+    if (root == INVALID_PAGE_ID) return 0;
+
+    int height = 0;
+    page_id_t pid = root;
+    while (pid != INVALID_PAGE_ID) {
+        Page* page = bpm_->FetchPage(pid);
+        if (page == nullptr) break;
+        height++;
+        if (isLeaf(page)) {
+            bpm_->UnpinPage(pid, false);
+            break;
+        }
+        BTreeInternalPage node(page);
+        page_id_t first_child = node.GetChildId(0);
+        bpm_->UnpinPage(pid, false);
+        pid = first_child;
+    }
+    return height;
+}
+
+/**
+ * GetKeyCount — walks the full leaf chain from left to right, accumulating
+ * num_keys from every leaf.  Returns 0 for an empty tree.
+ */
+int BPlusTree::GetKeyCount() {
+    page_id_t root = getRootPageId();
+    if (root == INVALID_PAGE_ID) return 0;
+
+    // Descend to the leftmost leaf
+    page_id_t pid = root;
+    while (true) {
+        Page* page = bpm_->FetchPage(pid);
+        if (page == nullptr) return 0;
+        if (isLeaf(page)) {
+            bpm_->UnpinPage(pid, false);
+            break;
+        }
+        BTreeInternalPage node(page);
+        page_id_t first_child = node.GetChildId(0);
+        bpm_->UnpinPage(pid, false);
+        pid = first_child;
+    }
+
+    // Walk the leaf chain
+    int total = 0;
+    while (pid != INVALID_PAGE_ID) {
+        Page* page = bpm_->FetchPage(pid);
+        if (page == nullptr) break;
+        BTreeLeafPage leaf(page);
+        total += leaf.GetNumKeys();
+        page_id_t next = leaf.GetNextPageId();
+        bpm_->UnpinPage(pid, false);
+        pid = next;
+    }
+    return total;
+}
+
+/**
+ * ReadMeta — reads root_page_id from the header page and computes height and
+ * key count on the fly.  Returns a populated btreeMetaPage struct.
+ */
+
+ btreeMetaPage BPlusTree::ReadMeta() {
+    btreeMetaPage meta{};
+    meta.root_page_id    = getRootPageId();
+    meta.tree_height     = GetTreeHeight();
+    meta.total_key_count = GetKeyCount();
+    meta.reserved        = 0;
+    return meta;
+}
+
 // ============================================================================
 // VALIDATION HELPERS (Day 9-10)
 // ============================================================================

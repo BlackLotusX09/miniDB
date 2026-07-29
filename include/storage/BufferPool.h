@@ -67,5 +67,29 @@ public:
     void UnpinPage(page_id_t pid, bool is_dirty);
     void flushAllPages();
     Page* NewPage(page_id_t* pid);
+
+    // ── Day 16: pin-leak audit ────────────────────────────────────────────────
+    // Returns the current pin count of the page occupying this frame slot,
+    // or 0 if the page is not currently buffered.
+    uint16_t GetPinCount(page_id_t pid) const {
+        auto it = page_table_.find(pid);
+        if (it == page_table_.end()) return 0;
+        return frames_[it->second].pin_count;
+    }
+
+    // Asserts that every frame in the pool has pin_count == 0.
+    // Call after any tree operation that should leave no pages pinned.
+    // Prints a diagnostic and aborts if a leak is found.
+    void CheckAllUnpinned() const {
+        for (int i = 0; i < BUFFER_SIZE; i++) {
+            if (frames_[i].pin_count != 0) {
+                std::cerr << "[PIN LEAK] frame " << i
+                          << "  page_id=" << frames_[i].page_id
+                          << "  pin_count=" << frames_[i].pin_count << "\n";
+            }
+            assert(frames_[i].pin_count == 0 &&
+                   "BPM pin leak: a page was left pinned after the operation");
+        }
+    }
 };
 
