@@ -199,18 +199,290 @@ void TestValidateTree() {
 }
 
 // ============================================================================
+// 5. DELETE — CASE 1: enough keys after deletion (no underflow)
+// ============================================================================
+void TestDeleteCase1_NoUnderflow() {
+    std::cout << "[Running] TestDeleteCase1_NoUnderflow...\n";
+    std::string fileName = "test_del_case1.db";
+    DiskManager* dm = nullptr;
+    BufferPoolManager* bpm = nullptr;
+    BPlusTree* tree = SetupTree(fileName, dm, bpm);
+
+    // Insert enough keys to fill at least 2 leaves but keep it simple (leaf max = 50)
+    // 20 keys → single leaf (20 >= minSize=26? No, max=50 minSize=25+1=26... wait,
+    // GetMinSize = (50+1)/2 = 25. So 25 keys exactly on the boundary.)
+    // Insert 40 keys so the leaf is comfortably above minimum after a few deletions.
+    for (int i = 1; i <= 40; i++) {
+        RID rid(0, static_cast<slot_id_t>(i));
+        tree->insert(i, rid);
+    }
+
+    // Delete 5 keys — leaf should still have 35 keys (well above min=25 for a single leaf)
+    for (int i = 1; i <= 5; i++) {
+        bool ok = tree->Remove(i);
+        assert(ok && "Case1: Remove returned false");
+    }
+
+    // Verify deleted keys are gone
+    for (int i = 1; i <= 5; i++) {
+        std::vector<RID> r;
+        assert(!tree->Search(i, &r) && "Case1: deleted key still found");
+    }
+    // Verify remaining keys still present
+    for (int i = 6; i <= 40; i++) {
+        std::vector<RID> r;
+        assert(tree->Search(i, &r) && "Case1: remaining key missing");
+    }
+
+    // Structural check
+    std::vector<int32_t> expected;
+    for (int i = 6; i <= 40; i++) expected.push_back(i);
+    tree->VerifyLeafChain(expected);
+
+    TeardownTree(fileName, tree, dm, bpm);
+    std::cout << "[Passed] TestDeleteCase1_NoUnderflow\n\n";
+}
+
+// ============================================================================
+// 6. DELETE — CASE 2: borrow from sibling (redistribute)
+// ============================================================================
+void TestDeleteCase2_BorrowFromSibling() {
+    std::cout << "[Running] TestDeleteCase2_BorrowFromSibling...\n";
+    std::string fileName = "test_del_case2.db";
+    DiskManager* dm = nullptr;
+    BufferPoolManager* bpm = nullptr;
+    BPlusTree* tree = SetupTree(fileName, dm, bpm);
+
+    // Insert 100 keys to create several leaves — enough for redistribute to trigger
+    for (int i = 1; i <= 100; i++) {
+        RID rid(0, static_cast<slot_id_t>(i));
+        tree->insert(i, rid);
+    }
+
+    // Delete keys from the leftmost half until borrow-from-right fires
+    // (delete ~15 keys from keys 1..20 — that leaf will fall to ~10 keys, below min=25,
+    //  forcing it to borrow from its right sibling which has 25+ keys)
+    std::vector<int32_t> deleted;
+    for (int i = 1; i <= 15; i++) {
+        bool ok = tree->Remove(i);
+        assert(ok && "Case2: Remove returned false");
+        deleted.push_back(i);
+    }
+
+    // Verify correctness
+    for (int d : deleted) {
+        std::vector<RID> r;
+        assert(!tree->Search(d, &r) && "Case2: deleted key still present");
+    }
+    for (int i = 16; i <= 100; i++) {
+        std::vector<RID> r;
+        assert(tree->Search(i, &r) && "Case2: remaining key missing");
+    }
+
+    std::vector<int32_t> expected;
+    for (int i = 16; i <= 100; i++) expected.push_back(i);
+    tree->VerifyLeafChain(expected);
+
+    // Root BST invariants
+    page_id_t root = GetRootId(bpm, 1);
+    tree->ValidateTree(root, INT32_MIN, INT32_MAX);
+
+    TeardownTree(fileName, tree, dm, bpm);
+    std::cout << "[Passed] TestDeleteCase2_BorrowFromSibling\n\n";
+}
+
+// ============================================================================
+// 7. DELETE — CASE 3: merge with sibling (cascades to root shrink)
+// ============================================================================
+void TestDeleteCase3_MergeAndRootCollapse() {
+    std::cout << "[Running] TestDeleteCase3_MergeAndRootCollapse...\n";
+    std::string fileName = "test_del_case3.db";
+    DiskManager* dm = nullptr;
+    BufferPoolManager* bpm = nullptr;
+    BPlusTree* tree = SetupTree(fileName, dm, bpm);
+
+    // 3-key tree (order-3 example from the spec):
+    // Insert keys such that after a deletion the leaf merges and root collapses.
+    // With leaf MAX_KEYS=50, minSize=25.  To force a merge we need a leaf at minSize
+    // then delete from it.  Insert just enough keys to create 2 leaves, then delete
+    // until a merge fires.
+
+    // Fill exactly 2 leaves: insert 51 keys (splits into [0..24] and [25..50])
+    for (int i = 1; i <= 51; i++) {
+        RID rid(0, static_cast<slot_id_t>(i));
+        tree->insert(i, rid);
+    }
+
+    // Left leaf has 25 keys (minSize), delete 1 to force underflow + merge
+    // First key in left leaf is 1.
+    bool ok = tree->Remove(1);
+    assert(ok && "Case3: Remove(1) returned false");
+
+    // After merge the tree should have a single leaf with 50 keys (2..51)
+    // and the root should now be that leaf (height decreased).
+    for (int i = 2; i <= 51; i++) {
+        std::vector<RID> r;
+        assert(tree->Search(i, &r) && "Case3: key missing after merge");
+    }
+    std::vector<RID> r1;
+    assert(!tree->Search(1, &r1) && "Case3: deleted key still visible");
+
+    std::vector<int32_t> expected;
+    for (int i = 2; i <= 51; i++) expected.push_back(i);
+    tree->VerifyLeafChain(expected);
+
+    page_id_t root = GetRootId(bpm, 1);
+    tree->ValidateTree(root, INT32_MIN, INT32_MAX);
+
+    TeardownTree(fileName, tree, dm, bpm);
+    std::cout << "[Passed] TestDeleteCase3_MergeAndRootCollapse\n\n";
+}
+
+// ============================================================================
+// 8. DELETE — STRESS: insert 1000, delete all in random order, verify empty
+// ============================================================================
+void TestDeleteStress_RandomOrder() {
+    std::cout << "[Running] TestDeleteStress_RandomOrder (1000 inserts, 1000 deletes)...\n";
+    std::string fileName = "test_del_stress.db";
+    DiskManager* dm = nullptr;
+    BufferPoolManager* bpm = nullptr;
+    BPlusTree* tree = SetupTree(fileName, dm, bpm);
+
+    const int N = 1000;
+    std::vector<int> keys;
+    for (int i = 1; i <= N; i++) keys.push_back(i);
+
+    // Insert all keys
+    std::mt19937 rng(42);
+    std::vector<int> ins_order = keys;
+    std::shuffle(ins_order.begin(), ins_order.end(), rng);
+    for (int k : ins_order) {
+        RID rid(0, static_cast<slot_id_t>(k));
+        tree->insert(k, rid);
+    }
+
+    // Verify all inserted
+    for (int i = 1; i <= N; i++) {
+        std::vector<RID> r;
+        assert(tree->Search(i, &r) && "Stress: key missing before delete");
+    }
+
+    // Delete all in a different random order
+    std::vector<int> del_order = keys;
+    std::shuffle(del_order.begin(), del_order.end(), rng);
+
+    std::vector<bool> deleted(N + 1, false);
+    for (int k : del_order) {
+        bool ok = tree->Remove(k);
+        assert(ok && "Stress: Remove returned false for existing key");
+        deleted[k] = true;
+
+        // After each delete, the deleted key must not be found
+        std::vector<RID> r;
+        assert(!tree->Search(k, &r) && "Stress: deleted key still found");
+    }
+
+    // Tree must be empty now
+    tree->VerifyLeafChain({});
+
+    TeardownTree(fileName, tree, dm, bpm);
+    std::cout << "[Passed] TestDeleteStress_RandomOrder\n\n";
+}
+
+// ============================================================================
+// 9. DELETE — STRESS: ascending insert, descending delete
+// ============================================================================
+void TestDeleteStress_AscInsDescDel() {
+    std::cout << "[Running] TestDeleteStress_AscInsDescDel (500 keys)...\n";
+    std::string fileName = "test_del_ascdesc.db";
+    DiskManager* dm = nullptr;
+    BufferPoolManager* bpm = nullptr;
+    BPlusTree* tree = SetupTree(fileName, dm, bpm);
+
+    const int N = 500;
+    for (int i = 1; i <= N; i++) {
+        RID rid(0, static_cast<slot_id_t>(i));
+        tree->insert(i, rid);
+    }
+
+    // Delete in descending order — stresses left-sibling borrow/merge paths
+    for (int i = N; i >= 1; i--) {
+        bool ok = tree->Remove(i);
+        assert(ok && "AscInsDel: Remove returned false");
+    }
+
+    tree->VerifyLeafChain({});
+
+    TeardownTree(fileName, tree, dm, bpm);
+    std::cout << "[Passed] TestDeleteStress_AscInsDescDel\n\n";
+}
+
+// ============================================================================
+// 10. DELETE — mixed insert-delete interleaved
+// ============================================================================
+void TestDeleteInterleaved() {
+    std::cout << "[Running] TestDeleteInterleaved (insert/delete interleaved)...\n";
+    std::string fileName = "test_del_interleaved.db";
+    DiskManager* dm = nullptr;
+    BufferPoolManager* bpm = nullptr;
+    BPlusTree* tree = SetupTree(fileName, dm, bpm);
+
+    // Insert 1..200, delete evens, verify only odds remain
+    for (int i = 1; i <= 200; i++) {
+        RID rid(0, static_cast<slot_id_t>(i));
+        tree->insert(i, rid);
+    }
+    for (int i = 2; i <= 200; i += 2) {
+        bool ok = tree->Remove(i);
+        assert(ok && "Interleaved: Remove even failed");
+    }
+
+    std::vector<int32_t> expected;
+    for (int i = 1; i <= 199; i += 2) expected.push_back(i);
+    tree->VerifyLeafChain(expected);
+
+    page_id_t root = GetRootId(bpm, 1);
+    tree->ValidateTree(root, INT32_MIN, INT32_MAX);
+
+    // Now re-insert evens
+    for (int i = 2; i <= 200; i += 2) {
+        RID rid(0, static_cast<slot_id_t>(i));
+        tree->insert(i, rid);
+    }
+
+    expected.clear();
+    for (int i = 1; i <= 200; i++) expected.push_back(i);
+    tree->VerifyLeafChain(expected);
+
+    root = GetRootId(bpm, 1);
+    tree->ValidateTree(root, INT32_MIN, INT32_MAX);
+
+    TeardownTree(fileName, tree, dm, bpm);
+    std::cout << "[Passed] TestDeleteInterleaved\n\n";
+}
+
+// ============================================================================
 // MAIN EXECUTION ENTRY POINT
 // ============================================================================
 int main() {
     std::cout << "===========================================\n";
-    std::cout << "STARTING B+ TREE INSERTION STRESS SUITE\n";
+    std::cout << "STARTING B+ TREE FULL TEST SUITE\n";
     std::cout << "===========================================\n\n";
 
     try {
+        // ── Insertion benchmarks (pre-existing) ───────────────────────────────
         TestRandomInsert();
         TestAscendingInsert();
         TestDescendingInsert();
         TestValidateTree();
+
+        // ── Delete benchmarks ─────────────────────────────────────────────────
+        TestDeleteCase1_NoUnderflow();
+        TestDeleteCase2_BorrowFromSibling();
+        TestDeleteCase3_MergeAndRootCollapse();
+        TestDeleteStress_RandomOrder();
+        TestDeleteStress_AscInsDescDel();
+        TestDeleteInterleaved();
 
         std::cout << "===========================================\n";
         std::cout << "ALL TESTS PASSED SUCCESSFULLY!\n";

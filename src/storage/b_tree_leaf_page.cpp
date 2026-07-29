@@ -87,7 +87,35 @@ void BTreeLeafPage::SetKeyRID(int i, int32_t key, RID rid) {
     std::memcpy(data_ + pair_off, &key, KEY_SIZE);
     std::memcpy(data_ + pair_off + KEY_SIZE, &rid, RID_SIZE);
 }
+int BTreeLeafPage::GetMaxKeys() const{
+    return MAX_KEYS;
+}
+int BTreeLeafPage::GetMinSize() const {
+    return (GetMaxKeys()+1)/2;
+}
+//Lookup 
+int BTreeLeafPage::LookUp(int32_t key){
+    int num_keys = GetNumKeys();
+    int low = 0;
+    int high = num_keys - 1;
 
+    while (low <= high) {
+        int mid = low + (high - low) / 2; // Prevents potential overflow
+        int mid_key = GetKey(mid);
+        
+        if (mid_key == key) {
+            return mid;
+        } 
+        else if (mid_key > key) {
+            high = mid - 1; 
+        } 
+        else {
+            low = mid + 1;  
+        }
+    }
+    
+    return -1;
+}
 bool BTreeLeafPage::LeafSearch(int32_t key, RID* result) {
     int num_keys = GetNumKeys();
     int low = 0;
@@ -154,4 +182,19 @@ void BTreeLeafPage::insert(int32_t key, RID rid){
         SetKeyRID(target_idx, key, rid);
         SetNumKeys(num_key + 1);
     }
+}
+
+void BTreeLeafPage::deleteAt(int index){
+    int num_keys = GetNumKeys();
+
+    //Safety check: Index must be within the current bounds
+    if(index<0 || index>=num_keys){
+        return;
+    }
+
+    //Shift all the keys and RIDs after the index one slot to left
+    for(int i=index; i<num_keys-1;i++){
+       SetKeyRID(i,GetKey(i+1),GetRID(i+1));
+    }
+    SetNumKeys(num_keys-1);
 }

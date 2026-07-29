@@ -64,16 +64,22 @@ public:
     void SetNextPageId(int32_t next_page_id);
     int32_t GetPageType() const;
     void SetPageType(int32_t type);
-
+    int GetMaxKeys() const;
+    int GetMinSize() const;
     // --- Key/RID Getters/Setters ---
     int32_t GetKey(int i) const;
     RID GetRID(int i) const;
     void SetKeyRID(int i, int32_t key, RID rid);
+
+    //Lookup 
+    int LookUp(int32_t key);
     //search
     bool LeafSearch(int32_t key, RID* result);
     bool isFull();
     //insert
     void insert(int32_t key, RID rid);
+    //delete
+    void deleteAt(int index);
 
     // --- Sizing Constants ---
     static constexpr size_t HEADER_SIZE = 20;

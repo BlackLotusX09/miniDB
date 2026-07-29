@@ -64,11 +64,18 @@ public:
     void SetChildId(int i, int32_t child_id);
 
     // Look up the child page pointer that corresponds to a given key search
-    int32_t Lookup(int32_t key) const;
+    int ValueIndex(page_id_t page_id);
 
     // Insert a new key and child pair right after an existing child pointer
     void InsertAfterChild(int32_t old_child, int32_t new_key, int32_t new_child);
+
     page_id_t InternalFindChild( int32_t key);
+
+    void removeAt(int index);
+    void InsertAtFront(int32_t key, page_id_t child_page_id);
+    void BorrowFromRightInterval(BTreeInternalPage* parent,BTreeInternalPage* node, BTreeInternalPage* right, int seperator_idx);
+    void BorrowFromLefttInterval(BTreeInternalPage* parent,BTreeInternalPage* node, BTreeInternalPage* left, int seperator_idx);
+    void MergeInterval(BTreeInternalPage* parent, BTreeInternalPage* right, BTreeInternalPage* left, int seperator_idx);
 
     bool IsFull() const;
 

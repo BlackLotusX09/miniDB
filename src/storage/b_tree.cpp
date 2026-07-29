@@ -39,7 +39,29 @@ bool BPlusTree::isLeaf(Page* page){
     if(page_type==0)return true;
     return false;
 }
+page_id_t BPlusTree::getRootPageId() {
+    auto* header = bpm_->FetchPage(header_page_id);
+    if (header == nullptr) return INVALID_PAGE_ID;
 
+    // Get root page id of the tree from the header
+    page_id_t root_page_id;
+    memcpy(&root_page_id, header->GetData(), sizeof(page_id_t));
+    
+    bpm_->UnpinPage(header_page_id, false);
+
+    return root_page_id;
+}
+
+void BPlusTree::UpdateRootPageId(page_id_t new_root_page_id) {
+    auto* header = bpm_->FetchPage(header_page_id);
+    if (header == nullptr) return;
+
+    // Write new root page id into header page data
+    memcpy(header->GetData(), &new_root_page_id, sizeof(page_id_t));
+    
+    // Mark dirty = true so the header update persists
+    bpm_->UnpinPage(header_page_id, true);
+}
 void BPlusTree::UpdateParentIdOfPage(page_id_t page_id, page_id_t new_parent_id) {
     if (page_id == INVALID_PAGE_ID) return;
     
@@ -262,12 +284,7 @@ void BPlusTree::InsertIntoParent(std::vector<page_id_t>& parent_stack, page_id_t
 }
 
 void BPlusTree::insert(int32_t key, RID rid){
-    auto* header_page = bpm_->FetchPage(header_page_id);
-    if (header_page == nullptr) return;
-
-    page_id_t root_page_id;
-    std::memcpy(&root_page_id, header_page->GetData(), sizeof(page_id_t));
-    bpm_->UnpinPage(header_page_id, false); // Pin safety fix
+    page_id_t root_page_id = getRootPageId();
 
     // 2. Edge Case: If tree is completely empty, create the first leaf root node
     if (root_page_id == INVALID_PAGE_ID) {
@@ -305,6 +322,345 @@ void BPlusTree::insert(int32_t key, RID rid){
             bpm_->UnpinPage(page_id, true); 
             break; 
         }
+    }
+}
+
+//delete
+
+// ============================================================================
+// Leaf-level borrow helpers (unchanged API, used by Remove)
+// ============================================================================
+
+void BPlusTree::BorrowFromRight(BTreeLeafPage* leaf, BTreeLeafPage* right,
+                                 BTreeInternalPage* parent, int separator_idx) {
+    // Move first entry of right sibling to end of leaf
+    leaf->insert(right->GetKey(0), right->GetRID(0));
+    right->deleteAt(0);
+    // Update separator in parent to new first key of right sibling
+    parent->SetKey(separator_idx, right->GetKey(0));
+}
+
+void BPlusTree::BorrowFromLeft(BTreeLeafPage* leaf, BTreeLeafPage* left,
+                                BTreeInternalPage* parent, int separator_idx) {
+    int last_idx  = left->GetNumKeys() - 1;
+    int32_t moved_key = left->GetKey(last_idx);
+    RID     moved_rid = left->GetRID(last_idx);
+    leaf->insert(moved_key, moved_rid);
+    left->deleteAt(last_idx);
+    // The separator in the parent must now equal the key we moved up
+    parent->SetKey(separator_idx, moved_key);
+}
+
+// ============================================================================
+// CoalesceOrRedistribute — kept for header compatibility, delegates to Remove
+// ============================================================================
+void BPlusTree::CoalesceOrRedistribute(page_id_t /*page_id*/) {
+    // Intentionally left as a no-op stub.
+    // All merge/borrow logic is handled inside Remove().
+}
+
+// ============================================================================
+// Remove — complete implementation with full upward cascade
+// Cases handled:
+//   1. Leaf has enough keys after deletion        → done
+//   2. Borrow from right leaf sibling             → update separator, done
+//   3. Borrow from left  leaf sibling             → update separator, done
+//   4. Merge leaf (right into left)               → remove separator from parent,
+//                                                   cascade upward via internal loop
+//   5. Internal node borrow from right sibling    → pull separator down, push up
+//   6. Internal node borrow from left  sibling    → pull separator down, push up
+//   7. Internal node merge                        → pull separator down into left,
+//                                                   remove from grandparent, cascade
+//   8. Root underflow (root has 0 keys, 1 child)  → make child the new root
+// ============================================================================
+bool BPlusTree::Remove(int32_t key) {
+
+    page_id_t root_page_id = getRootPageId();
+    if (root_page_id == INVALID_PAGE_ID) return false;
+
+    // ── Phase 1: descend to the leaf, recording the path ──────────────────────
+    std::vector<page_id_t> parent_stack; // ancestor page IDs, root first
+    page_id_t current_id = root_page_id;
+    Page* raw_page = bpm_->FetchPage(current_id);
+    if (raw_page == nullptr) return false;
+
+    while (!isLeaf(raw_page)) {
+        BTreeInternalPage internalPage(raw_page);
+        parent_stack.push_back(current_id);
+        page_id_t next_id = internalPage.InternalFindChild(key);
+        bpm_->UnpinPage(current_id, false);
+        current_id = next_id;
+        raw_page = bpm_->FetchPage(current_id);
+        if (raw_page == nullptr) return false;
+    }
+
+    // ── Phase 2: delete from the leaf ─────────────────────────────────────────
+    page_id_t leaf_page_id = current_id;
+    BTreeLeafPage leaf(raw_page);
+
+    int index = leaf.LookUp(key);
+    if (index == -1) {
+        bpm_->UnpinPage(leaf_page_id, false);
+        return false; // key not present
+    }
+    leaf.deleteAt(index);
+
+    // Case 1 — leaf has enough keys (or IS the root leaf)
+    if (leaf.GetNumKeys() >= leaf.GetMinSize() || parent_stack.empty()) {
+        bpm_->UnpinPage(leaf_page_id, true);
+        return true;
+    }
+
+    // ── Phase 3: leaf underflow → borrow or merge ─────────────────────────────
+    page_id_t parent_page_id = parent_stack.back();
+    parent_stack.pop_back();
+
+    Page* raw_parent = bpm_->FetchPage(parent_page_id);
+    if (raw_parent == nullptr) { bpm_->UnpinPage(leaf_page_id, true); return true; }
+    BTreeInternalPage parentPage(raw_parent);
+
+    int child_idx = parentPage.ValueIndex(leaf_page_id);
+
+    // --- Try borrow from right leaf sibling ---
+    if (child_idx + 1 <= parentPage.GetNumKeys()) {
+        page_id_t right_id = parentPage.GetChildId(child_idx + 1);
+        Page* raw_right = bpm_->FetchPage(right_id);
+        BTreeLeafPage rightPage(raw_right);
+
+        if (rightPage.GetNumKeys() > rightPage.GetMinSize()) {
+            BorrowFromRight(&leaf, &rightPage, &parentPage, child_idx);
+            bpm_->UnpinPage(right_id,       true);
+            bpm_->UnpinPage(parent_page_id, true);
+            bpm_->UnpinPage(leaf_page_id,   true);
+            return true;
+        }
+        bpm_->UnpinPage(right_id, false);
+    }
+
+    // --- Try borrow from left leaf sibling ---
+    if (child_idx - 1 >= 0) {
+        page_id_t left_id = parentPage.GetChildId(child_idx - 1);
+        Page* raw_left = bpm_->FetchPage(left_id);
+        BTreeLeafPage leftPage(raw_left);
+
+        if (leftPage.GetNumKeys() > leftPage.GetMinSize()) {
+            BorrowFromLeft(&leaf, &leftPage, &parentPage, child_idx - 1);
+            bpm_->UnpinPage(left_id,        true);
+            bpm_->UnpinPage(parent_page_id, true);
+            bpm_->UnpinPage(leaf_page_id,   true);
+            return true;
+        }
+        bpm_->UnpinPage(left_id, false);
+    }
+
+    // --- Merge (neither sibling could lend) ---
+    // Convention: always merge RIGHT into LEFT to keep the linked list simple.
+    // If there is a right sibling, merge it into 'leaf'.
+    // Otherwise merge 'leaf' into the left sibling.
+
+    if (child_idx + 1 <= parentPage.GetNumKeys()) {
+        // --- Merge right sibling INTO current leaf ---
+        page_id_t right_id = parentPage.GetChildId(child_idx + 1);
+        Page* raw_right = bpm_->FetchPage(right_id);
+        BTreeLeafPage rightPage(raw_right);
+
+        int base = leaf.GetNumKeys();
+        int r    = rightPage.GetNumKeys();
+        for (int i = 0; i < r; ++i)
+            leaf.SetKeyRID(base + i, rightPage.GetKey(i), rightPage.GetRID(i));
+        leaf.SetNumKeys(base + r);
+        leaf.SetNextPageId(rightPage.GetNextPageId());
+
+        bpm_->UnpinPage(leaf_page_id, true);
+        bpm_->UnpinPage(right_id,     false); // right page is now dead
+
+        // Remove separator at child_idx (separator between leaf and right)
+        parentPage.removeAt(child_idx);
+
+    } else {
+        // --- Merge current leaf INTO left sibling ---
+        page_id_t left_id = parentPage.GetChildId(child_idx - 1);
+        Page* raw_left = bpm_->FetchPage(left_id);
+        BTreeLeafPage leftPage(raw_left);
+
+        int base = leftPage.GetNumKeys();
+        int r    = leaf.GetNumKeys();
+        for (int i = 0; i < r; ++i)
+            leftPage.SetKeyRID(base + i, leaf.GetKey(i), leaf.GetRID(i));
+        leftPage.SetNumKeys(base + r);
+        leftPage.SetNextPageId(leaf.GetNextPageId());
+
+        bpm_->UnpinPage(left_id,      true);
+        bpm_->UnpinPage(leaf_page_id, false); // current leaf is now dead
+
+        // Remove separator at child_idx - 1
+        parentPage.removeAt(child_idx - 1);
+    }
+
+    // ── Phase 4: cascade upward through internal nodes ────────────────────────
+    // parentPage is still pinned (dirty). Check if it now underflows.
+
+    page_id_t cur_node_id = parent_page_id;
+
+    while (true) {
+        // Reload the current underflowing internal node
+        Page* raw_cur = bpm_->FetchPage(cur_node_id);
+        BTreeInternalPage curNode(raw_cur);
+        int cur_keys = curNode.GetNumKeys();
+
+        // --- Case: this IS the root ---
+        if (cur_node_id == getRootPageId()) {
+            if (cur_keys == 0) {
+                // Root underflow: promote the single remaining child
+                page_id_t new_root = curNode.GetChildId(0);
+                bpm_->UnpinPage(cur_node_id, false);
+                UpdateRootPageId(new_root);
+                // Clear the new root's parent pointer
+                UpdateParentIdOfPage(new_root, INVALID_PAGE_ID);
+            } else {
+                bpm_->UnpinPage(cur_node_id, false);
+            }
+            bpm_->UnpinPage(parent_page_id, true); // flush the original parent write
+            return true;
+        }
+
+        int min_internal = (static_cast<int>(BTreeInternalPage::MAX_KEYS) + 1) / 2;
+
+        // No underflow at this level — we are done
+        if (cur_keys >= min_internal) {
+            bpm_->UnpinPage(cur_node_id,    false);
+            bpm_->UnpinPage(parent_page_id, true);
+            return true;
+        }
+
+        // Underflow! Fetch grandparent
+        page_id_t grand_id;
+        if (parent_stack.empty()) {
+            // cur_node is the root (edge case — handled above, but be safe)
+            bpm_->UnpinPage(cur_node_id,    false);
+            bpm_->UnpinPage(parent_page_id, true);
+            return true;
+        }
+        grand_id = parent_stack.back();
+        parent_stack.pop_back();
+
+        Page* raw_grand = bpm_->FetchPage(grand_id);
+        BTreeInternalPage grandPage(raw_grand);
+
+        int cur_child_idx = grandPage.ValueIndex(cur_node_id);
+
+        // ---- Try borrow from right internal sibling ----
+        if (cur_child_idx + 1 <= grandPage.GetNumKeys()) {
+            page_id_t right_sib_id = grandPage.GetChildId(cur_child_idx + 1);
+            Page* raw_rsib = bpm_->FetchPage(right_sib_id);
+            BTreeInternalPage rightSib(raw_rsib);
+
+            if (rightSib.GetNumKeys() > min_internal) {
+                // Pull separator key DOWN from grandparent into curNode
+                curNode.SetKey(cur_keys, grandPage.GetKey(cur_child_idx));
+                // Move right sibling's first child pointer to curNode
+                curNode.SetChildId(cur_keys + 1, rightSib.GetChildId(0));
+                UpdateParentIdOfPage(rightSib.GetChildId(0), cur_node_id);
+                curNode.SetNumKeys(cur_keys + 1);
+
+                // Push right sibling's first key UP to grandparent separator
+                grandPage.SetKey(cur_child_idx, rightSib.GetKey(0));
+
+                // Shift right sibling left (remove its first key+child0)
+                rightSib.removeAt(0);
+
+                bpm_->UnpinPage(right_sib_id, true);
+                bpm_->UnpinPage(grand_id,     true);
+                bpm_->UnpinPage(cur_node_id,  true);
+                bpm_->UnpinPage(parent_page_id, true);
+                return true;
+            }
+            bpm_->UnpinPage(right_sib_id, false);
+        }
+
+        // ---- Try borrow from left internal sibling ----
+        if (cur_child_idx - 1 >= 0) {
+            page_id_t left_sib_id = grandPage.GetChildId(cur_child_idx - 1);
+            Page* raw_lsib = bpm_->FetchPage(left_sib_id);
+            BTreeInternalPage leftSib(raw_lsib);
+
+            if (leftSib.GetNumKeys() > min_internal) {
+                int L = leftSib.GetNumKeys();
+                // Pull separator DOWN from grandparent to front of curNode
+                curNode.InsertAtFront(grandPage.GetKey(cur_child_idx - 1),
+                                      leftSib.GetChildId(L));
+                UpdateParentIdOfPage(leftSib.GetChildId(L), cur_node_id);
+
+                // Push left sibling's last key UP to grandparent separator
+                grandPage.SetKey(cur_child_idx - 1, leftSib.GetKey(L - 1));
+
+                // Shrink left sibling
+                leftSib.SetNumKeys(L - 1);
+
+                bpm_->UnpinPage(left_sib_id,    true);
+                bpm_->UnpinPage(grand_id,        true);
+                bpm_->UnpinPage(cur_node_id,     true);
+                bpm_->UnpinPage(parent_page_id,  true);
+                return true;
+            }
+            bpm_->UnpinPage(left_sib_id, false);
+        }
+
+        // ---- Internal merge: merge cur_node into left OR merge right into cur_node ----
+        if (cur_child_idx + 1 <= grandPage.GetNumKeys()) {
+            // Merge right sibling INTO cur_node
+            page_id_t right_sib_id = grandPage.GetChildId(cur_child_idx + 1);
+            Page* raw_rsib = bpm_->FetchPage(right_sib_id);
+            BTreeInternalPage rightSib(raw_rsib);
+
+            int R = rightSib.GetNumKeys();
+            // Pull separator DOWN into cur_node
+            curNode.SetKey(cur_keys, grandPage.GetKey(cur_child_idx));
+            curNode.SetChildId(cur_keys + 1, rightSib.GetChildId(0));
+            UpdateParentIdOfPage(rightSib.GetChildId(0), cur_node_id);
+            for (int i = 0; i < R; ++i) {
+                curNode.SetKey(cur_keys + 1 + i, rightSib.GetKey(i));
+                curNode.SetChildId(cur_keys + 2 + i, rightSib.GetChildId(i + 1));
+                UpdateParentIdOfPage(rightSib.GetChildId(i + 1), cur_node_id);
+            }
+            curNode.SetNumKeys(cur_keys + 1 + R);
+
+            bpm_->UnpinPage(right_sib_id, false); // dead page
+            bpm_->UnpinPage(cur_node_id,  true);
+
+            // Remove separator at cur_child_idx from grandparent
+            grandPage.removeAt(cur_child_idx);
+
+        } else {
+            // Merge cur_node INTO left sibling
+            page_id_t left_sib_id = grandPage.GetChildId(cur_child_idx - 1);
+            Page* raw_lsib = bpm_->FetchPage(left_sib_id);
+            BTreeInternalPage leftSib(raw_lsib);
+
+            int L = leftSib.GetNumKeys();
+            // Pull separator DOWN into left sibling
+            leftSib.SetKey(L, grandPage.GetKey(cur_child_idx - 1));
+            leftSib.SetChildId(L + 1, curNode.GetChildId(0));
+            UpdateParentIdOfPage(curNode.GetChildId(0), left_sib_id);
+            for (int i = 0; i < cur_keys; ++i) {
+                leftSib.SetKey(L + 1 + i, curNode.GetKey(i));
+                leftSib.SetChildId(L + 2 + i, curNode.GetChildId(i + 1));
+                UpdateParentIdOfPage(curNode.GetChildId(i + 1), left_sib_id);
+            }
+            leftSib.SetNumKeys(L + 1 + cur_keys);
+
+            bpm_->UnpinPage(cur_node_id,  false); // dead page
+            bpm_->UnpinPage(left_sib_id,  true);
+
+            // Remove separator at cur_child_idx - 1 from grandparent
+            grandPage.removeAt(cur_child_idx - 1);
+        }
+
+        // Grand page now has one fewer key — loop upward
+        bpm_->UnpinPage(parent_page_id, true); // flush previous level's write
+        parent_page_id = grand_id;             // grandparent becomes the new "parent"
+        cur_node_id    = grand_id;
+        // (grand_id page is still pinned — we'll unpin it at the top of the next iteration)
     }
 }
 // ============================================================================

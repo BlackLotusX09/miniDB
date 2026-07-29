@@ -22,11 +22,17 @@ public:
 
     BPlusTree(BufferPoolManager* bpm, page_id_t headerPage);
     void UpdateParentIdOfPage(page_id_t page_id, page_id_t new_parent_id);
+    page_id_t getRootPageId();
+    void UpdateRootPageId(page_id_t new_root_id);
     bool Search(int32_t key, vector<RID>* result);
     bool isLeaf(Page* page);
     void CreateLeafRoot(int32_t key, RID rid);
     void insert(int32_t key, RID rid);
-
+    //delete
+    bool Remove(int32_t key);
+    void BorrowFromRight(BTreeLeafPage* leaf, BTreeLeafPage* right, BTreeInternalPage* parent, int separator_idx);
+    void BorrowFromLeft(BTreeLeafPage* leaf, BTreeLeafPage* left, BTreeInternalPage* parent, int separator_idx);
+    void CoalesceOrRedistribute(page_id_t page_id);
     // --- Validation helpers (Day 9-10 stress tests) ---
     // Recursively validates BST ordering invariants for every node in the subtree.
     // min_key/max_key are exclusive bounds (use INT32_MIN/INT32_MAX at root).
