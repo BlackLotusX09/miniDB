@@ -799,6 +799,7 @@ CMakeFiles/btree_benchmark.dir/test/btree_benchmark.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/forward_list \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/cassert \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/assert.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_assert.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_static_assert.h \
   /Users/jaswanth/Desktop/miniDB/include/storage/DiskManager.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/fstream \
@@ -826,7 +827,7 @@ CMakeFiles/btree_benchmark.dir/test/btree_benchmark.cpp.o: \
   /Users/jaswanth/Desktop/miniDB/include/storage/b_tree_leaf_page.h \
   /Users/jaswanth/Desktop/miniDB/include/storage/rid.h \
   /Users/jaswanth/Desktop/miniDB/include/storage/TableHeap.h \
-  /Users/jaswanth/Desktop/miniDB/include/storage/schema.h \
-  /Users/jaswanth/Desktop/miniDB/include/storage/tuple.h \
-  /Users/jaswanth/Desktop/miniDB/include/storage/value.h \
+  /Users/jaswanth/Desktop/miniDB/include/catalog/schema.h \
+  /Users/jaswanth/Desktop/miniDB/include/catalog/tuple.h \
+  /Users/jaswanth/Desktop/miniDB/include/catalog/value.h \
   /Users/jaswanth/Desktop/miniDB/include/storage/TableIterator.h

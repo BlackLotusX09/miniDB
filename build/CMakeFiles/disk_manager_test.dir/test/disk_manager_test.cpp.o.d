@@ -818,4 +818,5 @@ CMakeFiles/disk_manager_test.dir/test/disk_manager_test.cpp.o: \
   /Users/jaswanth/Desktop/miniDB/include/storage/BufferPool.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/cassert \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/assert.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_assert.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_static_assert.h

@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/btree_benchmark.dir/src/catalog/tuple.cpp.o"
+  "CMakeFiles/btree_benchmark.dir/src/catalog/tuple.cpp.o.d"
   "CMakeFiles/btree_benchmark.dir/src/storage/BufferPool.cpp.o"
   "CMakeFiles/btree_benchmark.dir/src/storage/BufferPool.cpp.o.d"
   "CMakeFiles/btree_benchmark.dir/src/storage/DiskManager.cpp.o"
@@ -17,8 +19,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/btree_benchmark.dir/src/storage/page.cpp.o.d"
   "CMakeFiles/btree_benchmark.dir/src/storage/rid.cpp.o"
   "CMakeFiles/btree_benchmark.dir/src/storage/rid.cpp.o.d"
-  "CMakeFiles/btree_benchmark.dir/src/storage/tuple.cpp.o"
-  "CMakeFiles/btree_benchmark.dir/src/storage/tuple.cpp.o.d"
   "CMakeFiles/btree_benchmark.dir/test/btree_benchmark.cpp.o"
   "CMakeFiles/btree_benchmark.dir/test/btree_benchmark.cpp.o.d"
   "btree_benchmark"

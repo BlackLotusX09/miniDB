@@ -1,4 +1,8 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/integration_test.dir/src/catalog/catalog.cpp.o"
+  "CMakeFiles/integration_test.dir/src/catalog/catalog.cpp.o.d"
+  "CMakeFiles/integration_test.dir/src/catalog/tuple.cpp.o"
+  "CMakeFiles/integration_test.dir/src/catalog/tuple.cpp.o.d"
   "CMakeFiles/integration_test.dir/src/storage/BufferPool.cpp.o"
   "CMakeFiles/integration_test.dir/src/storage/BufferPool.cpp.o.d"
   "CMakeFiles/integration_test.dir/src/storage/DiskManager.cpp.o"
@@ -11,8 +15,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/integration_test.dir/src/storage/page.cpp.o.d"
   "CMakeFiles/integration_test.dir/src/storage/rid.cpp.o"
   "CMakeFiles/integration_test.dir/src/storage/rid.cpp.o.d"
-  "CMakeFiles/integration_test.dir/src/storage/tuple.cpp.o"
-  "CMakeFiles/integration_test.dir/src/storage/tuple.cpp.o.d"
   "CMakeFiles/integration_test.dir/test/integration_test.cpp.o"
   "CMakeFiles/integration_test.dir/test/integration_test.cpp.o.d"
   "integration_test"

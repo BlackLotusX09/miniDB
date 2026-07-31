@@ -1,248 +1,314 @@
 [
 {
   "directory": "/Users/jaswanth/Desktop/miniDB/build",
-  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -O2 -g -DNDEBUG -std=gnu++17 -arch arm64 -o CMakeFiles/minidb.dir/src/main.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/main.cpp",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/minidb.dir/src/main.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/main.cpp",
   "file": "/Users/jaswanth/Desktop/miniDB/src/main.cpp",
   "output": "CMakeFiles/minidb.dir/src/main.cpp.o"
 },
 {
   "directory": "/Users/jaswanth/Desktop/miniDB/build",
-  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -O2 -g -DNDEBUG -std=gnu++17 -arch arm64 -o CMakeFiles/minidb.dir/src/storage/DiskManager.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/DiskManager.cpp",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/minidb.dir/src/storage/DiskManager.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/DiskManager.cpp",
   "file": "/Users/jaswanth/Desktop/miniDB/src/storage/DiskManager.cpp",
   "output": "CMakeFiles/minidb.dir/src/storage/DiskManager.cpp.o"
 },
 {
   "directory": "/Users/jaswanth/Desktop/miniDB/build",
-  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -O2 -g -DNDEBUG -std=gnu++17 -arch arm64 -o CMakeFiles/minidb.dir/src/storage/BufferPool.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/BufferPool.cpp",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/minidb.dir/src/storage/BufferPool.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/BufferPool.cpp",
   "file": "/Users/jaswanth/Desktop/miniDB/src/storage/BufferPool.cpp",
   "output": "CMakeFiles/minidb.dir/src/storage/BufferPool.cpp.o"
 },
 {
   "directory": "/Users/jaswanth/Desktop/miniDB/build",
-  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -O2 -g -DNDEBUG -std=gnu++17 -arch arm64 -o CMakeFiles/minidb.dir/src/storage/page.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/page.cpp",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/minidb.dir/src/storage/page.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/page.cpp",
   "file": "/Users/jaswanth/Desktop/miniDB/src/storage/page.cpp",
   "output": "CMakeFiles/minidb.dir/src/storage/page.cpp.o"
 },
 {
   "directory": "/Users/jaswanth/Desktop/miniDB/build",
-  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -O2 -g -DNDEBUG -std=gnu++17 -arch arm64 -o CMakeFiles/minidb.dir/src/storage/tuple.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/tuple.cpp",
-  "file": "/Users/jaswanth/Desktop/miniDB/src/storage/tuple.cpp",
-  "output": "CMakeFiles/minidb.dir/src/storage/tuple.cpp.o"
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/minidb.dir/src/catalog/tuple.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/catalog/tuple.cpp",
+  "file": "/Users/jaswanth/Desktop/miniDB/src/catalog/tuple.cpp",
+  "output": "CMakeFiles/minidb.dir/src/catalog/tuple.cpp.o"
 },
 {
   "directory": "/Users/jaswanth/Desktop/miniDB/build",
-  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -O2 -g -DNDEBUG -std=gnu++17 -arch arm64 -o CMakeFiles/minidb.dir/src/storage/rid.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/rid.cpp",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/minidb.dir/src/catalog/catalog.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/catalog/catalog.cpp",
+  "file": "/Users/jaswanth/Desktop/miniDB/src/catalog/catalog.cpp",
+  "output": "CMakeFiles/minidb.dir/src/catalog/catalog.cpp.o"
+},
+{
+  "directory": "/Users/jaswanth/Desktop/miniDB/build",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/minidb.dir/src/storage/rid.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/rid.cpp",
   "file": "/Users/jaswanth/Desktop/miniDB/src/storage/rid.cpp",
   "output": "CMakeFiles/minidb.dir/src/storage/rid.cpp.o"
 },
 {
   "directory": "/Users/jaswanth/Desktop/miniDB/build",
-  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -O2 -g -DNDEBUG -std=gnu++17 -arch arm64 -o CMakeFiles/minidb.dir/src/storage/TableHeap.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/TableHeap.cpp",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/minidb.dir/src/storage/TableHeap.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/TableHeap.cpp",
   "file": "/Users/jaswanth/Desktop/miniDB/src/storage/TableHeap.cpp",
   "output": "CMakeFiles/minidb.dir/src/storage/TableHeap.cpp.o"
 },
 {
   "directory": "/Users/jaswanth/Desktop/miniDB/build",
-  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -O2 -g -DNDEBUG -std=gnu++17 -arch arm64 -o CMakeFiles/minidb.dir/src/storage/TableIterator.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/TableIterator.cpp",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/minidb.dir/src/storage/TableIterator.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/TableIterator.cpp",
   "file": "/Users/jaswanth/Desktop/miniDB/src/storage/TableIterator.cpp",
   "output": "CMakeFiles/minidb.dir/src/storage/TableIterator.cpp.o"
 },
 {
   "directory": "/Users/jaswanth/Desktop/miniDB/build",
-  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -O2 -g -DNDEBUG -std=gnu++17 -arch arm64 -o CMakeFiles/disk_manager_test.dir/test/disk_manager_test.cpp.o -c /Users/jaswanth/Desktop/miniDB/test/disk_manager_test.cpp",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/disk_manager_test.dir/test/disk_manager_test.cpp.o -c /Users/jaswanth/Desktop/miniDB/test/disk_manager_test.cpp",
   "file": "/Users/jaswanth/Desktop/miniDB/test/disk_manager_test.cpp",
   "output": "CMakeFiles/disk_manager_test.dir/test/disk_manager_test.cpp.o"
 },
 {
   "directory": "/Users/jaswanth/Desktop/miniDB/build",
-  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -O2 -g -DNDEBUG -std=gnu++17 -arch arm64 -o CMakeFiles/disk_manager_test.dir/src/storage/DiskManager.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/DiskManager.cpp",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/disk_manager_test.dir/src/storage/DiskManager.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/DiskManager.cpp",
   "file": "/Users/jaswanth/Desktop/miniDB/src/storage/DiskManager.cpp",
   "output": "CMakeFiles/disk_manager_test.dir/src/storage/DiskManager.cpp.o"
 },
 {
   "directory": "/Users/jaswanth/Desktop/miniDB/build",
-  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -O2 -g -DNDEBUG -std=gnu++17 -arch arm64 -o CMakeFiles/disk_manager_test.dir/src/storage/page.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/page.cpp",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/disk_manager_test.dir/src/storage/page.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/page.cpp",
   "file": "/Users/jaswanth/Desktop/miniDB/src/storage/page.cpp",
   "output": "CMakeFiles/disk_manager_test.dir/src/storage/page.cpp.o"
 },
 {
   "directory": "/Users/jaswanth/Desktop/miniDB/build",
-  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -O2 -g -DNDEBUG -std=gnu++17 -arch arm64 -o CMakeFiles/disk_manager_test.dir/src/storage/BufferPool.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/BufferPool.cpp",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/disk_manager_test.dir/src/storage/BufferPool.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/BufferPool.cpp",
   "file": "/Users/jaswanth/Desktop/miniDB/src/storage/BufferPool.cpp",
   "output": "CMakeFiles/disk_manager_test.dir/src/storage/BufferPool.cpp.o"
 },
 {
   "directory": "/Users/jaswanth/Desktop/miniDB/build",
-  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -O2 -g -DNDEBUG -std=gnu++17 -arch arm64 -o CMakeFiles/slotted_page_test.dir/test/slotted_page_test.cpp.o -c /Users/jaswanth/Desktop/miniDB/test/slotted_page_test.cpp",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/slotted_page_test.dir/test/slotted_page_test.cpp.o -c /Users/jaswanth/Desktop/miniDB/test/slotted_page_test.cpp",
   "file": "/Users/jaswanth/Desktop/miniDB/test/slotted_page_test.cpp",
   "output": "CMakeFiles/slotted_page_test.dir/test/slotted_page_test.cpp.o"
 },
 {
   "directory": "/Users/jaswanth/Desktop/miniDB/build",
-  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -O2 -g -DNDEBUG -std=gnu++17 -arch arm64 -o CMakeFiles/slotted_page_test.dir/src/storage/page.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/page.cpp",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/slotted_page_test.dir/src/storage/page.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/page.cpp",
   "file": "/Users/jaswanth/Desktop/miniDB/src/storage/page.cpp",
   "output": "CMakeFiles/slotted_page_test.dir/src/storage/page.cpp.o"
 },
 {
   "directory": "/Users/jaswanth/Desktop/miniDB/build",
-  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -O2 -g -DNDEBUG -std=gnu++17 -arch arm64 -o CMakeFiles/integration_test.dir/test/integration_test.cpp.o -c /Users/jaswanth/Desktop/miniDB/test/integration_test.cpp",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/integration_test.dir/test/integration_test.cpp.o -c /Users/jaswanth/Desktop/miniDB/test/integration_test.cpp",
   "file": "/Users/jaswanth/Desktop/miniDB/test/integration_test.cpp",
   "output": "CMakeFiles/integration_test.dir/test/integration_test.cpp.o"
 },
 {
   "directory": "/Users/jaswanth/Desktop/miniDB/build",
-  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -O2 -g -DNDEBUG -std=gnu++17 -arch arm64 -o CMakeFiles/integration_test.dir/src/storage/DiskManager.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/DiskManager.cpp",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/integration_test.dir/src/storage/DiskManager.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/DiskManager.cpp",
   "file": "/Users/jaswanth/Desktop/miniDB/src/storage/DiskManager.cpp",
   "output": "CMakeFiles/integration_test.dir/src/storage/DiskManager.cpp.o"
 },
 {
   "directory": "/Users/jaswanth/Desktop/miniDB/build",
-  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -O2 -g -DNDEBUG -std=gnu++17 -arch arm64 -o CMakeFiles/integration_test.dir/src/storage/BufferPool.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/BufferPool.cpp",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/integration_test.dir/src/storage/BufferPool.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/BufferPool.cpp",
   "file": "/Users/jaswanth/Desktop/miniDB/src/storage/BufferPool.cpp",
   "output": "CMakeFiles/integration_test.dir/src/storage/BufferPool.cpp.o"
 },
 {
   "directory": "/Users/jaswanth/Desktop/miniDB/build",
-  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -O2 -g -DNDEBUG -std=gnu++17 -arch arm64 -o CMakeFiles/integration_test.dir/src/storage/page.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/page.cpp",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/integration_test.dir/src/storage/page.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/page.cpp",
   "file": "/Users/jaswanth/Desktop/miniDB/src/storage/page.cpp",
   "output": "CMakeFiles/integration_test.dir/src/storage/page.cpp.o"
 },
 {
   "directory": "/Users/jaswanth/Desktop/miniDB/build",
-  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -O2 -g -DNDEBUG -std=gnu++17 -arch arm64 -o CMakeFiles/integration_test.dir/src/storage/tuple.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/tuple.cpp",
-  "file": "/Users/jaswanth/Desktop/miniDB/src/storage/tuple.cpp",
-  "output": "CMakeFiles/integration_test.dir/src/storage/tuple.cpp.o"
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/integration_test.dir/src/catalog/tuple.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/catalog/tuple.cpp",
+  "file": "/Users/jaswanth/Desktop/miniDB/src/catalog/tuple.cpp",
+  "output": "CMakeFiles/integration_test.dir/src/catalog/tuple.cpp.o"
 },
 {
   "directory": "/Users/jaswanth/Desktop/miniDB/build",
-  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -O2 -g -DNDEBUG -std=gnu++17 -arch arm64 -o CMakeFiles/integration_test.dir/src/storage/rid.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/rid.cpp",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/integration_test.dir/src/catalog/catalog.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/catalog/catalog.cpp",
+  "file": "/Users/jaswanth/Desktop/miniDB/src/catalog/catalog.cpp",
+  "output": "CMakeFiles/integration_test.dir/src/catalog/catalog.cpp.o"
+},
+{
+  "directory": "/Users/jaswanth/Desktop/miniDB/build",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/integration_test.dir/src/storage/rid.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/rid.cpp",
   "file": "/Users/jaswanth/Desktop/miniDB/src/storage/rid.cpp",
   "output": "CMakeFiles/integration_test.dir/src/storage/rid.cpp.o"
 },
 {
   "directory": "/Users/jaswanth/Desktop/miniDB/build",
-  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -O2 -g -DNDEBUG -std=gnu++17 -arch arm64 -o CMakeFiles/integration_test.dir/src/storage/TableHeap.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/TableHeap.cpp",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/integration_test.dir/src/storage/TableHeap.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/TableHeap.cpp",
   "file": "/Users/jaswanth/Desktop/miniDB/src/storage/TableHeap.cpp",
   "output": "CMakeFiles/integration_test.dir/src/storage/TableHeap.cpp.o"
 },
 {
   "directory": "/Users/jaswanth/Desktop/miniDB/build",
-  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -O2 -g -DNDEBUG -std=gnu++17 -arch arm64 -o CMakeFiles/integration_test.dir/src/storage/TableIterator.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/TableIterator.cpp",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/integration_test.dir/src/storage/TableIterator.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/TableIterator.cpp",
   "file": "/Users/jaswanth/Desktop/miniDB/src/storage/TableIterator.cpp",
   "output": "CMakeFiles/integration_test.dir/src/storage/TableIterator.cpp.o"
 },
 {
   "directory": "/Users/jaswanth/Desktop/miniDB/build",
-  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -O2 -g -DNDEBUG -std=gnu++17 -arch arm64 -o CMakeFiles/bplus_tree_test.dir/test/bplus_tree_test.cpp.o -c /Users/jaswanth/Desktop/miniDB/test/bplus_tree_test.cpp",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/bplus_tree_test.dir/test/bplus_tree_test.cpp.o -c /Users/jaswanth/Desktop/miniDB/test/bplus_tree_test.cpp",
   "file": "/Users/jaswanth/Desktop/miniDB/test/bplus_tree_test.cpp",
   "output": "CMakeFiles/bplus_tree_test.dir/test/bplus_tree_test.cpp.o"
 },
 {
   "directory": "/Users/jaswanth/Desktop/miniDB/build",
-  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -O2 -g -DNDEBUG -std=gnu++17 -arch arm64 -o CMakeFiles/bplus_tree_test.dir/src/storage/DiskManager.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/DiskManager.cpp",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/bplus_tree_test.dir/src/storage/DiskManager.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/DiskManager.cpp",
   "file": "/Users/jaswanth/Desktop/miniDB/src/storage/DiskManager.cpp",
   "output": "CMakeFiles/bplus_tree_test.dir/src/storage/DiskManager.cpp.o"
 },
 {
   "directory": "/Users/jaswanth/Desktop/miniDB/build",
-  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -O2 -g -DNDEBUG -std=gnu++17 -arch arm64 -o CMakeFiles/bplus_tree_test.dir/src/storage/BufferPool.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/BufferPool.cpp",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/bplus_tree_test.dir/src/storage/BufferPool.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/BufferPool.cpp",
   "file": "/Users/jaswanth/Desktop/miniDB/src/storage/BufferPool.cpp",
   "output": "CMakeFiles/bplus_tree_test.dir/src/storage/BufferPool.cpp.o"
 },
 {
   "directory": "/Users/jaswanth/Desktop/miniDB/build",
-  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -O2 -g -DNDEBUG -std=gnu++17 -arch arm64 -o CMakeFiles/bplus_tree_test.dir/src/storage/page.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/page.cpp",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/bplus_tree_test.dir/src/storage/page.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/page.cpp",
   "file": "/Users/jaswanth/Desktop/miniDB/src/storage/page.cpp",
   "output": "CMakeFiles/bplus_tree_test.dir/src/storage/page.cpp.o"
 },
 {
   "directory": "/Users/jaswanth/Desktop/miniDB/build",
-  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -O2 -g -DNDEBUG -std=gnu++17 -arch arm64 -o CMakeFiles/bplus_tree_test.dir/src/storage/rid.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/rid.cpp",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/bplus_tree_test.dir/src/storage/rid.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/rid.cpp",
   "file": "/Users/jaswanth/Desktop/miniDB/src/storage/rid.cpp",
   "output": "CMakeFiles/bplus_tree_test.dir/src/storage/rid.cpp.o"
 },
 {
   "directory": "/Users/jaswanth/Desktop/miniDB/build",
-  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -O2 -g -DNDEBUG -std=gnu++17 -arch arm64 -o CMakeFiles/bplus_tree_test.dir/src/storage/b_tree.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/b_tree.cpp",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/bplus_tree_test.dir/src/storage/b_tree.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/b_tree.cpp",
   "file": "/Users/jaswanth/Desktop/miniDB/src/storage/b_tree.cpp",
   "output": "CMakeFiles/bplus_tree_test.dir/src/storage/b_tree.cpp.o"
 },
 {
   "directory": "/Users/jaswanth/Desktop/miniDB/build",
-  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -O2 -g -DNDEBUG -std=gnu++17 -arch arm64 -o CMakeFiles/bplus_tree_test.dir/src/storage/b_tree_leaf_page.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/b_tree_leaf_page.cpp",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/bplus_tree_test.dir/src/storage/b_tree_leaf_page.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/b_tree_leaf_page.cpp",
   "file": "/Users/jaswanth/Desktop/miniDB/src/storage/b_tree_leaf_page.cpp",
   "output": "CMakeFiles/bplus_tree_test.dir/src/storage/b_tree_leaf_page.cpp.o"
 },
 {
   "directory": "/Users/jaswanth/Desktop/miniDB/build",
-  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -O2 -g -DNDEBUG -std=gnu++17 -arch arm64 -o CMakeFiles/bplus_tree_test.dir/src/storage/b_tree_internal_page.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/b_tree_internal_page.cpp",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/bplus_tree_test.dir/src/storage/b_tree_internal_page.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/b_tree_internal_page.cpp",
   "file": "/Users/jaswanth/Desktop/miniDB/src/storage/b_tree_internal_page.cpp",
   "output": "CMakeFiles/bplus_tree_test.dir/src/storage/b_tree_internal_page.cpp.o"
 },
 {
   "directory": "/Users/jaswanth/Desktop/miniDB/build",
-  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -O2 -g -DNDEBUG -std=gnu++17 -arch arm64 -O2 -o CMakeFiles/btree_benchmark.dir/test/btree_benchmark.cpp.o -c /Users/jaswanth/Desktop/miniDB/test/btree_benchmark.cpp",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -O2 -o CMakeFiles/btree_benchmark.dir/test/btree_benchmark.cpp.o -c /Users/jaswanth/Desktop/miniDB/test/btree_benchmark.cpp",
   "file": "/Users/jaswanth/Desktop/miniDB/test/btree_benchmark.cpp",
   "output": "CMakeFiles/btree_benchmark.dir/test/btree_benchmark.cpp.o"
 },
 {
   "directory": "/Users/jaswanth/Desktop/miniDB/build",
-  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -O2 -g -DNDEBUG -std=gnu++17 -arch arm64 -O2 -o CMakeFiles/btree_benchmark.dir/src/storage/DiskManager.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/DiskManager.cpp",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -O2 -o CMakeFiles/btree_benchmark.dir/src/storage/DiskManager.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/DiskManager.cpp",
   "file": "/Users/jaswanth/Desktop/miniDB/src/storage/DiskManager.cpp",
   "output": "CMakeFiles/btree_benchmark.dir/src/storage/DiskManager.cpp.o"
 },
 {
   "directory": "/Users/jaswanth/Desktop/miniDB/build",
-  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -O2 -g -DNDEBUG -std=gnu++17 -arch arm64 -O2 -o CMakeFiles/btree_benchmark.dir/src/storage/BufferPool.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/BufferPool.cpp",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -O2 -o CMakeFiles/btree_benchmark.dir/src/storage/BufferPool.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/BufferPool.cpp",
   "file": "/Users/jaswanth/Desktop/miniDB/src/storage/BufferPool.cpp",
   "output": "CMakeFiles/btree_benchmark.dir/src/storage/BufferPool.cpp.o"
 },
 {
   "directory": "/Users/jaswanth/Desktop/miniDB/build",
-  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -O2 -g -DNDEBUG -std=gnu++17 -arch arm64 -O2 -o CMakeFiles/btree_benchmark.dir/src/storage/page.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/page.cpp",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -O2 -o CMakeFiles/btree_benchmark.dir/src/storage/page.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/page.cpp",
   "file": "/Users/jaswanth/Desktop/miniDB/src/storage/page.cpp",
   "output": "CMakeFiles/btree_benchmark.dir/src/storage/page.cpp.o"
 },
 {
   "directory": "/Users/jaswanth/Desktop/miniDB/build",
-  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -O2 -g -DNDEBUG -std=gnu++17 -arch arm64 -O2 -o CMakeFiles/btree_benchmark.dir/src/storage/rid.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/rid.cpp",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -O2 -o CMakeFiles/btree_benchmark.dir/src/storage/rid.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/rid.cpp",
   "file": "/Users/jaswanth/Desktop/miniDB/src/storage/rid.cpp",
   "output": "CMakeFiles/btree_benchmark.dir/src/storage/rid.cpp.o"
 },
 {
   "directory": "/Users/jaswanth/Desktop/miniDB/build",
-  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -O2 -g -DNDEBUG -std=gnu++17 -arch arm64 -O2 -o CMakeFiles/btree_benchmark.dir/src/storage/b_tree.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/b_tree.cpp",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -O2 -o CMakeFiles/btree_benchmark.dir/src/storage/b_tree.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/b_tree.cpp",
   "file": "/Users/jaswanth/Desktop/miniDB/src/storage/b_tree.cpp",
   "output": "CMakeFiles/btree_benchmark.dir/src/storage/b_tree.cpp.o"
 },
 {
   "directory": "/Users/jaswanth/Desktop/miniDB/build",
-  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -O2 -g -DNDEBUG -std=gnu++17 -arch arm64 -O2 -o CMakeFiles/btree_benchmark.dir/src/storage/b_tree_leaf_page.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/b_tree_leaf_page.cpp",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -O2 -o CMakeFiles/btree_benchmark.dir/src/storage/b_tree_leaf_page.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/b_tree_leaf_page.cpp",
   "file": "/Users/jaswanth/Desktop/miniDB/src/storage/b_tree_leaf_page.cpp",
   "output": "CMakeFiles/btree_benchmark.dir/src/storage/b_tree_leaf_page.cpp.o"
 },
 {
   "directory": "/Users/jaswanth/Desktop/miniDB/build",
-  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -O2 -g -DNDEBUG -std=gnu++17 -arch arm64 -O2 -o CMakeFiles/btree_benchmark.dir/src/storage/b_tree_internal_page.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/b_tree_internal_page.cpp",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -O2 -o CMakeFiles/btree_benchmark.dir/src/storage/b_tree_internal_page.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/b_tree_internal_page.cpp",
   "file": "/Users/jaswanth/Desktop/miniDB/src/storage/b_tree_internal_page.cpp",
   "output": "CMakeFiles/btree_benchmark.dir/src/storage/b_tree_internal_page.cpp.o"
 },
 {
   "directory": "/Users/jaswanth/Desktop/miniDB/build",
-  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -O2 -g -DNDEBUG -std=gnu++17 -arch arm64 -O2 -o CMakeFiles/btree_benchmark.dir/src/storage/tuple.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/tuple.cpp",
-  "file": "/Users/jaswanth/Desktop/miniDB/src/storage/tuple.cpp",
-  "output": "CMakeFiles/btree_benchmark.dir/src/storage/tuple.cpp.o"
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -O2 -o CMakeFiles/btree_benchmark.dir/src/catalog/tuple.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/catalog/tuple.cpp",
+  "file": "/Users/jaswanth/Desktop/miniDB/src/catalog/tuple.cpp",
+  "output": "CMakeFiles/btree_benchmark.dir/src/catalog/tuple.cpp.o"
 },
 {
   "directory": "/Users/jaswanth/Desktop/miniDB/build",
-  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -O2 -g -DNDEBUG -std=gnu++17 -arch arm64 -O2 -o CMakeFiles/btree_benchmark.dir/src/storage/TableHeap.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/TableHeap.cpp",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -O2 -o CMakeFiles/btree_benchmark.dir/src/storage/TableHeap.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/TableHeap.cpp",
   "file": "/Users/jaswanth/Desktop/miniDB/src/storage/TableHeap.cpp",
   "output": "CMakeFiles/btree_benchmark.dir/src/storage/TableHeap.cpp.o"
 },
 {
   "directory": "/Users/jaswanth/Desktop/miniDB/build",
-  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -O2 -g -DNDEBUG -std=gnu++17 -arch arm64 -O2 -o CMakeFiles/btree_benchmark.dir/src/storage/TableIterator.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/TableIterator.cpp",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -O2 -o CMakeFiles/btree_benchmark.dir/src/storage/TableIterator.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/TableIterator.cpp",
   "file": "/Users/jaswanth/Desktop/miniDB/src/storage/TableIterator.cpp",
   "output": "CMakeFiles/btree_benchmark.dir/src/storage/TableIterator.cpp.o"
+},
+{
+  "directory": "/Users/jaswanth/Desktop/miniDB/build",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/catalog_test.dir/test/catalog_test.cpp.o -c /Users/jaswanth/Desktop/miniDB/test/catalog_test.cpp",
+  "file": "/Users/jaswanth/Desktop/miniDB/test/catalog_test.cpp",
+  "output": "CMakeFiles/catalog_test.dir/test/catalog_test.cpp.o"
+},
+{
+  "directory": "/Users/jaswanth/Desktop/miniDB/build",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/catalog_test.dir/src/storage/DiskManager.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/DiskManager.cpp",
+  "file": "/Users/jaswanth/Desktop/miniDB/src/storage/DiskManager.cpp",
+  "output": "CMakeFiles/catalog_test.dir/src/storage/DiskManager.cpp.o"
+},
+{
+  "directory": "/Users/jaswanth/Desktop/miniDB/build",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/catalog_test.dir/src/storage/BufferPool.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/BufferPool.cpp",
+  "file": "/Users/jaswanth/Desktop/miniDB/src/storage/BufferPool.cpp",
+  "output": "CMakeFiles/catalog_test.dir/src/storage/BufferPool.cpp.o"
+},
+{
+  "directory": "/Users/jaswanth/Desktop/miniDB/build",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/catalog_test.dir/src/storage/page.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/page.cpp",
+  "file": "/Users/jaswanth/Desktop/miniDB/src/storage/page.cpp",
+  "output": "CMakeFiles/catalog_test.dir/src/storage/page.cpp.o"
+},
+{
+  "directory": "/Users/jaswanth/Desktop/miniDB/build",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/catalog_test.dir/src/catalog/tuple.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/catalog/tuple.cpp",
+  "file": "/Users/jaswanth/Desktop/miniDB/src/catalog/tuple.cpp",
+  "output": "CMakeFiles/catalog_test.dir/src/catalog/tuple.cpp.o"
+},
+{
+  "directory": "/Users/jaswanth/Desktop/miniDB/build",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/catalog_test.dir/src/catalog/catalog.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/catalog/catalog.cpp",
+  "file": "/Users/jaswanth/Desktop/miniDB/src/catalog/catalog.cpp",
+  "output": "CMakeFiles/catalog_test.dir/src/catalog/catalog.cpp.o"
+},
+{
+  "directory": "/Users/jaswanth/Desktop/miniDB/build",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/catalog_test.dir/src/storage/rid.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/rid.cpp",
+  "file": "/Users/jaswanth/Desktop/miniDB/src/storage/rid.cpp",
+  "output": "CMakeFiles/catalog_test.dir/src/storage/rid.cpp.o"
+},
+{
+  "directory": "/Users/jaswanth/Desktop/miniDB/build",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/catalog_test.dir/src/storage/TableHeap.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/TableHeap.cpp",
+  "file": "/Users/jaswanth/Desktop/miniDB/src/storage/TableHeap.cpp",
+  "output": "CMakeFiles/catalog_test.dir/src/storage/TableHeap.cpp.o"
+},
+{
+  "directory": "/Users/jaswanth/Desktop/miniDB/build",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/catalog_test.dir/src/storage/TableIterator.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/TableIterator.cpp",
+  "file": "/Users/jaswanth/Desktop/miniDB/src/storage/TableIterator.cpp",
+  "output": "CMakeFiles/catalog_test.dir/src/storage/TableIterator.cpp.o"
 }
 ]

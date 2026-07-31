@@ -204,6 +204,82 @@ btree_benchmark/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/btree_benchmark.dir/build.make CMakeFiles/btree_benchmark.dir/build
 .PHONY : btree_benchmark/fast
 
+#=============================================================================
+# Target rules for targets named catalog_test
+
+# Build rule for target.
+catalog_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 catalog_test
+.PHONY : catalog_test
+
+# fast build rule for target.
+catalog_test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/catalog_test.dir/build.make CMakeFiles/catalog_test.dir/build
+.PHONY : catalog_test/fast
+
+src/catalog/catalog.o: src/catalog/catalog.cpp.o
+.PHONY : src/catalog/catalog.o
+
+# target to build an object file
+src/catalog/catalog.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minidb.dir/build.make CMakeFiles/minidb.dir/src/catalog/catalog.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/catalog/catalog.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/catalog_test.dir/build.make CMakeFiles/catalog_test.dir/src/catalog/catalog.cpp.o
+.PHONY : src/catalog/catalog.cpp.o
+
+src/catalog/catalog.i: src/catalog/catalog.cpp.i
+.PHONY : src/catalog/catalog.i
+
+# target to preprocess a source file
+src/catalog/catalog.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minidb.dir/build.make CMakeFiles/minidb.dir/src/catalog/catalog.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/catalog/catalog.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/catalog_test.dir/build.make CMakeFiles/catalog_test.dir/src/catalog/catalog.cpp.i
+.PHONY : src/catalog/catalog.cpp.i
+
+src/catalog/catalog.s: src/catalog/catalog.cpp.s
+.PHONY : src/catalog/catalog.s
+
+# target to generate assembly for a file
+src/catalog/catalog.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minidb.dir/build.make CMakeFiles/minidb.dir/src/catalog/catalog.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/catalog/catalog.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/catalog_test.dir/build.make CMakeFiles/catalog_test.dir/src/catalog/catalog.cpp.s
+.PHONY : src/catalog/catalog.cpp.s
+
+src/catalog/tuple.o: src/catalog/tuple.cpp.o
+.PHONY : src/catalog/tuple.o
+
+# target to build an object file
+src/catalog/tuple.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minidb.dir/build.make CMakeFiles/minidb.dir/src/catalog/tuple.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/catalog/tuple.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btree_benchmark.dir/build.make CMakeFiles/btree_benchmark.dir/src/catalog/tuple.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/catalog_test.dir/build.make CMakeFiles/catalog_test.dir/src/catalog/tuple.cpp.o
+.PHONY : src/catalog/tuple.cpp.o
+
+src/catalog/tuple.i: src/catalog/tuple.cpp.i
+.PHONY : src/catalog/tuple.i
+
+# target to preprocess a source file
+src/catalog/tuple.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minidb.dir/build.make CMakeFiles/minidb.dir/src/catalog/tuple.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/catalog/tuple.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btree_benchmark.dir/build.make CMakeFiles/btree_benchmark.dir/src/catalog/tuple.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/catalog_test.dir/build.make CMakeFiles/catalog_test.dir/src/catalog/tuple.cpp.i
+.PHONY : src/catalog/tuple.cpp.i
+
+src/catalog/tuple.s: src/catalog/tuple.cpp.s
+.PHONY : src/catalog/tuple.s
+
+# target to generate assembly for a file
+src/catalog/tuple.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minidb.dir/build.make CMakeFiles/minidb.dir/src/catalog/tuple.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/catalog/tuple.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/btree_benchmark.dir/build.make CMakeFiles/btree_benchmark.dir/src/catalog/tuple.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/catalog_test.dir/build.make CMakeFiles/catalog_test.dir/src/catalog/tuple.cpp.s
+.PHONY : src/catalog/tuple.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -238,6 +314,7 @@ src/storage/BufferPool.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/storage/BufferPool.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/bplus_tree_test.dir/build.make CMakeFiles/bplus_tree_test.dir/src/storage/BufferPool.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/btree_benchmark.dir/build.make CMakeFiles/btree_benchmark.dir/src/storage/BufferPool.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/catalog_test.dir/build.make CMakeFiles/catalog_test.dir/src/storage/BufferPool.cpp.o
 .PHONY : src/storage/BufferPool.cpp.o
 
 src/storage/BufferPool.i: src/storage/BufferPool.cpp.i
@@ -250,6 +327,7 @@ src/storage/BufferPool.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/storage/BufferPool.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/bplus_tree_test.dir/build.make CMakeFiles/bplus_tree_test.dir/src/storage/BufferPool.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/btree_benchmark.dir/build.make CMakeFiles/btree_benchmark.dir/src/storage/BufferPool.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/catalog_test.dir/build.make CMakeFiles/catalog_test.dir/src/storage/BufferPool.cpp.i
 .PHONY : src/storage/BufferPool.cpp.i
 
 src/storage/BufferPool.s: src/storage/BufferPool.cpp.s
@@ -262,6 +340,7 @@ src/storage/BufferPool.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/storage/BufferPool.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/bplus_tree_test.dir/build.make CMakeFiles/bplus_tree_test.dir/src/storage/BufferPool.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/btree_benchmark.dir/build.make CMakeFiles/btree_benchmark.dir/src/storage/BufferPool.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/catalog_test.dir/build.make CMakeFiles/catalog_test.dir/src/storage/BufferPool.cpp.s
 .PHONY : src/storage/BufferPool.cpp.s
 
 src/storage/DiskManager.o: src/storage/DiskManager.cpp.o
@@ -274,6 +353,7 @@ src/storage/DiskManager.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/storage/DiskManager.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/bplus_tree_test.dir/build.make CMakeFiles/bplus_tree_test.dir/src/storage/DiskManager.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/btree_benchmark.dir/build.make CMakeFiles/btree_benchmark.dir/src/storage/DiskManager.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/catalog_test.dir/build.make CMakeFiles/catalog_test.dir/src/storage/DiskManager.cpp.o
 .PHONY : src/storage/DiskManager.cpp.o
 
 src/storage/DiskManager.i: src/storage/DiskManager.cpp.i
@@ -286,6 +366,7 @@ src/storage/DiskManager.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/storage/DiskManager.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/bplus_tree_test.dir/build.make CMakeFiles/bplus_tree_test.dir/src/storage/DiskManager.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/btree_benchmark.dir/build.make CMakeFiles/btree_benchmark.dir/src/storage/DiskManager.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/catalog_test.dir/build.make CMakeFiles/catalog_test.dir/src/storage/DiskManager.cpp.i
 .PHONY : src/storage/DiskManager.cpp.i
 
 src/storage/DiskManager.s: src/storage/DiskManager.cpp.s
@@ -298,6 +379,7 @@ src/storage/DiskManager.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/storage/DiskManager.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/bplus_tree_test.dir/build.make CMakeFiles/bplus_tree_test.dir/src/storage/DiskManager.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/btree_benchmark.dir/build.make CMakeFiles/btree_benchmark.dir/src/storage/DiskManager.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/catalog_test.dir/build.make CMakeFiles/catalog_test.dir/src/storage/DiskManager.cpp.s
 .PHONY : src/storage/DiskManager.cpp.s
 
 src/storage/TableHeap.o: src/storage/TableHeap.cpp.o
@@ -308,6 +390,7 @@ src/storage/TableHeap.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/minidb.dir/build.make CMakeFiles/minidb.dir/src/storage/TableHeap.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/storage/TableHeap.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/btree_benchmark.dir/build.make CMakeFiles/btree_benchmark.dir/src/storage/TableHeap.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/catalog_test.dir/build.make CMakeFiles/catalog_test.dir/src/storage/TableHeap.cpp.o
 .PHONY : src/storage/TableHeap.cpp.o
 
 src/storage/TableHeap.i: src/storage/TableHeap.cpp.i
@@ -318,6 +401,7 @@ src/storage/TableHeap.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/minidb.dir/build.make CMakeFiles/minidb.dir/src/storage/TableHeap.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/storage/TableHeap.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/btree_benchmark.dir/build.make CMakeFiles/btree_benchmark.dir/src/storage/TableHeap.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/catalog_test.dir/build.make CMakeFiles/catalog_test.dir/src/storage/TableHeap.cpp.i
 .PHONY : src/storage/TableHeap.cpp.i
 
 src/storage/TableHeap.s: src/storage/TableHeap.cpp.s
@@ -328,6 +412,7 @@ src/storage/TableHeap.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/minidb.dir/build.make CMakeFiles/minidb.dir/src/storage/TableHeap.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/storage/TableHeap.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/btree_benchmark.dir/build.make CMakeFiles/btree_benchmark.dir/src/storage/TableHeap.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/catalog_test.dir/build.make CMakeFiles/catalog_test.dir/src/storage/TableHeap.cpp.s
 .PHONY : src/storage/TableHeap.cpp.s
 
 src/storage/TableIterator.o: src/storage/TableIterator.cpp.o
@@ -338,6 +423,7 @@ src/storage/TableIterator.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/minidb.dir/build.make CMakeFiles/minidb.dir/src/storage/TableIterator.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/storage/TableIterator.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/btree_benchmark.dir/build.make CMakeFiles/btree_benchmark.dir/src/storage/TableIterator.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/catalog_test.dir/build.make CMakeFiles/catalog_test.dir/src/storage/TableIterator.cpp.o
 .PHONY : src/storage/TableIterator.cpp.o
 
 src/storage/TableIterator.i: src/storage/TableIterator.cpp.i
@@ -348,6 +434,7 @@ src/storage/TableIterator.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/minidb.dir/build.make CMakeFiles/minidb.dir/src/storage/TableIterator.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/storage/TableIterator.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/btree_benchmark.dir/build.make CMakeFiles/btree_benchmark.dir/src/storage/TableIterator.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/catalog_test.dir/build.make CMakeFiles/catalog_test.dir/src/storage/TableIterator.cpp.i
 .PHONY : src/storage/TableIterator.cpp.i
 
 src/storage/TableIterator.s: src/storage/TableIterator.cpp.s
@@ -358,6 +445,7 @@ src/storage/TableIterator.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/minidb.dir/build.make CMakeFiles/minidb.dir/src/storage/TableIterator.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/storage/TableIterator.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/btree_benchmark.dir/build.make CMakeFiles/btree_benchmark.dir/src/storage/TableIterator.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/catalog_test.dir/build.make CMakeFiles/catalog_test.dir/src/storage/TableIterator.cpp.s
 .PHONY : src/storage/TableIterator.cpp.s
 
 src/storage/b_tree.o: src/storage/b_tree.cpp.o
@@ -452,6 +540,7 @@ src/storage/page.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/storage/page.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/bplus_tree_test.dir/build.make CMakeFiles/bplus_tree_test.dir/src/storage/page.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/btree_benchmark.dir/build.make CMakeFiles/btree_benchmark.dir/src/storage/page.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/catalog_test.dir/build.make CMakeFiles/catalog_test.dir/src/storage/page.cpp.o
 .PHONY : src/storage/page.cpp.o
 
 src/storage/page.i: src/storage/page.cpp.i
@@ -465,6 +554,7 @@ src/storage/page.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/storage/page.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/bplus_tree_test.dir/build.make CMakeFiles/bplus_tree_test.dir/src/storage/page.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/btree_benchmark.dir/build.make CMakeFiles/btree_benchmark.dir/src/storage/page.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/catalog_test.dir/build.make CMakeFiles/catalog_test.dir/src/storage/page.cpp.i
 .PHONY : src/storage/page.cpp.i
 
 src/storage/page.s: src/storage/page.cpp.s
@@ -478,6 +568,7 @@ src/storage/page.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/storage/page.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/bplus_tree_test.dir/build.make CMakeFiles/bplus_tree_test.dir/src/storage/page.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/btree_benchmark.dir/build.make CMakeFiles/btree_benchmark.dir/src/storage/page.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/catalog_test.dir/build.make CMakeFiles/catalog_test.dir/src/storage/page.cpp.s
 .PHONY : src/storage/page.cpp.s
 
 src/storage/rid.o: src/storage/rid.cpp.o
@@ -489,6 +580,7 @@ src/storage/rid.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/storage/rid.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/bplus_tree_test.dir/build.make CMakeFiles/bplus_tree_test.dir/src/storage/rid.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/btree_benchmark.dir/build.make CMakeFiles/btree_benchmark.dir/src/storage/rid.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/catalog_test.dir/build.make CMakeFiles/catalog_test.dir/src/storage/rid.cpp.o
 .PHONY : src/storage/rid.cpp.o
 
 src/storage/rid.i: src/storage/rid.cpp.i
@@ -500,6 +592,7 @@ src/storage/rid.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/storage/rid.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/bplus_tree_test.dir/build.make CMakeFiles/bplus_tree_test.dir/src/storage/rid.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/btree_benchmark.dir/build.make CMakeFiles/btree_benchmark.dir/src/storage/rid.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/catalog_test.dir/build.make CMakeFiles/catalog_test.dir/src/storage/rid.cpp.i
 .PHONY : src/storage/rid.cpp.i
 
 src/storage/rid.s: src/storage/rid.cpp.s
@@ -511,37 +604,8 @@ src/storage/rid.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/storage/rid.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/bplus_tree_test.dir/build.make CMakeFiles/bplus_tree_test.dir/src/storage/rid.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/btree_benchmark.dir/build.make CMakeFiles/btree_benchmark.dir/src/storage/rid.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/catalog_test.dir/build.make CMakeFiles/catalog_test.dir/src/storage/rid.cpp.s
 .PHONY : src/storage/rid.cpp.s
-
-src/storage/tuple.o: src/storage/tuple.cpp.o
-.PHONY : src/storage/tuple.o
-
-# target to build an object file
-src/storage/tuple.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/minidb.dir/build.make CMakeFiles/minidb.dir/src/storage/tuple.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/storage/tuple.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btree_benchmark.dir/build.make CMakeFiles/btree_benchmark.dir/src/storage/tuple.cpp.o
-.PHONY : src/storage/tuple.cpp.o
-
-src/storage/tuple.i: src/storage/tuple.cpp.i
-.PHONY : src/storage/tuple.i
-
-# target to preprocess a source file
-src/storage/tuple.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/minidb.dir/build.make CMakeFiles/minidb.dir/src/storage/tuple.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/storage/tuple.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btree_benchmark.dir/build.make CMakeFiles/btree_benchmark.dir/src/storage/tuple.cpp.i
-.PHONY : src/storage/tuple.cpp.i
-
-src/storage/tuple.s: src/storage/tuple.cpp.s
-.PHONY : src/storage/tuple.s
-
-# target to generate assembly for a file
-src/storage/tuple.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/minidb.dir/build.make CMakeFiles/minidb.dir/src/storage/tuple.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/storage/tuple.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/btree_benchmark.dir/build.make CMakeFiles/btree_benchmark.dir/src/storage/tuple.cpp.s
-.PHONY : src/storage/tuple.cpp.s
 
 test/bplus_tree_test.o: test/bplus_tree_test.cpp.o
 .PHONY : test/bplus_tree_test.o
@@ -590,6 +654,30 @@ test/btree_benchmark.s: test/btree_benchmark.cpp.s
 test/btree_benchmark.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/btree_benchmark.dir/build.make CMakeFiles/btree_benchmark.dir/test/btree_benchmark.cpp.s
 .PHONY : test/btree_benchmark.cpp.s
+
+test/catalog_test.o: test/catalog_test.cpp.o
+.PHONY : test/catalog_test.o
+
+# target to build an object file
+test/catalog_test.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/catalog_test.dir/build.make CMakeFiles/catalog_test.dir/test/catalog_test.cpp.o
+.PHONY : test/catalog_test.cpp.o
+
+test/catalog_test.i: test/catalog_test.cpp.i
+.PHONY : test/catalog_test.i
+
+# target to preprocess a source file
+test/catalog_test.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/catalog_test.dir/build.make CMakeFiles/catalog_test.dir/test/catalog_test.cpp.i
+.PHONY : test/catalog_test.cpp.i
+
+test/catalog_test.s: test/catalog_test.cpp.s
+.PHONY : test/catalog_test.s
+
+# target to generate assembly for a file
+test/catalog_test.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/catalog_test.dir/build.make CMakeFiles/catalog_test.dir/test/catalog_test.cpp.s
+.PHONY : test/catalog_test.cpp.s
 
 test/disk_manager_test.o: test/disk_manager_test.cpp.o
 .PHONY : test/disk_manager_test.o
@@ -674,10 +762,17 @@ help:
 	@echo "... test"
 	@echo "... bplus_tree_test"
 	@echo "... btree_benchmark"
+	@echo "... catalog_test"
 	@echo "... disk_manager_test"
 	@echo "... integration_test"
 	@echo "... minidb"
 	@echo "... slotted_page_test"
+	@echo "... src/catalog/catalog.o"
+	@echo "... src/catalog/catalog.i"
+	@echo "... src/catalog/catalog.s"
+	@echo "... src/catalog/tuple.o"
+	@echo "... src/catalog/tuple.i"
+	@echo "... src/catalog/tuple.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
@@ -708,15 +803,15 @@ help:
 	@echo "... src/storage/rid.o"
 	@echo "... src/storage/rid.i"
 	@echo "... src/storage/rid.s"
-	@echo "... src/storage/tuple.o"
-	@echo "... src/storage/tuple.i"
-	@echo "... src/storage/tuple.s"
 	@echo "... test/bplus_tree_test.o"
 	@echo "... test/bplus_tree_test.i"
 	@echo "... test/bplus_tree_test.s"
 	@echo "... test/btree_benchmark.o"
 	@echo "... test/btree_benchmark.i"
 	@echo "... test/btree_benchmark.s"
+	@echo "... test/catalog_test.o"
+	@echo "... test/catalog_test.i"
+	@echo "... test/catalog_test.s"
 	@echo "... test/disk_manager_test.o"
 	@echo "... test/disk_manager_test.i"
 	@echo "... test/disk_manager_test.s"

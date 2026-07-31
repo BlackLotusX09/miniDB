@@ -128,24 +128,38 @@ CMakeFiles/minidb.dir/src/storage/page.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/minidb.dir/src/storage/page.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jaswanth/Desktop/miniDB/src/storage/page.cpp -o CMakeFiles/minidb.dir/src/storage/page.cpp.s
 
-CMakeFiles/minidb.dir/src/storage/tuple.cpp.o: CMakeFiles/minidb.dir/flags.make
-CMakeFiles/minidb.dir/src/storage/tuple.cpp.o: /Users/jaswanth/Desktop/miniDB/src/storage/tuple.cpp
-CMakeFiles/minidb.dir/src/storage/tuple.cpp.o: CMakeFiles/minidb.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/jaswanth/Desktop/miniDB/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/minidb.dir/src/storage/tuple.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/minidb.dir/src/storage/tuple.cpp.o -MF CMakeFiles/minidb.dir/src/storage/tuple.cpp.o.d -o CMakeFiles/minidb.dir/src/storage/tuple.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/tuple.cpp
+CMakeFiles/minidb.dir/src/catalog/tuple.cpp.o: CMakeFiles/minidb.dir/flags.make
+CMakeFiles/minidb.dir/src/catalog/tuple.cpp.o: /Users/jaswanth/Desktop/miniDB/src/catalog/tuple.cpp
+CMakeFiles/minidb.dir/src/catalog/tuple.cpp.o: CMakeFiles/minidb.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/jaswanth/Desktop/miniDB/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/minidb.dir/src/catalog/tuple.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/minidb.dir/src/catalog/tuple.cpp.o -MF CMakeFiles/minidb.dir/src/catalog/tuple.cpp.o.d -o CMakeFiles/minidb.dir/src/catalog/tuple.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/catalog/tuple.cpp
 
-CMakeFiles/minidb.dir/src/storage/tuple.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/minidb.dir/src/storage/tuple.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jaswanth/Desktop/miniDB/src/storage/tuple.cpp > CMakeFiles/minidb.dir/src/storage/tuple.cpp.i
+CMakeFiles/minidb.dir/src/catalog/tuple.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/minidb.dir/src/catalog/tuple.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jaswanth/Desktop/miniDB/src/catalog/tuple.cpp > CMakeFiles/minidb.dir/src/catalog/tuple.cpp.i
 
-CMakeFiles/minidb.dir/src/storage/tuple.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/minidb.dir/src/storage/tuple.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jaswanth/Desktop/miniDB/src/storage/tuple.cpp -o CMakeFiles/minidb.dir/src/storage/tuple.cpp.s
+CMakeFiles/minidb.dir/src/catalog/tuple.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/minidb.dir/src/catalog/tuple.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jaswanth/Desktop/miniDB/src/catalog/tuple.cpp -o CMakeFiles/minidb.dir/src/catalog/tuple.cpp.s
+
+CMakeFiles/minidb.dir/src/catalog/catalog.cpp.o: CMakeFiles/minidb.dir/flags.make
+CMakeFiles/minidb.dir/src/catalog/catalog.cpp.o: /Users/jaswanth/Desktop/miniDB/src/catalog/catalog.cpp
+CMakeFiles/minidb.dir/src/catalog/catalog.cpp.o: CMakeFiles/minidb.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/jaswanth/Desktop/miniDB/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/minidb.dir/src/catalog/catalog.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/minidb.dir/src/catalog/catalog.cpp.o -MF CMakeFiles/minidb.dir/src/catalog/catalog.cpp.o.d -o CMakeFiles/minidb.dir/src/catalog/catalog.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/catalog/catalog.cpp
+
+CMakeFiles/minidb.dir/src/catalog/catalog.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/minidb.dir/src/catalog/catalog.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jaswanth/Desktop/miniDB/src/catalog/catalog.cpp > CMakeFiles/minidb.dir/src/catalog/catalog.cpp.i
+
+CMakeFiles/minidb.dir/src/catalog/catalog.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/minidb.dir/src/catalog/catalog.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jaswanth/Desktop/miniDB/src/catalog/catalog.cpp -o CMakeFiles/minidb.dir/src/catalog/catalog.cpp.s
 
 CMakeFiles/minidb.dir/src/storage/rid.cpp.o: CMakeFiles/minidb.dir/flags.make
 CMakeFiles/minidb.dir/src/storage/rid.cpp.o: /Users/jaswanth/Desktop/miniDB/src/storage/rid.cpp
 CMakeFiles/minidb.dir/src/storage/rid.cpp.o: CMakeFiles/minidb.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/jaswanth/Desktop/miniDB/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/minidb.dir/src/storage/rid.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/jaswanth/Desktop/miniDB/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/minidb.dir/src/storage/rid.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/minidb.dir/src/storage/rid.cpp.o -MF CMakeFiles/minidb.dir/src/storage/rid.cpp.o.d -o CMakeFiles/minidb.dir/src/storage/rid.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/rid.cpp
 
 CMakeFiles/minidb.dir/src/storage/rid.cpp.i: cmake_force
@@ -159,7 +173,7 @@ CMakeFiles/minidb.dir/src/storage/rid.cpp.s: cmake_force
 CMakeFiles/minidb.dir/src/storage/TableHeap.cpp.o: CMakeFiles/minidb.dir/flags.make
 CMakeFiles/minidb.dir/src/storage/TableHeap.cpp.o: /Users/jaswanth/Desktop/miniDB/src/storage/TableHeap.cpp
 CMakeFiles/minidb.dir/src/storage/TableHeap.cpp.o: CMakeFiles/minidb.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/jaswanth/Desktop/miniDB/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/minidb.dir/src/storage/TableHeap.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/jaswanth/Desktop/miniDB/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/minidb.dir/src/storage/TableHeap.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/minidb.dir/src/storage/TableHeap.cpp.o -MF CMakeFiles/minidb.dir/src/storage/TableHeap.cpp.o.d -o CMakeFiles/minidb.dir/src/storage/TableHeap.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/TableHeap.cpp
 
 CMakeFiles/minidb.dir/src/storage/TableHeap.cpp.i: cmake_force
@@ -173,7 +187,7 @@ CMakeFiles/minidb.dir/src/storage/TableHeap.cpp.s: cmake_force
 CMakeFiles/minidb.dir/src/storage/TableIterator.cpp.o: CMakeFiles/minidb.dir/flags.make
 CMakeFiles/minidb.dir/src/storage/TableIterator.cpp.o: /Users/jaswanth/Desktop/miniDB/src/storage/TableIterator.cpp
 CMakeFiles/minidb.dir/src/storage/TableIterator.cpp.o: CMakeFiles/minidb.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/jaswanth/Desktop/miniDB/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/minidb.dir/src/storage/TableIterator.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/jaswanth/Desktop/miniDB/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/minidb.dir/src/storage/TableIterator.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/minidb.dir/src/storage/TableIterator.cpp.o -MF CMakeFiles/minidb.dir/src/storage/TableIterator.cpp.o.d -o CMakeFiles/minidb.dir/src/storage/TableIterator.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/TableIterator.cpp
 
 CMakeFiles/minidb.dir/src/storage/TableIterator.cpp.i: cmake_force
@@ -190,7 +204,8 @@ minidb_OBJECTS = \
 "CMakeFiles/minidb.dir/src/storage/DiskManager.cpp.o" \
 "CMakeFiles/minidb.dir/src/storage/BufferPool.cpp.o" \
 "CMakeFiles/minidb.dir/src/storage/page.cpp.o" \
-"CMakeFiles/minidb.dir/src/storage/tuple.cpp.o" \
+"CMakeFiles/minidb.dir/src/catalog/tuple.cpp.o" \
+"CMakeFiles/minidb.dir/src/catalog/catalog.cpp.o" \
 "CMakeFiles/minidb.dir/src/storage/rid.cpp.o" \
 "CMakeFiles/minidb.dir/src/storage/TableHeap.cpp.o" \
 "CMakeFiles/minidb.dir/src/storage/TableIterator.cpp.o"
@@ -202,13 +217,14 @@ minidb: CMakeFiles/minidb.dir/src/main.cpp.o
 minidb: CMakeFiles/minidb.dir/src/storage/DiskManager.cpp.o
 minidb: CMakeFiles/minidb.dir/src/storage/BufferPool.cpp.o
 minidb: CMakeFiles/minidb.dir/src/storage/page.cpp.o
-minidb: CMakeFiles/minidb.dir/src/storage/tuple.cpp.o
+minidb: CMakeFiles/minidb.dir/src/catalog/tuple.cpp.o
+minidb: CMakeFiles/minidb.dir/src/catalog/catalog.cpp.o
 minidb: CMakeFiles/minidb.dir/src/storage/rid.cpp.o
 minidb: CMakeFiles/minidb.dir/src/storage/TableHeap.cpp.o
 minidb: CMakeFiles/minidb.dir/src/storage/TableIterator.cpp.o
 minidb: CMakeFiles/minidb.dir/build.make
 minidb: CMakeFiles/minidb.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/jaswanth/Desktop/miniDB/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable minidb"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/jaswanth/Desktop/miniDB/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable minidb"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/minidb.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

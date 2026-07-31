@@ -797,6 +797,7 @@ CMakeFiles/btree_benchmark.dir/src/storage/TableHeap.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/unistd.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/cassert \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/assert.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_assert.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_static_assert.h \
   /Users/jaswanth/Desktop/miniDB/include/storage/page.h \
   /Users/jaswanth/Desktop/miniDB/include/storage/DiskManager.h \
@@ -820,8 +821,8 @@ CMakeFiles/btree_benchmark.dir/src/storage/TableHeap.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__filesystem/path_iterator.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__filesystem/recursive_directory_iterator.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__filesystem/u8path.h \
-  /Users/jaswanth/Desktop/miniDB/include/storage/schema.h \
-  /Users/jaswanth/Desktop/miniDB/include/storage/tuple.h \
-  /Users/jaswanth/Desktop/miniDB/include/storage/value.h \
+  /Users/jaswanth/Desktop/miniDB/include/catalog/schema.h \
+  /Users/jaswanth/Desktop/miniDB/include/catalog/tuple.h \
+  /Users/jaswanth/Desktop/miniDB/include/catalog/value.h \
   /Users/jaswanth/Desktop/miniDB/include/storage/rid.h \
   /Users/jaswanth/Desktop/miniDB/include/storage/TableIterator.h

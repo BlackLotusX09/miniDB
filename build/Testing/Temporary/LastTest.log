@@ -1,0 +1,205 @@
+Start testing: Jul 31 20:27 IST
+----------------------------------------------------------
+1/5 Testing: disk_manager_test
+1/5 Test: disk_manager_test
+Command: "/Users/jaswanth/Desktop/miniDB/build/disk_manager_test"
+Directory: /Users/jaswanth/Desktop/miniDB/build
+"disk_manager_test" start time: Jul 31 20:27 IST
+Output:
+----------------------------------------------------------
+Starting Pin Eviction Safety Test...
+Assertion failed: (record_str == "PINNED_NODE" && "Safety Failure: A pinned page was evicted!"), function TestPinEvictionSafety, file disk_manager_test.cpp, line 62.
+<end of output>
+Test time =   0.31 sec
+----------------------------------------------------------
+Test Failed.
+"disk_manager_test" end time: Jul 31 20:27 IST
+"disk_manager_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/5 Testing: slotted_page_test
+2/5 Test: slotted_page_test
+Command: "/Users/jaswanth/Desktop/miniDB/build/slotted_page_test"
+Directory: /Users/jaswanth/Desktop/miniDB/build
+"slotted_page_test" start time: Jul 31 20:27 IST
+Output:
+----------------------------------------------------------
+1
+3
+4
+5
+<end of output>
+Test time =   0.31 sec
+----------------------------------------------------------
+Test Passed.
+"slotted_page_test" end time: Jul 31 20:27 IST
+"slotted_page_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+3/5 Testing: integration_test
+3/5 Test: integration_test
+Command: "/Users/jaswanth/Desktop/miniDB/build/integration_test"
+Directory: /Users/jaswanth/Desktop/miniDB/build
+"integration_test" start time: Jul 31 20:27 IST
+Output:
+----------------------------------------------------------
+
+[Phase A] Creating table and inserting 1200 rows...
+[Phase A] Done. Root page id = 1
+
+[Phase B - First Scan] Scanning table (root page = 1)...
+  row    1  id=    0  name=Alice Smith_0  gpa=200
+  row  101  id=  100  name=Katherine Davis_100  gpa=300
+  row  201  id=  200  name=Frank White_200  gpa=400
+  row  301  id=  300  name=Alice Miller_300  gpa=299
+  row  401  id=  400  name=Katherine Thomas_400  gpa=399
+  row  501  id=  500  name=Frank Brown_500  gpa=298
+  row  601  id=  600  name=Alice Anderson_600  gpa=398
+  row  701  id=  700  name=Katherine Johnson_700  gpa=297
+  row  801  id=  800  name=Frank Moore_800  gpa=397
+  row  901  id=  900  name=Alice Smith_900  gpa=296
+  row 1001  id= 1000  name=Katherine Davis_1000  gpa=396
+  row 1101  id= 1100  name=Frank White_1100  gpa=295
+[Phase B - First Scan] Total rows scanned: 1200
+
+[Phase C - Restart Scan] Scanning table (root page = 1)...
+  row    1  id=    0  name=Alice Smith_0  gpa=200
+  row  101  id=  100  name=Katherine Davis_100  gpa=300
+  row  201  id=  200  name=Frank White_200  gpa=400
+  row  301  id=  300  name=Alice Miller_300  gpa=299
+  row  401  id=  400  name=Katherine Thomas_400  gpa=399
+  row  501  id=  500  name=Frank Brown_500  gpa=298
+  row  601  id=  600  name=Alice Anderson_600  gpa=398
+  row  701  id=  700  name=Katherine Johnson_700  gpa=297
+  row  801  id=  800  name=Frank Moore_800  gpa=397
+  row  901  id=  900  name=Alice Smith_900  gpa=296
+  row 1001  id= 1000  name=Katherine Davis_1000  gpa=396
+  row 1101  id= 1100  name=Frank White_1100  gpa=295
+[Phase C - Restart Scan] Total rows scanned: 1200
+
+=== Results ===
+Rows inserted : 1200
+First scan    : 1200
+Restart scan  : 1200
+
+✅  ALL CHECKS PASSED — Phase 1 integration test complete!
+<end of output>
+Test time =   0.34 sec
+----------------------------------------------------------
+Test Passed.
+"integration_test" end time: Jul 31 20:27 IST
+"integration_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+4/5 Testing: bplus_tree_test
+4/5 Test: bplus_tree_test
+Command: "/Users/jaswanth/Desktop/miniDB/build/bplus_tree_test"
+Directory: /Users/jaswanth/Desktop/miniDB/build
+"bplus_tree_test" start time: Jul 31 20:27 IST
+Output:
+----------------------------------------------------------
+===========================================
+STARTING B+ TREE FULL TEST SUITE
+===========================================
+
+[Running] TestRandomInsert (1000 keys, random order)...
+  [+] VerifyLeafChain passed.
+[Passed] TestRandomInsert successfully completed.
+
+[Running] TestAscendingInsert (1000 keys, ascending)...
+  [+] VerifyLeafChain passed.
+[Passed] TestAscendingInsert successfully completed.
+
+[Running] TestDescendingInsert (1000 keys, descending)...
+  [+] VerifyLeafChain passed.
+[Passed] TestDescendingInsert successfully completed.
+
+[Running] TestValidateTree (BST invariant check, random 500 keys)...
+  [+] ValidateTree passed — all BST invariants hold.
+[Passed] TestValidateTree successfully completed.
+
+[Running] TestDeleteCase1_NoUnderflow...
+[Passed] TestDeleteCase1_NoUnderflow
+
+[Running] TestDeleteCase2_BorrowFromSibling...
+[Passed] TestDeleteCase2_BorrowFromSibling
+
+[Running] TestDeleteCase3_MergeAndRootCollapse...
+[Passed] TestDeleteCase3_MergeAndRootCollapse
+
+[Running] TestDeleteStress_RandomOrder (1000 inserts, 1000 deletes)...
+[Passed] TestDeleteStress_RandomOrder
+
+[Running] TestDeleteStress_AscInsDescDel (500 keys)...
+[Passed] TestDeleteStress_AscInsDescDel
+
+[Running] TestDeleteInterleaved (insert/delete interleaved)...
+[Passed] TestDeleteInterleaved
+
+[Running] RangeScanTest (keys 0-99, scan [25,75])...
+[Passed] RangeScanTest (51 RIDs returned correctly)
+
+[Running] TestRangeScan_Day15Checkpoint (keys 1-1000, scan [250,750])...
+  [+] VerifyLeafChain passed (1000 keys in order).
+  [+] Count check passed: 501 RIDs returned.
+  [+] RID content check passed: all 501 RIDs match keys 250..750 in order.
+  [+] Single-key scan [500,500] passed.
+  [+] Out-of-range scan [1001,2000] returned empty correctly.
+  [+] ValidateTree passed — all BST invariants hold.
+[Passed] TestRangeScan_Day15Checkpoint ✓
+
+[Running] TestDay16_PinLeakAudit (500 keys, pin audit after every op)...
+  [+] After 500 inserts: all frames unpinned.
+  [+] After 500 searches: all frames unpinned.
+  [+] After RangeScan(1,500): all frames unpinned.
+  [+] After 250 deletes: all frames unpinned.
+  [+] After ValidateTree: all frames unpinned.
+[Passed] TestDay16_PinLeakAudit
+
+[Running] TestDay16_RestartPersistence (500 keys survive restart)...
+  [+] Phase A: 500 keys inserted and flushed (header=44).
+  [+] Phase B: all 500 keys verified after restart.
+  [+] Meta after restart: root=47  keys=500  height=2
+[Passed] TestDay16_RestartPersistence
+
+[Running] TestDay16_MetadataPage (300 keys, verify btreeMetaPage)...
+  [+] root_page_id = 31
+  [+] total_key_count = 300 (expected 300)
+  [+] tree_height = 2
+  [+] No pin leaks after ReadMeta().
+  [+] ValidateTree passed after metadata reads.
+[Passed] TestDay16_MetadataPage
+
+===========================================
+ALL TESTS PASSED SUCCESSFULLY!
+===========================================
+<end of output>
+Test time =   0.40 sec
+----------------------------------------------------------
+Test Passed.
+"bplus_tree_test" end time: Jul 31 20:27 IST
+"bplus_tree_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+5/5 Testing: catalog_test
+5/5 Test: catalog_test
+Command: "/Users/jaswanth/Desktop/miniDB/build/catalog_test"
+Directory: /Users/jaswanth/Desktop/miniDB/build
+"catalog_test" start time: Jul 31 20:27 IST
+Output:
+----------------------------------------------------------
+[PASS] Test 1
+[PASS] Test 2
+[PASS] Test 3
+[PASS] Test 4
+[PASS] Test 5
+[PASS] Test 6
+<end of output>
+Test time =   0.29 sec
+----------------------------------------------------------
+Test Passed.
+"catalog_test" end time: Jul 31 20:27 IST
+"catalog_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Jul 31 20:27 IST

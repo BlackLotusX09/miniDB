@@ -184,19 +184,19 @@ CMakeFiles/btree_benchmark.dir/src/storage/b_tree_internal_page.cpp.s: cmake_for
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/btree_benchmark.dir/src/storage/b_tree_internal_page.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jaswanth/Desktop/miniDB/src/storage/b_tree_internal_page.cpp -o CMakeFiles/btree_benchmark.dir/src/storage/b_tree_internal_page.cpp.s
 
-CMakeFiles/btree_benchmark.dir/src/storage/tuple.cpp.o: CMakeFiles/btree_benchmark.dir/flags.make
-CMakeFiles/btree_benchmark.dir/src/storage/tuple.cpp.o: /Users/jaswanth/Desktop/miniDB/src/storage/tuple.cpp
-CMakeFiles/btree_benchmark.dir/src/storage/tuple.cpp.o: CMakeFiles/btree_benchmark.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/jaswanth/Desktop/miniDB/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/btree_benchmark.dir/src/storage/tuple.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/btree_benchmark.dir/src/storage/tuple.cpp.o -MF CMakeFiles/btree_benchmark.dir/src/storage/tuple.cpp.o.d -o CMakeFiles/btree_benchmark.dir/src/storage/tuple.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/tuple.cpp
+CMakeFiles/btree_benchmark.dir/src/catalog/tuple.cpp.o: CMakeFiles/btree_benchmark.dir/flags.make
+CMakeFiles/btree_benchmark.dir/src/catalog/tuple.cpp.o: /Users/jaswanth/Desktop/miniDB/src/catalog/tuple.cpp
+CMakeFiles/btree_benchmark.dir/src/catalog/tuple.cpp.o: CMakeFiles/btree_benchmark.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/jaswanth/Desktop/miniDB/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/btree_benchmark.dir/src/catalog/tuple.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/btree_benchmark.dir/src/catalog/tuple.cpp.o -MF CMakeFiles/btree_benchmark.dir/src/catalog/tuple.cpp.o.d -o CMakeFiles/btree_benchmark.dir/src/catalog/tuple.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/catalog/tuple.cpp
 
-CMakeFiles/btree_benchmark.dir/src/storage/tuple.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/btree_benchmark.dir/src/storage/tuple.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jaswanth/Desktop/miniDB/src/storage/tuple.cpp > CMakeFiles/btree_benchmark.dir/src/storage/tuple.cpp.i
+CMakeFiles/btree_benchmark.dir/src/catalog/tuple.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/btree_benchmark.dir/src/catalog/tuple.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jaswanth/Desktop/miniDB/src/catalog/tuple.cpp > CMakeFiles/btree_benchmark.dir/src/catalog/tuple.cpp.i
 
-CMakeFiles/btree_benchmark.dir/src/storage/tuple.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/btree_benchmark.dir/src/storage/tuple.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jaswanth/Desktop/miniDB/src/storage/tuple.cpp -o CMakeFiles/btree_benchmark.dir/src/storage/tuple.cpp.s
+CMakeFiles/btree_benchmark.dir/src/catalog/tuple.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/btree_benchmark.dir/src/catalog/tuple.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jaswanth/Desktop/miniDB/src/catalog/tuple.cpp -o CMakeFiles/btree_benchmark.dir/src/catalog/tuple.cpp.s
 
 CMakeFiles/btree_benchmark.dir/src/storage/TableHeap.cpp.o: CMakeFiles/btree_benchmark.dir/flags.make
 CMakeFiles/btree_benchmark.dir/src/storage/TableHeap.cpp.o: /Users/jaswanth/Desktop/miniDB/src/storage/TableHeap.cpp
@@ -236,7 +236,7 @@ btree_benchmark_OBJECTS = \
 "CMakeFiles/btree_benchmark.dir/src/storage/b_tree.cpp.o" \
 "CMakeFiles/btree_benchmark.dir/src/storage/b_tree_leaf_page.cpp.o" \
 "CMakeFiles/btree_benchmark.dir/src/storage/b_tree_internal_page.cpp.o" \
-"CMakeFiles/btree_benchmark.dir/src/storage/tuple.cpp.o" \
+"CMakeFiles/btree_benchmark.dir/src/catalog/tuple.cpp.o" \
 "CMakeFiles/btree_benchmark.dir/src/storage/TableHeap.cpp.o" \
 "CMakeFiles/btree_benchmark.dir/src/storage/TableIterator.cpp.o"
 
@@ -251,7 +251,7 @@ btree_benchmark: CMakeFiles/btree_benchmark.dir/src/storage/rid.cpp.o
 btree_benchmark: CMakeFiles/btree_benchmark.dir/src/storage/b_tree.cpp.o
 btree_benchmark: CMakeFiles/btree_benchmark.dir/src/storage/b_tree_leaf_page.cpp.o
 btree_benchmark: CMakeFiles/btree_benchmark.dir/src/storage/b_tree_internal_page.cpp.o
-btree_benchmark: CMakeFiles/btree_benchmark.dir/src/storage/tuple.cpp.o
+btree_benchmark: CMakeFiles/btree_benchmark.dir/src/catalog/tuple.cpp.o
 btree_benchmark: CMakeFiles/btree_benchmark.dir/src/storage/TableHeap.cpp.o
 btree_benchmark: CMakeFiles/btree_benchmark.dir/src/storage/TableIterator.cpp.o
 btree_benchmark: CMakeFiles/btree_benchmark.dir/build.make

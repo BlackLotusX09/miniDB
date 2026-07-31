@@ -54,4 +54,5 @@ set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/integration_test.dir/DependInfo.cmake"
   "CMakeFiles/bplus_tree_test.dir/DependInfo.cmake"
   "CMakeFiles/btree_benchmark.dir/DependInfo.cmake"
+  "CMakeFiles/catalog_test.dir/DependInfo.cmake"
   )

@@ -1,4 +1,8 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/minidb.dir/src/catalog/catalog.cpp.o"
+  "CMakeFiles/minidb.dir/src/catalog/catalog.cpp.o.d"
+  "CMakeFiles/minidb.dir/src/catalog/tuple.cpp.o"
+  "CMakeFiles/minidb.dir/src/catalog/tuple.cpp.o.d"
   "CMakeFiles/minidb.dir/src/main.cpp.o"
   "CMakeFiles/minidb.dir/src/main.cpp.o.d"
   "CMakeFiles/minidb.dir/src/storage/BufferPool.cpp.o"
@@ -13,8 +17,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/minidb.dir/src/storage/page.cpp.o.d"
   "CMakeFiles/minidb.dir/src/storage/rid.cpp.o"
   "CMakeFiles/minidb.dir/src/storage/rid.cpp.o.d"
-  "CMakeFiles/minidb.dir/src/storage/tuple.cpp.o"
-  "CMakeFiles/minidb.dir/src/storage/tuple.cpp.o.d"
   "minidb"
   "minidb.pdb"
 )
