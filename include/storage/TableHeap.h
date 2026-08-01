@@ -1,8 +1,8 @@
 #pragma once
 #include <vector>
 #include "storage/BufferPool.h"
-#include "storage/schema.h"
-#include "storage/tuple.h"
+#include "catalog/schema.h"
+#include "catalog/tuple.h"
 #include "storage/rid.h"
 #include "storage/TableIterator.h"
 

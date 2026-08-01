@@ -22,12 +22,12 @@
 
 #include "storage/DiskManager.h"
 #include "storage/BufferPool.h"
-#include "storage/b+tree.h"
+#include "storage/b_tree.h"
 #include "storage/TableHeap.h"
 #include "storage/TableIterator.h"
-#include "storage/schema.h"
-#include "storage/tuple.h"
-#include "storage/value.h"
+#include "catalog/schema.h"
+#include "catalog/tuple.h"
+#include "catalog/value.h"
 #include "storage/rid.h"
 
 using namespace std;
@@ -55,7 +55,8 @@ static BPlusTree* MakeTree(const string& db, DiskManager*& dm,
     dm  = new DiskManager(db);
     bpm = new BufferPoolManager(dm);
     Page* h = bpm->NewPage(&hid);
-    assert(h); bpm->UnpinPage(hid, false);
+    assert(h);
+    bpm->UnpinPage(hid, false);
     return new BPlusTree(bpm, hid);
 }
 static void DestroyTree(const string& db, BPlusTree* t,

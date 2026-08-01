@@ -1,4 +1,4 @@
-#include "b_tree_internal_page.h"
+#include "storage/b_tree_internal_page.h"
 #include <cassert>
 
 BTreeInternalPage::BTreeInternalPage(Page* page) : data_(page->GetData()) {

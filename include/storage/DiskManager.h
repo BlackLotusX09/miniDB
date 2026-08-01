@@ -12,7 +12,7 @@ class DiskManager {
 private:
     fstream db_file;
     string meta_path_;   // stores the .meta file path
-    page_id_t next_page_id;
+    page_id_t next_page_id=1;
 
     void LoadMeta();
     void SaveMeta();

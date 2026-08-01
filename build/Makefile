@@ -217,6 +217,19 @@ catalog_test/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/catalog_test.dir/build.make CMakeFiles/catalog_test.dir/build
 .PHONY : catalog_test/fast
 
+#=============================================================================
+# Target rules for targets named lexer_test
+
+# Build rule for target.
+lexer_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lexer_test
+.PHONY : lexer_test
+
+# fast build rule for target.
+lexer_test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lexer_test.dir/build.make CMakeFiles/lexer_test.dir/build
+.PHONY : lexer_test/fast
+
 src/catalog/catalog.o: src/catalog/catalog.cpp.o
 .PHONY : src/catalog/catalog.o
 
@@ -303,6 +316,30 @@ src/main.s: src/main.cpp.s
 src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/minidb.dir/build.make CMakeFiles/minidb.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
+
+src/parser/lexer.o: src/parser/lexer.cpp.o
+.PHONY : src/parser/lexer.o
+
+# target to build an object file
+src/parser/lexer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lexer_test.dir/build.make CMakeFiles/lexer_test.dir/src/parser/lexer.cpp.o
+.PHONY : src/parser/lexer.cpp.o
+
+src/parser/lexer.i: src/parser/lexer.cpp.i
+.PHONY : src/parser/lexer.i
+
+# target to preprocess a source file
+src/parser/lexer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lexer_test.dir/build.make CMakeFiles/lexer_test.dir/src/parser/lexer.cpp.i
+.PHONY : src/parser/lexer.cpp.i
+
+src/parser/lexer.s: src/parser/lexer.cpp.s
+.PHONY : src/parser/lexer.s
+
+# target to generate assembly for a file
+src/parser/lexer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lexer_test.dir/build.make CMakeFiles/lexer_test.dir/src/parser/lexer.cpp.s
+.PHONY : src/parser/lexer.cpp.s
 
 src/storage/BufferPool.o: src/storage/BufferPool.cpp.o
 .PHONY : src/storage/BufferPool.o
@@ -727,6 +764,30 @@ test/integration_test.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/test/integration_test.cpp.s
 .PHONY : test/integration_test.cpp.s
 
+test/lexer_test.o: test/lexer_test.cpp.o
+.PHONY : test/lexer_test.o
+
+# target to build an object file
+test/lexer_test.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lexer_test.dir/build.make CMakeFiles/lexer_test.dir/test/lexer_test.cpp.o
+.PHONY : test/lexer_test.cpp.o
+
+test/lexer_test.i: test/lexer_test.cpp.i
+.PHONY : test/lexer_test.i
+
+# target to preprocess a source file
+test/lexer_test.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lexer_test.dir/build.make CMakeFiles/lexer_test.dir/test/lexer_test.cpp.i
+.PHONY : test/lexer_test.cpp.i
+
+test/lexer_test.s: test/lexer_test.cpp.s
+.PHONY : test/lexer_test.s
+
+# target to generate assembly for a file
+test/lexer_test.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lexer_test.dir/build.make CMakeFiles/lexer_test.dir/test/lexer_test.cpp.s
+.PHONY : test/lexer_test.cpp.s
+
 test/slotted_page_test.o: test/slotted_page_test.cpp.o
 .PHONY : test/slotted_page_test.o
 
@@ -765,6 +826,7 @@ help:
 	@echo "... catalog_test"
 	@echo "... disk_manager_test"
 	@echo "... integration_test"
+	@echo "... lexer_test"
 	@echo "... minidb"
 	@echo "... slotted_page_test"
 	@echo "... src/catalog/catalog.o"
@@ -776,6 +838,9 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/parser/lexer.o"
+	@echo "... src/parser/lexer.i"
+	@echo "... src/parser/lexer.s"
 	@echo "... src/storage/BufferPool.o"
 	@echo "... src/storage/BufferPool.i"
 	@echo "... src/storage/BufferPool.s"
@@ -818,6 +883,9 @@ help:
 	@echo "... test/integration_test.o"
 	@echo "... test/integration_test.i"
 	@echo "... test/integration_test.s"
+	@echo "... test/lexer_test.o"
+	@echo "... test/lexer_test.i"
+	@echo "... test/lexer_test.s"
 	@echo "... test/slotted_page_test.o"
 	@echo "... test/slotted_page_test.i"
 	@echo "... test/slotted_page_test.s"

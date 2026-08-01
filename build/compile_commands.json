@@ -310,5 +310,17 @@
   "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/catalog_test.dir/src/storage/TableIterator.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/TableIterator.cpp",
   "file": "/Users/jaswanth/Desktop/miniDB/src/storage/TableIterator.cpp",
   "output": "CMakeFiles/catalog_test.dir/src/storage/TableIterator.cpp.o"
+},
+{
+  "directory": "/Users/jaswanth/Desktop/miniDB/build",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/lexer_test.dir/test/lexer_test.cpp.o -c /Users/jaswanth/Desktop/miniDB/test/lexer_test.cpp",
+  "file": "/Users/jaswanth/Desktop/miniDB/test/lexer_test.cpp",
+  "output": "CMakeFiles/lexer_test.dir/test/lexer_test.cpp.o"
+},
+{
+  "directory": "/Users/jaswanth/Desktop/miniDB/build",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/lexer_test.dir/src/parser/lexer.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/parser/lexer.cpp",
+  "file": "/Users/jaswanth/Desktop/miniDB/src/parser/lexer.cpp",
+  "output": "CMakeFiles/lexer_test.dir/src/parser/lexer.cpp.o"
 }
 ]

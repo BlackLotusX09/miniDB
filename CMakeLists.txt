@@ -5,16 +5,36 @@ project(MiniDB VERSION 1.0.0 LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# ── Shared storage library ─────────────────────────────────────────────────────
+# ── Shared source lists ────────────────────────────────────────────────────────
 set(STORAGE_SOURCES
     src/storage/DiskManager.cpp
     src/storage/BufferPool.cpp
     src/storage/page.cpp
-    src/storage/tuple.cpp
+    src/catalog/tuple.cpp
+    src/catalog/catalog.cpp
     src/storage/rid.cpp
     src/storage/TableHeap.cpp
     src/storage/TableIterator.cpp
 )
+set(PARSER_SOURCES
+    src/parser/lexer.cpp
+)
+
+set(BTREE_SOURCES
+    src/storage/DiskManager.cpp
+    src/storage/BufferPool.cpp
+    src/storage/page.cpp
+    src/storage/rid.cpp
+    src/storage/b_tree.cpp
+    src/storage/b_tree_leaf_page.cpp
+    src/storage/b_tree_internal_page.cpp
+)
+
+# ── Copy data directory into build ────────────────────────────────────────────
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/data
+     DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+
+enable_testing()
 
 # ── Main executable ────────────────────────────────────────────────────────────
 add_executable(minidb
@@ -31,54 +51,54 @@ add_executable(disk_manager_test
     src/storage/BufferPool.cpp
 )
 target_include_directories(disk_manager_test PRIVATE include)
+add_test(NAME disk_manager_test COMMAND disk_manager_test)
 
 # ── Test: SlottedPage ─────────────────────────────────────────────────────────
-add_executable(slottedPage_test
-    test/slottedPage_test.cpp
+add_executable(slotted_page_test
+    test/slotted_page_test.cpp
     src/storage/page.cpp
 )
-target_include_directories(slottedPage_test PRIVATE include)
+target_include_directories(slotted_page_test PRIVATE include)
+add_test(NAME slotted_page_test COMMAND slotted_page_test)
 
-# ── Test: Day 7 Full Integration ──────────────────────────────────────────────
+# ── Test: Full storage integration (TableHeap + TableIterator) ────────────────
 add_executable(integration_test
     test/integration_test.cpp
     ${STORAGE_SOURCES}
 )
 target_include_directories(integration_test PRIVATE include)
+add_test(NAME integration_test COMMAND integration_test)
 
-# ── Copy data directory into build ────────────────────────────────────────────
-file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/data
-     DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
-
-enable_testing()
-add_test(NAME IntegrationTest COMMAND integration_test)
-# ── Test: Day 9-10 B+ Tree Stress + Validation ────────────────────────────────
-add_executable(BplusTreeTest
-    test/BplusTreeTest.cpp
-    src/storage/DiskManager.cpp
-    src/storage/BufferPool.cpp
-    src/storage/page.cpp
-    src/storage/rid.cpp
-    src/storage/b_tree.cpp
-    src/storage/b_tree_leaf_page.cpp
-    src/storage/b_tree_internal_page.cpp
+# ── Test: B+ Tree — insert / delete / range scan / pin audit / restart ────────
+add_executable(bplus_tree_test
+    test/bplus_tree_test.cpp
+    ${BTREE_SOURCES}
 )
-target_include_directories(BplusTreeTest PRIVATE include include/storage src/storage)
-add_test(NAME BplusTreeTest COMMAND BplusTreeTest)
+target_include_directories(bplus_tree_test PRIVATE include)
+add_test(NAME bplus_tree_test COMMAND bplus_tree_test)
 
-# ── Day 17: Benchmark ─────────────────────────────────────────────────────
+# ── Benchmark: B+ Tree vs sequential scan (Day 17) ────────────────────────────
 add_executable(btree_benchmark
     test/btree_benchmark.cpp
-    src/storage/DiskManager.cpp
-    src/storage/BufferPool.cpp
-    src/storage/page.cpp
-    src/storage/rid.cpp
-    src/storage/tuple.cpp
+    ${BTREE_SOURCES}
+    src/catalog/tuple.cpp
     src/storage/TableHeap.cpp
     src/storage/TableIterator.cpp
-    src/storage/b_tree.cpp
-    src/storage/b_tree_leaf_page.cpp
-    src/storage/b_tree_internal_page.cpp
 )
-target_include_directories(btree_benchmark PRIVATE include include/storage src/storage)
+target_include_directories(btree_benchmark PRIVATE include)
 target_compile_options(btree_benchmark PRIVATE -O2)
+
+# ── Test: Catalog — create / get / persistence round-trip ─────────────────────
+add_executable(catalog_test
+    test/catalog_test.cpp
+    ${STORAGE_SOURCES}
+)
+target_include_directories(catalog_test PRIVATE include)
+add_test(NAME catalog_test COMMAND catalog_test)
+
+add_executable(lexer_test
+    test/lexer_test.cpp
+    ${PARSER_SOURCES}
+)
+target_include_directories(lexer_test PRIVATE include)
+add_test(NAME lexer_test COMMAND lexer_test)

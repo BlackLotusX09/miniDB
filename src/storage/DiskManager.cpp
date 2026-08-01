@@ -1,7 +1,7 @@
 #include "storage/DiskManager.h"
 
 // On open: if file exists, load saved next_page_id from meta; otherwise start at 0
-DiskManager::DiskManager(string filename) : next_page_id(0) {
+DiskManager::DiskManager(string filename) : next_page_id(1) {
     meta_path_ = filename + ".meta";
 
     db_file.open(filename, ios::in | ios::out | ios::binary);

@@ -1,6 +1,6 @@
 #pragma once
 #include "storage/BufferPool.h"
-#include "storage/tuple.h"
+#include "catalog/tuple.h"
 
 using namespace std;
 

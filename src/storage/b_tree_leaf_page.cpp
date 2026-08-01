@@ -1,5 +1,5 @@
-#include "b_tree_leaf_page.h"
-#include "page.h"
+#include "storage/b_tree_leaf_page.h"
+#include "storage/page.h"
 #include <cstring>
 
 BTreeLeafPage::BTreeLeafPage(Page* page) : data_(page->GetData()) {
