@@ -47,3 +47,46 @@ private:
     std::unique_ptr<Predicate> predicate_;
 
 };
+
+//Projection executor
+class ProjectionExecutor : public Executor{
+public:
+    ProjectionExecutor(std::unique_ptr<Executor> child, std::vector<std::string> col_names);
+    void Init() override;
+    bool Next(Tuple* out, RID* rid) override;
+    void Close() override;
+    const Schema* OutputSchema() const override;
+private:
+    std::unique_ptr<Executor> child_executor_;
+    std::vector<std::string> col_names_;
+    Schema output_schema_;
+};
+
+//InsertExecutor
+class InsertExecutor : public Executor{
+public:
+    InsertExecutor(TableInfo* table_info, std::vector<Value> values);
+    void Init() override;
+    bool Next(Tuple* out, RID* rid_out) override;
+    void Close() override;
+    const Schema* OutputSchema() const override;
+private:
+    TableInfo* table_info_;
+    std::vector<Value> values_;
+    bool done_ = false;
+    Schema output_schema_; // single INT column: "rows_affected"
+};
+
+//DeleteExecutor
+class DeleteExecutor : public Executor{
+public:
+    DeleteExecutor(TableInfo* table_info, std::unique_ptr<Executor> child);
+    void Init() override;
+    bool Next(Tuple* out, RID* rid_out) override;
+    void Close() override;
+    const Schema* OutputSchema() const override;
+private:
+    TableInfo* table_info_;
+    std::unique_ptr<Executor> child_executor_;
+    Schema output_schema_; // single INT column: "rows_affected"
+};

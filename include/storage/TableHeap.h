@@ -24,6 +24,7 @@ public:
 
     bool InsertTuple(const Tuple& tuple, RID* rid, const Schema& schema);
     bool GetTuple(const RID& rid, Tuple* tuple, const Schema& schema);
+    bool DeleteTuple(const RID& rid);
 
     page_id_t GetFirstPageId() const { return first_page_id; }
 

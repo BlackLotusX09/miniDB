@@ -110,3 +110,14 @@ bool TableHeap::GetTuple(const RID& rid, Tuple* tuple, const Schema& schema) {
     buffer_pool_manager->UnpinPage(rid.page_id, false);
     return false;
 }
+
+// ─── DeleteTuple ──────────────────────────────────────────────────────────────
+bool TableHeap::DeleteTuple(const RID& rid) {
+    Page* page = buffer_pool_manager->FetchPage(rid.page_id);
+    if (page == nullptr) return false;
+
+    SlottedPage* slp = reinterpret_cast<SlottedPage*>(page->GetData());
+    bool ok = slp->DeleteRecord(rid.slot_id);
+    buffer_pool_manager->UnpinPage(rid.page_id, /*is_dirty=*/ok);
+    return ok;
+}
