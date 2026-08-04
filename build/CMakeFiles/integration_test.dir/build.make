@@ -156,10 +156,24 @@ CMakeFiles/integration_test.dir/src/catalog/catalog.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/integration_test.dir/src/catalog/catalog.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jaswanth/Desktop/miniDB/src/catalog/catalog.cpp -o CMakeFiles/integration_test.dir/src/catalog/catalog.cpp.s
 
+CMakeFiles/integration_test.dir/src/catalog/schema.cpp.o: CMakeFiles/integration_test.dir/flags.make
+CMakeFiles/integration_test.dir/src/catalog/schema.cpp.o: /Users/jaswanth/Desktop/miniDB/src/catalog/schema.cpp
+CMakeFiles/integration_test.dir/src/catalog/schema.cpp.o: CMakeFiles/integration_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/jaswanth/Desktop/miniDB/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/integration_test.dir/src/catalog/schema.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/integration_test.dir/src/catalog/schema.cpp.o -MF CMakeFiles/integration_test.dir/src/catalog/schema.cpp.o.d -o CMakeFiles/integration_test.dir/src/catalog/schema.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/catalog/schema.cpp
+
+CMakeFiles/integration_test.dir/src/catalog/schema.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/integration_test.dir/src/catalog/schema.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jaswanth/Desktop/miniDB/src/catalog/schema.cpp > CMakeFiles/integration_test.dir/src/catalog/schema.cpp.i
+
+CMakeFiles/integration_test.dir/src/catalog/schema.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/integration_test.dir/src/catalog/schema.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jaswanth/Desktop/miniDB/src/catalog/schema.cpp -o CMakeFiles/integration_test.dir/src/catalog/schema.cpp.s
+
 CMakeFiles/integration_test.dir/src/storage/rid.cpp.o: CMakeFiles/integration_test.dir/flags.make
 CMakeFiles/integration_test.dir/src/storage/rid.cpp.o: /Users/jaswanth/Desktop/miniDB/src/storage/rid.cpp
 CMakeFiles/integration_test.dir/src/storage/rid.cpp.o: CMakeFiles/integration_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/jaswanth/Desktop/miniDB/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/integration_test.dir/src/storage/rid.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/jaswanth/Desktop/miniDB/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/integration_test.dir/src/storage/rid.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/integration_test.dir/src/storage/rid.cpp.o -MF CMakeFiles/integration_test.dir/src/storage/rid.cpp.o.d -o CMakeFiles/integration_test.dir/src/storage/rid.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/rid.cpp
 
 CMakeFiles/integration_test.dir/src/storage/rid.cpp.i: cmake_force
@@ -173,7 +187,7 @@ CMakeFiles/integration_test.dir/src/storage/rid.cpp.s: cmake_force
 CMakeFiles/integration_test.dir/src/storage/TableHeap.cpp.o: CMakeFiles/integration_test.dir/flags.make
 CMakeFiles/integration_test.dir/src/storage/TableHeap.cpp.o: /Users/jaswanth/Desktop/miniDB/src/storage/TableHeap.cpp
 CMakeFiles/integration_test.dir/src/storage/TableHeap.cpp.o: CMakeFiles/integration_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/jaswanth/Desktop/miniDB/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/integration_test.dir/src/storage/TableHeap.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/jaswanth/Desktop/miniDB/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/integration_test.dir/src/storage/TableHeap.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/integration_test.dir/src/storage/TableHeap.cpp.o -MF CMakeFiles/integration_test.dir/src/storage/TableHeap.cpp.o.d -o CMakeFiles/integration_test.dir/src/storage/TableHeap.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/TableHeap.cpp
 
 CMakeFiles/integration_test.dir/src/storage/TableHeap.cpp.i: cmake_force
@@ -187,7 +201,7 @@ CMakeFiles/integration_test.dir/src/storage/TableHeap.cpp.s: cmake_force
 CMakeFiles/integration_test.dir/src/storage/TableIterator.cpp.o: CMakeFiles/integration_test.dir/flags.make
 CMakeFiles/integration_test.dir/src/storage/TableIterator.cpp.o: /Users/jaswanth/Desktop/miniDB/src/storage/TableIterator.cpp
 CMakeFiles/integration_test.dir/src/storage/TableIterator.cpp.o: CMakeFiles/integration_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/jaswanth/Desktop/miniDB/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/integration_test.dir/src/storage/TableIterator.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/jaswanth/Desktop/miniDB/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/integration_test.dir/src/storage/TableIterator.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/integration_test.dir/src/storage/TableIterator.cpp.o -MF CMakeFiles/integration_test.dir/src/storage/TableIterator.cpp.o.d -o CMakeFiles/integration_test.dir/src/storage/TableIterator.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/TableIterator.cpp
 
 CMakeFiles/integration_test.dir/src/storage/TableIterator.cpp.i: cmake_force
@@ -206,6 +220,7 @@ integration_test_OBJECTS = \
 "CMakeFiles/integration_test.dir/src/storage/page.cpp.o" \
 "CMakeFiles/integration_test.dir/src/catalog/tuple.cpp.o" \
 "CMakeFiles/integration_test.dir/src/catalog/catalog.cpp.o" \
+"CMakeFiles/integration_test.dir/src/catalog/schema.cpp.o" \
 "CMakeFiles/integration_test.dir/src/storage/rid.cpp.o" \
 "CMakeFiles/integration_test.dir/src/storage/TableHeap.cpp.o" \
 "CMakeFiles/integration_test.dir/src/storage/TableIterator.cpp.o"
@@ -219,12 +234,13 @@ integration_test: CMakeFiles/integration_test.dir/src/storage/BufferPool.cpp.o
 integration_test: CMakeFiles/integration_test.dir/src/storage/page.cpp.o
 integration_test: CMakeFiles/integration_test.dir/src/catalog/tuple.cpp.o
 integration_test: CMakeFiles/integration_test.dir/src/catalog/catalog.cpp.o
+integration_test: CMakeFiles/integration_test.dir/src/catalog/schema.cpp.o
 integration_test: CMakeFiles/integration_test.dir/src/storage/rid.cpp.o
 integration_test: CMakeFiles/integration_test.dir/src/storage/TableHeap.cpp.o
 integration_test: CMakeFiles/integration_test.dir/src/storage/TableIterator.cpp.o
 integration_test: CMakeFiles/integration_test.dir/build.make
 integration_test: CMakeFiles/integration_test.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/jaswanth/Desktop/miniDB/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable integration_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/jaswanth/Desktop/miniDB/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX executable integration_test"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/integration_test.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

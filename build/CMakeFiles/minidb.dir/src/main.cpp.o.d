@@ -793,6 +793,7 @@ CMakeFiles/minidb.dir/src/main.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/stack.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/print \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/unistd.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/sstream \
   /Users/jaswanth/Desktop/miniDB/include/storage/DiskManager.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/fstream \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/filesystem \
@@ -829,4 +830,9 @@ CMakeFiles/minidb.dir/src/main.cpp.o: \
   /Users/jaswanth/Desktop/miniDB/include/storage/TableIterator.h \
   /Users/jaswanth/Desktop/miniDB/include/storage/b_tree.h \
   /Users/jaswanth/Desktop/miniDB/include/storage/b_tree_internal_page.h \
-  /Users/jaswanth/Desktop/miniDB/include/storage/b_tree_leaf_page.h
+  /Users/jaswanth/Desktop/miniDB/include/storage/b_tree_leaf_page.h \
+  /Users/jaswanth/Desktop/miniDB/include/parser/lexer.h \
+  /Users/jaswanth/Desktop/miniDB/include/parser/token.h \
+  /Users/jaswanth/Desktop/miniDB/include/parser/parser.h \
+  /Users/jaswanth/Desktop/miniDB/include/parser/ast.h \
+  /Users/jaswanth/Desktop/miniDB/include/parser/binder.h

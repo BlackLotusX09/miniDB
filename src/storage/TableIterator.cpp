@@ -1,57 +1,72 @@
 #include "storage/TableIterator.h"
+#include "storage/page.h"
+#include <cstdint>
 
 TableIterator::TableIterator(BufferPoolManager* bpm, page_id_t start_page){
-    this->bpm=bpm;
-    this->page_id=start_page;
-    current_page_ptr=bpm->FetchPage(start_page);
-    this->slot_id=0;
+    this->bpm_=bpm;
+    this->page_id_=start_page;
+    current_page_=bpm->FetchPage(start_page);
+    this->slot_id_=0;
+    AdvanceToValid();
+}
+TableIterator::TableIterator(){
+    bpm_=nullptr;
+    page_id_=INVALID_PAGE_ID;
+    slot_id_ = 0;
+    current_page_ = nullptr;
+}
+TableIterator::~TableIterator(){
+    if (bpm_ != nullptr && page_id_ != INVALID_PAGE_ID && current_page_ != nullptr) {
+        bpm_->UnpinPage(page_id_, false);
+    }
+}
+void TableIterator::AdvanceToValid() {
+    while (true) {                          // ← needs this loop
+        if (page_id_ == INVALID_PAGE_ID) return;
+
+        SlottedPage* slp = reinterpret_cast<SlottedPage*>(current_page_->GetData());
+
+        if (slot_id_ < slp->Header()->num_slots) {
+            uint16_t len;
+            const char* record = slp->GetRecord(slot_id_, &len);
+            if (record != nullptr) return;  // found a valid slot, stop
+            slot_id_++;
+            continue;                       // ← loop again to check next slot
+        }
+
+        // exhausted this page → move to next
+        page_id_t next = slp->Header()->next_page_id;
+        bpm_->UnpinPage(page_id_, false);
+        if (next == INVALID_PAGE_ID) {
+            page_id_ = INVALID_PAGE_ID;
+            current_page_ = nullptr;
+            return;
+        }
+        page_id_ = next;
+        slot_id_ = 0;
+        current_page_ = bpm_->FetchPage(page_id_);
+        // loop again to check the new page
+    }
 }
 
-bool TableIterator::Move(Tuple* tuple) {
-    // If we are already at the end of the table, immediately stop
-    if (page_id == INVALID_PAGE_ID || current_page_ptr == nullptr) {
-        return false;
-    }
+const char* TableIterator::GetData() const{
+    SlottedPage* slp = reinterpret_cast<SlottedPage*>(current_page_->GetData());
+    uint16_t len;
+    return slp->GetRecord(slot_id_, &len);
+}
+uint16_t TableIterator::GetLength() const {
+    SlottedPage* slp = reinterpret_cast<SlottedPage*>(current_page_->GetData());
+    uint16_t len;
+    slp->GetRecord(slot_id_, &len);
+    return len;
+}
 
-    while (true) {
-        SlottedPage* slp = reinterpret_cast<SlottedPage*>(current_page_ptr->GetData());
-        
-        // 1. If we are within bounds of the current page's slots
-        if (slot_id < slp->Header()->num_slots) {
-            uint16_t len = 0;
-            const char* record = slp->GetRecord(slot_id, &len);
-            
-            if (record != nullptr) {
-                // SUCCESS: Found a valid record!
-                Tuple current_tuple(record, len);
-                *tuple = current_tuple;
-                
-                slot_id++; // Move forward so the NEXT call checks the next slot
-                return true;
-            }
-            
-            // If record is nullptr, it's tombstoned/deleted. Just skip to the next slot!
-            slot_id++;
-            continue;
-        }
-        
-        // 2. If we reach here, slot_id >= num_slots (End of the current page)
-        page_id_t next_pid = slp->Header()->next_page_id;
-        
-        // Always unpin the current page before leaving it
-        bpm->UnpinPage(page_id, false);
-        
-        if (next_pid == INVALID_PAGE_ID) {
-            // We hit the absolute end of the database table
-            page_id = INVALID_PAGE_ID;
-            current_page_ptr = nullptr;
-            slot_id = 0;
-            return false;
-        }
-        
-        // Move coordinates to the start of the next page and let the while loop check it
-        page_id = next_pid;
-        slot_id = 0;
-        current_page_ptr = bpm->FetchPage(page_id);
-    }
+TableIterator& TableIterator::operator++(){
+    slot_id_++;
+    this->AdvanceToValid();
+    return *this;
+}
+
+bool TableIterator::operator==(const TableIterator& other) const{
+    return page_id_ == other.page_id_ && slot_id_ == other.slot_id_;
 }

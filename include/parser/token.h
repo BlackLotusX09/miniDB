@@ -10,6 +10,7 @@ enum class TokenType {
     IDENTIFIER,     // user-defined names: table names, column names
     INT_LITERAL,    // integer constants: 42, 100
     STRING_LITERAL, // quoted strings: 'hello'
+    BOOL_LITERAL,   // true / false
     OPERATOR,       // >, >=, <, <=, =, !=
     LPAREN,         // (
     RPAREN,         // )

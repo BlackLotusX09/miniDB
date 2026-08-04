@@ -9,6 +9,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/jaswanth/Desktop/miniDB/src/parser/lexer.cpp" "CMakeFiles/lexer_test.dir/src/parser/lexer.cpp.o" "gcc" "CMakeFiles/lexer_test.dir/src/parser/lexer.cpp.o.d"
+  "/Users/jaswanth/Desktop/miniDB/src/parser/parser.cpp" "CMakeFiles/lexer_test.dir/src/parser/parser.cpp.o" "gcc" "CMakeFiles/lexer_test.dir/src/parser/parser.cpp.o.d"
   "/Users/jaswanth/Desktop/miniDB/test/lexer_test.cpp" "CMakeFiles/lexer_test.dir/test/lexer_test.cpp.o" "gcc" "CMakeFiles/lexer_test.dir/test/lexer_test.cpp.o.d"
   )
 

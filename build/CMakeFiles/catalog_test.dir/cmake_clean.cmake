@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/catalog_test.dir/src/catalog/catalog.cpp.o"
   "CMakeFiles/catalog_test.dir/src/catalog/catalog.cpp.o.d"
+  "CMakeFiles/catalog_test.dir/src/catalog/schema.cpp.o"
+  "CMakeFiles/catalog_test.dir/src/catalog/schema.cpp.o.d"
   "CMakeFiles/catalog_test.dir/src/catalog/tuple.cpp.o"
   "CMakeFiles/catalog_test.dir/src/catalog/tuple.cpp.o.d"
   "CMakeFiles/catalog_test.dir/src/storage/BufferPool.cpp.o"

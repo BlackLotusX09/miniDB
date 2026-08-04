@@ -6,6 +6,8 @@
 /Users/jaswanth/Desktop/miniDB/build/CMakeFiles/btree_benchmark.dir
 /Users/jaswanth/Desktop/miniDB/build/CMakeFiles/catalog_test.dir
 /Users/jaswanth/Desktop/miniDB/build/CMakeFiles/lexer_test.dir
+/Users/jaswanth/Desktop/miniDB/build/CMakeFiles/binder_test.dir
+/Users/jaswanth/Desktop/miniDB/build/CMakeFiles/binder_debug.dir
 /Users/jaswanth/Desktop/miniDB/build/CMakeFiles/test.dir
 /Users/jaswanth/Desktop/miniDB/build/CMakeFiles/edit_cache.dir
 /Users/jaswanth/Desktop/miniDB/build/CMakeFiles/rebuild_cache.dir

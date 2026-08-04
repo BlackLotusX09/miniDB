@@ -230,6 +230,62 @@ lexer_test/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lexer_test.dir/build.make CMakeFiles/lexer_test.dir/build
 .PHONY : lexer_test/fast
 
+#=============================================================================
+# Target rules for targets named binder_test
+
+# Build rule for target.
+binder_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 binder_test
+.PHONY : binder_test
+
+# fast build rule for target.
+binder_test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_test.dir/build.make CMakeFiles/binder_test.dir/build
+.PHONY : binder_test/fast
+
+#=============================================================================
+# Target rules for targets named binder_debug
+
+# Build rule for target.
+binder_debug: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 binder_debug
+.PHONY : binder_debug
+
+# fast build rule for target.
+binder_debug/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_debug.dir/build.make CMakeFiles/binder_debug.dir/build
+.PHONY : binder_debug/fast
+
+src/binder/binder.o: src/binder/binder.cpp.o
+.PHONY : src/binder/binder.o
+
+# target to build an object file
+src/binder/binder.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minidb.dir/build.make CMakeFiles/minidb.dir/src/binder/binder.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_test.dir/build.make CMakeFiles/binder_test.dir/src/binder/binder.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_debug.dir/build.make CMakeFiles/binder_debug.dir/src/binder/binder.cpp.o
+.PHONY : src/binder/binder.cpp.o
+
+src/binder/binder.i: src/binder/binder.cpp.i
+.PHONY : src/binder/binder.i
+
+# target to preprocess a source file
+src/binder/binder.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minidb.dir/build.make CMakeFiles/minidb.dir/src/binder/binder.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_test.dir/build.make CMakeFiles/binder_test.dir/src/binder/binder.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_debug.dir/build.make CMakeFiles/binder_debug.dir/src/binder/binder.cpp.i
+.PHONY : src/binder/binder.cpp.i
+
+src/binder/binder.s: src/binder/binder.cpp.s
+.PHONY : src/binder/binder.s
+
+# target to generate assembly for a file
+src/binder/binder.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minidb.dir/build.make CMakeFiles/minidb.dir/src/binder/binder.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_test.dir/build.make CMakeFiles/binder_test.dir/src/binder/binder.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_debug.dir/build.make CMakeFiles/binder_debug.dir/src/binder/binder.cpp.s
+.PHONY : src/binder/binder.cpp.s
+
 src/catalog/catalog.o: src/catalog/catalog.cpp.o
 .PHONY : src/catalog/catalog.o
 
@@ -238,6 +294,8 @@ src/catalog/catalog.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/minidb.dir/build.make CMakeFiles/minidb.dir/src/catalog/catalog.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/catalog/catalog.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/catalog_test.dir/build.make CMakeFiles/catalog_test.dir/src/catalog/catalog.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_test.dir/build.make CMakeFiles/binder_test.dir/src/catalog/catalog.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_debug.dir/build.make CMakeFiles/binder_debug.dir/src/catalog/catalog.cpp.o
 .PHONY : src/catalog/catalog.cpp.o
 
 src/catalog/catalog.i: src/catalog/catalog.cpp.i
@@ -248,6 +306,8 @@ src/catalog/catalog.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/minidb.dir/build.make CMakeFiles/minidb.dir/src/catalog/catalog.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/catalog/catalog.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/catalog_test.dir/build.make CMakeFiles/catalog_test.dir/src/catalog/catalog.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_test.dir/build.make CMakeFiles/binder_test.dir/src/catalog/catalog.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_debug.dir/build.make CMakeFiles/binder_debug.dir/src/catalog/catalog.cpp.i
 .PHONY : src/catalog/catalog.cpp.i
 
 src/catalog/catalog.s: src/catalog/catalog.cpp.s
@@ -258,7 +318,45 @@ src/catalog/catalog.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/minidb.dir/build.make CMakeFiles/minidb.dir/src/catalog/catalog.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/catalog/catalog.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/catalog_test.dir/build.make CMakeFiles/catalog_test.dir/src/catalog/catalog.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_test.dir/build.make CMakeFiles/binder_test.dir/src/catalog/catalog.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_debug.dir/build.make CMakeFiles/binder_debug.dir/src/catalog/catalog.cpp.s
 .PHONY : src/catalog/catalog.cpp.s
+
+src/catalog/schema.o: src/catalog/schema.cpp.o
+.PHONY : src/catalog/schema.o
+
+# target to build an object file
+src/catalog/schema.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minidb.dir/build.make CMakeFiles/minidb.dir/src/catalog/schema.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/catalog/schema.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/catalog_test.dir/build.make CMakeFiles/catalog_test.dir/src/catalog/schema.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_test.dir/build.make CMakeFiles/binder_test.dir/src/catalog/schema.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_debug.dir/build.make CMakeFiles/binder_debug.dir/src/catalog/schema.cpp.o
+.PHONY : src/catalog/schema.cpp.o
+
+src/catalog/schema.i: src/catalog/schema.cpp.i
+.PHONY : src/catalog/schema.i
+
+# target to preprocess a source file
+src/catalog/schema.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minidb.dir/build.make CMakeFiles/minidb.dir/src/catalog/schema.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/catalog/schema.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/catalog_test.dir/build.make CMakeFiles/catalog_test.dir/src/catalog/schema.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_test.dir/build.make CMakeFiles/binder_test.dir/src/catalog/schema.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_debug.dir/build.make CMakeFiles/binder_debug.dir/src/catalog/schema.cpp.i
+.PHONY : src/catalog/schema.cpp.i
+
+src/catalog/schema.s: src/catalog/schema.cpp.s
+.PHONY : src/catalog/schema.s
+
+# target to generate assembly for a file
+src/catalog/schema.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minidb.dir/build.make CMakeFiles/minidb.dir/src/catalog/schema.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/catalog/schema.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/catalog_test.dir/build.make CMakeFiles/catalog_test.dir/src/catalog/schema.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_test.dir/build.make CMakeFiles/binder_test.dir/src/catalog/schema.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_debug.dir/build.make CMakeFiles/binder_debug.dir/src/catalog/schema.cpp.s
+.PHONY : src/catalog/schema.cpp.s
 
 src/catalog/tuple.o: src/catalog/tuple.cpp.o
 .PHONY : src/catalog/tuple.o
@@ -269,6 +367,8 @@ src/catalog/tuple.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/catalog/tuple.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/btree_benchmark.dir/build.make CMakeFiles/btree_benchmark.dir/src/catalog/tuple.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/catalog_test.dir/build.make CMakeFiles/catalog_test.dir/src/catalog/tuple.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_test.dir/build.make CMakeFiles/binder_test.dir/src/catalog/tuple.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_debug.dir/build.make CMakeFiles/binder_debug.dir/src/catalog/tuple.cpp.o
 .PHONY : src/catalog/tuple.cpp.o
 
 src/catalog/tuple.i: src/catalog/tuple.cpp.i
@@ -280,6 +380,8 @@ src/catalog/tuple.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/catalog/tuple.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/btree_benchmark.dir/build.make CMakeFiles/btree_benchmark.dir/src/catalog/tuple.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/catalog_test.dir/build.make CMakeFiles/catalog_test.dir/src/catalog/tuple.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_test.dir/build.make CMakeFiles/binder_test.dir/src/catalog/tuple.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_debug.dir/build.make CMakeFiles/binder_debug.dir/src/catalog/tuple.cpp.i
 .PHONY : src/catalog/tuple.cpp.i
 
 src/catalog/tuple.s: src/catalog/tuple.cpp.s
@@ -291,6 +393,8 @@ src/catalog/tuple.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/catalog/tuple.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/btree_benchmark.dir/build.make CMakeFiles/btree_benchmark.dir/src/catalog/tuple.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/catalog_test.dir/build.make CMakeFiles/catalog_test.dir/src/catalog/tuple.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_test.dir/build.make CMakeFiles/binder_test.dir/src/catalog/tuple.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_debug.dir/build.make CMakeFiles/binder_debug.dir/src/catalog/tuple.cpp.s
 .PHONY : src/catalog/tuple.cpp.s
 
 src/main.o: src/main.cpp.o
@@ -322,7 +426,10 @@ src/parser/lexer.o: src/parser/lexer.cpp.o
 
 # target to build an object file
 src/parser/lexer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minidb.dir/build.make CMakeFiles/minidb.dir/src/parser/lexer.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lexer_test.dir/build.make CMakeFiles/lexer_test.dir/src/parser/lexer.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_test.dir/build.make CMakeFiles/binder_test.dir/src/parser/lexer.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_debug.dir/build.make CMakeFiles/binder_debug.dir/src/parser/lexer.cpp.o
 .PHONY : src/parser/lexer.cpp.o
 
 src/parser/lexer.i: src/parser/lexer.cpp.i
@@ -330,7 +437,10 @@ src/parser/lexer.i: src/parser/lexer.cpp.i
 
 # target to preprocess a source file
 src/parser/lexer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minidb.dir/build.make CMakeFiles/minidb.dir/src/parser/lexer.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lexer_test.dir/build.make CMakeFiles/lexer_test.dir/src/parser/lexer.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_test.dir/build.make CMakeFiles/binder_test.dir/src/parser/lexer.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_debug.dir/build.make CMakeFiles/binder_debug.dir/src/parser/lexer.cpp.i
 .PHONY : src/parser/lexer.cpp.i
 
 src/parser/lexer.s: src/parser/lexer.cpp.s
@@ -338,8 +448,44 @@ src/parser/lexer.s: src/parser/lexer.cpp.s
 
 # target to generate assembly for a file
 src/parser/lexer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minidb.dir/build.make CMakeFiles/minidb.dir/src/parser/lexer.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lexer_test.dir/build.make CMakeFiles/lexer_test.dir/src/parser/lexer.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_test.dir/build.make CMakeFiles/binder_test.dir/src/parser/lexer.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_debug.dir/build.make CMakeFiles/binder_debug.dir/src/parser/lexer.cpp.s
 .PHONY : src/parser/lexer.cpp.s
+
+src/parser/parser.o: src/parser/parser.cpp.o
+.PHONY : src/parser/parser.o
+
+# target to build an object file
+src/parser/parser.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minidb.dir/build.make CMakeFiles/minidb.dir/src/parser/parser.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lexer_test.dir/build.make CMakeFiles/lexer_test.dir/src/parser/parser.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_test.dir/build.make CMakeFiles/binder_test.dir/src/parser/parser.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_debug.dir/build.make CMakeFiles/binder_debug.dir/src/parser/parser.cpp.o
+.PHONY : src/parser/parser.cpp.o
+
+src/parser/parser.i: src/parser/parser.cpp.i
+.PHONY : src/parser/parser.i
+
+# target to preprocess a source file
+src/parser/parser.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minidb.dir/build.make CMakeFiles/minidb.dir/src/parser/parser.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lexer_test.dir/build.make CMakeFiles/lexer_test.dir/src/parser/parser.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_test.dir/build.make CMakeFiles/binder_test.dir/src/parser/parser.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_debug.dir/build.make CMakeFiles/binder_debug.dir/src/parser/parser.cpp.i
+.PHONY : src/parser/parser.cpp.i
+
+src/parser/parser.s: src/parser/parser.cpp.s
+.PHONY : src/parser/parser.s
+
+# target to generate assembly for a file
+src/parser/parser.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/minidb.dir/build.make CMakeFiles/minidb.dir/src/parser/parser.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lexer_test.dir/build.make CMakeFiles/lexer_test.dir/src/parser/parser.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_test.dir/build.make CMakeFiles/binder_test.dir/src/parser/parser.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_debug.dir/build.make CMakeFiles/binder_debug.dir/src/parser/parser.cpp.s
+.PHONY : src/parser/parser.cpp.s
 
 src/storage/BufferPool.o: src/storage/BufferPool.cpp.o
 .PHONY : src/storage/BufferPool.o
@@ -352,6 +498,8 @@ src/storage/BufferPool.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/bplus_tree_test.dir/build.make CMakeFiles/bplus_tree_test.dir/src/storage/BufferPool.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/btree_benchmark.dir/build.make CMakeFiles/btree_benchmark.dir/src/storage/BufferPool.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/catalog_test.dir/build.make CMakeFiles/catalog_test.dir/src/storage/BufferPool.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_test.dir/build.make CMakeFiles/binder_test.dir/src/storage/BufferPool.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_debug.dir/build.make CMakeFiles/binder_debug.dir/src/storage/BufferPool.cpp.o
 .PHONY : src/storage/BufferPool.cpp.o
 
 src/storage/BufferPool.i: src/storage/BufferPool.cpp.i
@@ -365,6 +513,8 @@ src/storage/BufferPool.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/bplus_tree_test.dir/build.make CMakeFiles/bplus_tree_test.dir/src/storage/BufferPool.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/btree_benchmark.dir/build.make CMakeFiles/btree_benchmark.dir/src/storage/BufferPool.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/catalog_test.dir/build.make CMakeFiles/catalog_test.dir/src/storage/BufferPool.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_test.dir/build.make CMakeFiles/binder_test.dir/src/storage/BufferPool.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_debug.dir/build.make CMakeFiles/binder_debug.dir/src/storage/BufferPool.cpp.i
 .PHONY : src/storage/BufferPool.cpp.i
 
 src/storage/BufferPool.s: src/storage/BufferPool.cpp.s
@@ -378,6 +528,8 @@ src/storage/BufferPool.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/bplus_tree_test.dir/build.make CMakeFiles/bplus_tree_test.dir/src/storage/BufferPool.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/btree_benchmark.dir/build.make CMakeFiles/btree_benchmark.dir/src/storage/BufferPool.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/catalog_test.dir/build.make CMakeFiles/catalog_test.dir/src/storage/BufferPool.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_test.dir/build.make CMakeFiles/binder_test.dir/src/storage/BufferPool.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_debug.dir/build.make CMakeFiles/binder_debug.dir/src/storage/BufferPool.cpp.s
 .PHONY : src/storage/BufferPool.cpp.s
 
 src/storage/DiskManager.o: src/storage/DiskManager.cpp.o
@@ -391,6 +543,8 @@ src/storage/DiskManager.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/bplus_tree_test.dir/build.make CMakeFiles/bplus_tree_test.dir/src/storage/DiskManager.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/btree_benchmark.dir/build.make CMakeFiles/btree_benchmark.dir/src/storage/DiskManager.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/catalog_test.dir/build.make CMakeFiles/catalog_test.dir/src/storage/DiskManager.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_test.dir/build.make CMakeFiles/binder_test.dir/src/storage/DiskManager.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_debug.dir/build.make CMakeFiles/binder_debug.dir/src/storage/DiskManager.cpp.o
 .PHONY : src/storage/DiskManager.cpp.o
 
 src/storage/DiskManager.i: src/storage/DiskManager.cpp.i
@@ -404,6 +558,8 @@ src/storage/DiskManager.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/bplus_tree_test.dir/build.make CMakeFiles/bplus_tree_test.dir/src/storage/DiskManager.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/btree_benchmark.dir/build.make CMakeFiles/btree_benchmark.dir/src/storage/DiskManager.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/catalog_test.dir/build.make CMakeFiles/catalog_test.dir/src/storage/DiskManager.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_test.dir/build.make CMakeFiles/binder_test.dir/src/storage/DiskManager.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_debug.dir/build.make CMakeFiles/binder_debug.dir/src/storage/DiskManager.cpp.i
 .PHONY : src/storage/DiskManager.cpp.i
 
 src/storage/DiskManager.s: src/storage/DiskManager.cpp.s
@@ -417,6 +573,8 @@ src/storage/DiskManager.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/bplus_tree_test.dir/build.make CMakeFiles/bplus_tree_test.dir/src/storage/DiskManager.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/btree_benchmark.dir/build.make CMakeFiles/btree_benchmark.dir/src/storage/DiskManager.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/catalog_test.dir/build.make CMakeFiles/catalog_test.dir/src/storage/DiskManager.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_test.dir/build.make CMakeFiles/binder_test.dir/src/storage/DiskManager.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_debug.dir/build.make CMakeFiles/binder_debug.dir/src/storage/DiskManager.cpp.s
 .PHONY : src/storage/DiskManager.cpp.s
 
 src/storage/TableHeap.o: src/storage/TableHeap.cpp.o
@@ -428,6 +586,8 @@ src/storage/TableHeap.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/storage/TableHeap.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/btree_benchmark.dir/build.make CMakeFiles/btree_benchmark.dir/src/storage/TableHeap.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/catalog_test.dir/build.make CMakeFiles/catalog_test.dir/src/storage/TableHeap.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_test.dir/build.make CMakeFiles/binder_test.dir/src/storage/TableHeap.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_debug.dir/build.make CMakeFiles/binder_debug.dir/src/storage/TableHeap.cpp.o
 .PHONY : src/storage/TableHeap.cpp.o
 
 src/storage/TableHeap.i: src/storage/TableHeap.cpp.i
@@ -439,6 +599,8 @@ src/storage/TableHeap.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/storage/TableHeap.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/btree_benchmark.dir/build.make CMakeFiles/btree_benchmark.dir/src/storage/TableHeap.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/catalog_test.dir/build.make CMakeFiles/catalog_test.dir/src/storage/TableHeap.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_test.dir/build.make CMakeFiles/binder_test.dir/src/storage/TableHeap.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_debug.dir/build.make CMakeFiles/binder_debug.dir/src/storage/TableHeap.cpp.i
 .PHONY : src/storage/TableHeap.cpp.i
 
 src/storage/TableHeap.s: src/storage/TableHeap.cpp.s
@@ -450,6 +612,8 @@ src/storage/TableHeap.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/storage/TableHeap.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/btree_benchmark.dir/build.make CMakeFiles/btree_benchmark.dir/src/storage/TableHeap.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/catalog_test.dir/build.make CMakeFiles/catalog_test.dir/src/storage/TableHeap.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_test.dir/build.make CMakeFiles/binder_test.dir/src/storage/TableHeap.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_debug.dir/build.make CMakeFiles/binder_debug.dir/src/storage/TableHeap.cpp.s
 .PHONY : src/storage/TableHeap.cpp.s
 
 src/storage/TableIterator.o: src/storage/TableIterator.cpp.o
@@ -461,6 +625,8 @@ src/storage/TableIterator.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/storage/TableIterator.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/btree_benchmark.dir/build.make CMakeFiles/btree_benchmark.dir/src/storage/TableIterator.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/catalog_test.dir/build.make CMakeFiles/catalog_test.dir/src/storage/TableIterator.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_test.dir/build.make CMakeFiles/binder_test.dir/src/storage/TableIterator.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_debug.dir/build.make CMakeFiles/binder_debug.dir/src/storage/TableIterator.cpp.o
 .PHONY : src/storage/TableIterator.cpp.o
 
 src/storage/TableIterator.i: src/storage/TableIterator.cpp.i
@@ -472,6 +638,8 @@ src/storage/TableIterator.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/storage/TableIterator.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/btree_benchmark.dir/build.make CMakeFiles/btree_benchmark.dir/src/storage/TableIterator.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/catalog_test.dir/build.make CMakeFiles/catalog_test.dir/src/storage/TableIterator.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_test.dir/build.make CMakeFiles/binder_test.dir/src/storage/TableIterator.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_debug.dir/build.make CMakeFiles/binder_debug.dir/src/storage/TableIterator.cpp.i
 .PHONY : src/storage/TableIterator.cpp.i
 
 src/storage/TableIterator.s: src/storage/TableIterator.cpp.s
@@ -483,6 +651,8 @@ src/storage/TableIterator.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/integration_test.dir/build.make CMakeFiles/integration_test.dir/src/storage/TableIterator.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/btree_benchmark.dir/build.make CMakeFiles/btree_benchmark.dir/src/storage/TableIterator.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/catalog_test.dir/build.make CMakeFiles/catalog_test.dir/src/storage/TableIterator.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_test.dir/build.make CMakeFiles/binder_test.dir/src/storage/TableIterator.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_debug.dir/build.make CMakeFiles/binder_debug.dir/src/storage/TableIterator.cpp.s
 .PHONY : src/storage/TableIterator.cpp.s
 
 src/storage/b_tree.o: src/storage/b_tree.cpp.o
@@ -578,6 +748,8 @@ src/storage/page.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/bplus_tree_test.dir/build.make CMakeFiles/bplus_tree_test.dir/src/storage/page.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/btree_benchmark.dir/build.make CMakeFiles/btree_benchmark.dir/src/storage/page.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/catalog_test.dir/build.make CMakeFiles/catalog_test.dir/src/storage/page.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_test.dir/build.make CMakeFiles/binder_test.dir/src/storage/page.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_debug.dir/build.make CMakeFiles/binder_debug.dir/src/storage/page.cpp.o
 .PHONY : src/storage/page.cpp.o
 
 src/storage/page.i: src/storage/page.cpp.i
@@ -592,6 +764,8 @@ src/storage/page.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/bplus_tree_test.dir/build.make CMakeFiles/bplus_tree_test.dir/src/storage/page.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/btree_benchmark.dir/build.make CMakeFiles/btree_benchmark.dir/src/storage/page.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/catalog_test.dir/build.make CMakeFiles/catalog_test.dir/src/storage/page.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_test.dir/build.make CMakeFiles/binder_test.dir/src/storage/page.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_debug.dir/build.make CMakeFiles/binder_debug.dir/src/storage/page.cpp.i
 .PHONY : src/storage/page.cpp.i
 
 src/storage/page.s: src/storage/page.cpp.s
@@ -606,6 +780,8 @@ src/storage/page.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/bplus_tree_test.dir/build.make CMakeFiles/bplus_tree_test.dir/src/storage/page.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/btree_benchmark.dir/build.make CMakeFiles/btree_benchmark.dir/src/storage/page.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/catalog_test.dir/build.make CMakeFiles/catalog_test.dir/src/storage/page.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_test.dir/build.make CMakeFiles/binder_test.dir/src/storage/page.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_debug.dir/build.make CMakeFiles/binder_debug.dir/src/storage/page.cpp.s
 .PHONY : src/storage/page.cpp.s
 
 src/storage/rid.o: src/storage/rid.cpp.o
@@ -618,6 +794,8 @@ src/storage/rid.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/bplus_tree_test.dir/build.make CMakeFiles/bplus_tree_test.dir/src/storage/rid.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/btree_benchmark.dir/build.make CMakeFiles/btree_benchmark.dir/src/storage/rid.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/catalog_test.dir/build.make CMakeFiles/catalog_test.dir/src/storage/rid.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_test.dir/build.make CMakeFiles/binder_test.dir/src/storage/rid.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_debug.dir/build.make CMakeFiles/binder_debug.dir/src/storage/rid.cpp.o
 .PHONY : src/storage/rid.cpp.o
 
 src/storage/rid.i: src/storage/rid.cpp.i
@@ -630,6 +808,8 @@ src/storage/rid.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/bplus_tree_test.dir/build.make CMakeFiles/bplus_tree_test.dir/src/storage/rid.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/btree_benchmark.dir/build.make CMakeFiles/btree_benchmark.dir/src/storage/rid.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/catalog_test.dir/build.make CMakeFiles/catalog_test.dir/src/storage/rid.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_test.dir/build.make CMakeFiles/binder_test.dir/src/storage/rid.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_debug.dir/build.make CMakeFiles/binder_debug.dir/src/storage/rid.cpp.i
 .PHONY : src/storage/rid.cpp.i
 
 src/storage/rid.s: src/storage/rid.cpp.s
@@ -642,7 +822,57 @@ src/storage/rid.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/bplus_tree_test.dir/build.make CMakeFiles/bplus_tree_test.dir/src/storage/rid.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/btree_benchmark.dir/build.make CMakeFiles/btree_benchmark.dir/src/storage/rid.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/catalog_test.dir/build.make CMakeFiles/catalog_test.dir/src/storage/rid.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_test.dir/build.make CMakeFiles/binder_test.dir/src/storage/rid.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_debug.dir/build.make CMakeFiles/binder_debug.dir/src/storage/rid.cpp.s
 .PHONY : src/storage/rid.cpp.s
+
+test/binder_debug.o: test/binder_debug.cpp.o
+.PHONY : test/binder_debug.o
+
+# target to build an object file
+test/binder_debug.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_debug.dir/build.make CMakeFiles/binder_debug.dir/test/binder_debug.cpp.o
+.PHONY : test/binder_debug.cpp.o
+
+test/binder_debug.i: test/binder_debug.cpp.i
+.PHONY : test/binder_debug.i
+
+# target to preprocess a source file
+test/binder_debug.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_debug.dir/build.make CMakeFiles/binder_debug.dir/test/binder_debug.cpp.i
+.PHONY : test/binder_debug.cpp.i
+
+test/binder_debug.s: test/binder_debug.cpp.s
+.PHONY : test/binder_debug.s
+
+# target to generate assembly for a file
+test/binder_debug.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_debug.dir/build.make CMakeFiles/binder_debug.dir/test/binder_debug.cpp.s
+.PHONY : test/binder_debug.cpp.s
+
+test/binder_test.o: test/binder_test.cpp.o
+.PHONY : test/binder_test.o
+
+# target to build an object file
+test/binder_test.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_test.dir/build.make CMakeFiles/binder_test.dir/test/binder_test.cpp.o
+.PHONY : test/binder_test.cpp.o
+
+test/binder_test.i: test/binder_test.cpp.i
+.PHONY : test/binder_test.i
+
+# target to preprocess a source file
+test/binder_test.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_test.dir/build.make CMakeFiles/binder_test.dir/test/binder_test.cpp.i
+.PHONY : test/binder_test.cpp.i
+
+test/binder_test.s: test/binder_test.cpp.s
+.PHONY : test/binder_test.s
+
+# target to generate assembly for a file
+test/binder_test.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/binder_test.dir/build.make CMakeFiles/binder_test.dir/test/binder_test.cpp.s
+.PHONY : test/binder_test.cpp.s
 
 test/bplus_tree_test.o: test/bplus_tree_test.cpp.o
 .PHONY : test/bplus_tree_test.o
@@ -821,6 +1051,8 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... test"
+	@echo "... binder_debug"
+	@echo "... binder_test"
 	@echo "... bplus_tree_test"
 	@echo "... btree_benchmark"
 	@echo "... catalog_test"
@@ -829,9 +1061,15 @@ help:
 	@echo "... lexer_test"
 	@echo "... minidb"
 	@echo "... slotted_page_test"
+	@echo "... src/binder/binder.o"
+	@echo "... src/binder/binder.i"
+	@echo "... src/binder/binder.s"
 	@echo "... src/catalog/catalog.o"
 	@echo "... src/catalog/catalog.i"
 	@echo "... src/catalog/catalog.s"
+	@echo "... src/catalog/schema.o"
+	@echo "... src/catalog/schema.i"
+	@echo "... src/catalog/schema.s"
 	@echo "... src/catalog/tuple.o"
 	@echo "... src/catalog/tuple.i"
 	@echo "... src/catalog/tuple.s"
@@ -841,6 +1079,9 @@ help:
 	@echo "... src/parser/lexer.o"
 	@echo "... src/parser/lexer.i"
 	@echo "... src/parser/lexer.s"
+	@echo "... src/parser/parser.o"
+	@echo "... src/parser/parser.i"
+	@echo "... src/parser/parser.s"
 	@echo "... src/storage/BufferPool.o"
 	@echo "... src/storage/BufferPool.i"
 	@echo "... src/storage/BufferPool.s"
@@ -868,6 +1109,12 @@ help:
 	@echo "... src/storage/rid.o"
 	@echo "... src/storage/rid.i"
 	@echo "... src/storage/rid.s"
+	@echo "... test/binder_debug.o"
+	@echo "... test/binder_debug.i"
+	@echo "... test/binder_debug.s"
+	@echo "... test/binder_test.o"
+	@echo "... test/binder_test.i"
+	@echo "... test/binder_test.s"
 	@echo "... test/bplus_tree_test.o"
 	@echo "... test/bplus_tree_test.i"
 	@echo "... test/bplus_tree_test.s"

@@ -1,7 +1,7 @@
 disk_manager_test 0 0
 slotted_page_test 1 0.313286
-integration_test 1 0.343454
+integration_test 2 0.162652
 bplus_tree_test 1 0.404535
-catalog_test 1 0.294173
+catalog_test 2 0.198373
+lexer_test 1 0.242995
 ---
-disk_manager_test

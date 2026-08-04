@@ -1,46 +1,58 @@
 #include <iostream>
+#include <sstream>
+#include <string>
 #include <vector>
+
 #include "storage/DiskManager.h"
 #include "storage/BufferPool.h"
 #include "catalog/catalog.h"
 #include "catalog/tuple.h"
-#include "catalog/value.h"
+#include "parser/lexer.h"
+#include "parser/parser.h"
+#include "parser/binder.h"
 
 int main() {
     DiskManager dm("minidb.db");
     BufferPoolManager bpm(&dm);
-    Catalog catalog(&bpm);   // loads from disk (empty on first run)
+    Catalog catalog(&bpm);   // loads existing tables from disk (page 0)
 
-    // Create the "users" table if it doesn't exist yet
-    if (catalog.GetTable("users") == nullptr) {
-        Schema users_schema({
-            Column{"id",     TypeId::INT,     0},
-            Column{"name",   TypeId::VARCHAR, 64},
-            Column{"active", TypeId::BOOL,    0},
-        });
-        catalog.CreateTable("users", users_schema);
-        std::cout << "[catalog] Created table 'users'\n";
-    } else {
-        std::cout << "[catalog] Loaded existing table 'users'\n";
+    std::cout << "miniDB ready. Type SQL and end with ';'. Type .exit to quit.\n";
+
+    std::string line;
+    std::string sql;
+
+    while (true) {
+        std::cout << (sql.empty() ? "minidb> " : "     -> ");
+        if (!std::getline(std::cin, line)) break;   // EOF / Ctrl-D
+
+        if (line == ".exit" || line == "exit" || line == "quit") break;
+        if (line.empty()) continue;
+
+        sql += " " + line;
+
+        // Only process once we have a semicolon
+        if (sql.find(';') == std::string::npos) continue;
+
+        try {
+            Lexer  lexer(sql);
+            Parser parser(lexer);
+            auto   stmt = parser.Parse();
+
+            Binder binder(&catalog);
+            binder.Bind(stmt.get());   // semantic validation
+
+            std::cout << "[ok] Statement parsed and bound successfully.\n";
+
+            // TODO: pass stmt to executor
+        } catch (const std::exception& e) {
+            std::cerr << "[error] " << e.what() << "\n";
+        }
+
+        sql.clear();
+        catalog.SaveToDisk();
     }
 
-    TableInfo* info = catalog.GetTable("users");
-    std::cout << "[catalog] 'users' first_page_id = " << info->first_page_id << "\n";
-    std::cout << "[catalog] 'users' column count  = " << info->schema.GetColumnCount() << "\n";
-
-    // Insert a sample tuple
-    std::vector<Value> row = {
-        Value(static_cast<int32_t>(1)),
-        Value(std::string("Alice")),
-        Value(true),
-    };
-    Tuple t(row, info->schema);
-    RID rid;
-    if (info->heap->InsertTuple(t, &rid, info->schema)) {
-        std::cout << "[catalog] Inserted tuple at page=" << rid.page_id
-                  << " slot=" << rid.slot_id << "\n";
-    }
-
+    catalog.SaveToDisk();
     bpm.flushAllPages();
     return 0;
 }

@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/lexer_test.dir/src/parser/lexer.cpp.o"
   "CMakeFiles/lexer_test.dir/src/parser/lexer.cpp.o.d"
+  "CMakeFiles/lexer_test.dir/src/parser/parser.cpp.o"
+  "CMakeFiles/lexer_test.dir/src/parser/parser.cpp.o.d"
   "CMakeFiles/lexer_test.dir/test/lexer_test.cpp.o"
   "CMakeFiles/lexer_test.dir/test/lexer_test.cpp.o.d"
   "lexer_test"

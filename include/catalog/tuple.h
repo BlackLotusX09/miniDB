@@ -1,6 +1,7 @@
 
 
 #pragma once
+#include <cstddef>
 #include <vector>
 #include <cstdint>
 #include "catalog/schema.h"
@@ -16,4 +17,5 @@ public:
     const char* GetData() const { return data_.data(); }
     uint32_t GetLength() const { return static_cast<uint32_t>(data_.size()); }
     vector<Value> Deserialize(const Schema& schema) const;
+    Value GetValue(const Schema* schema,size_t col_idx) const;
 };

@@ -1,8 +1,10 @@
 #pragma once
-#include<iostream>
-#include<vector>
-#include<string>
+#include <cstdint>
+#include <string>
+#include <vector>
+
 using namespace std;
+
 // Sketching the logical structures
 enum class TypeId { INT, BOOL, VARCHAR };
 

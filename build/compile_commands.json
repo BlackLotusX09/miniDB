@@ -37,6 +37,12 @@
 },
 {
   "directory": "/Users/jaswanth/Desktop/miniDB/build",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/minidb.dir/src/catalog/schema.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/catalog/schema.cpp",
+  "file": "/Users/jaswanth/Desktop/miniDB/src/catalog/schema.cpp",
+  "output": "CMakeFiles/minidb.dir/src/catalog/schema.cpp.o"
+},
+{
+  "directory": "/Users/jaswanth/Desktop/miniDB/build",
   "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/minidb.dir/src/storage/rid.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/rid.cpp",
   "file": "/Users/jaswanth/Desktop/miniDB/src/storage/rid.cpp",
   "output": "CMakeFiles/minidb.dir/src/storage/rid.cpp.o"
@@ -52,6 +58,24 @@
   "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/minidb.dir/src/storage/TableIterator.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/TableIterator.cpp",
   "file": "/Users/jaswanth/Desktop/miniDB/src/storage/TableIterator.cpp",
   "output": "CMakeFiles/minidb.dir/src/storage/TableIterator.cpp.o"
+},
+{
+  "directory": "/Users/jaswanth/Desktop/miniDB/build",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/minidb.dir/src/parser/lexer.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/parser/lexer.cpp",
+  "file": "/Users/jaswanth/Desktop/miniDB/src/parser/lexer.cpp",
+  "output": "CMakeFiles/minidb.dir/src/parser/lexer.cpp.o"
+},
+{
+  "directory": "/Users/jaswanth/Desktop/miniDB/build",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/minidb.dir/src/parser/parser.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/parser/parser.cpp",
+  "file": "/Users/jaswanth/Desktop/miniDB/src/parser/parser.cpp",
+  "output": "CMakeFiles/minidb.dir/src/parser/parser.cpp.o"
+},
+{
+  "directory": "/Users/jaswanth/Desktop/miniDB/build",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/minidb.dir/src/binder/binder.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/binder/binder.cpp",
+  "file": "/Users/jaswanth/Desktop/miniDB/src/binder/binder.cpp",
+  "output": "CMakeFiles/minidb.dir/src/binder/binder.cpp.o"
 },
 {
   "directory": "/Users/jaswanth/Desktop/miniDB/build",
@@ -124,6 +148,12 @@
   "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/integration_test.dir/src/catalog/catalog.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/catalog/catalog.cpp",
   "file": "/Users/jaswanth/Desktop/miniDB/src/catalog/catalog.cpp",
   "output": "CMakeFiles/integration_test.dir/src/catalog/catalog.cpp.o"
+},
+{
+  "directory": "/Users/jaswanth/Desktop/miniDB/build",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/integration_test.dir/src/catalog/schema.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/catalog/schema.cpp",
+  "file": "/Users/jaswanth/Desktop/miniDB/src/catalog/schema.cpp",
+  "output": "CMakeFiles/integration_test.dir/src/catalog/schema.cpp.o"
 },
 {
   "directory": "/Users/jaswanth/Desktop/miniDB/build",
@@ -295,6 +325,12 @@
 },
 {
   "directory": "/Users/jaswanth/Desktop/miniDB/build",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/catalog_test.dir/src/catalog/schema.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/catalog/schema.cpp",
+  "file": "/Users/jaswanth/Desktop/miniDB/src/catalog/schema.cpp",
+  "output": "CMakeFiles/catalog_test.dir/src/catalog/schema.cpp.o"
+},
+{
+  "directory": "/Users/jaswanth/Desktop/miniDB/build",
   "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/catalog_test.dir/src/storage/rid.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/rid.cpp",
   "file": "/Users/jaswanth/Desktop/miniDB/src/storage/rid.cpp",
   "output": "CMakeFiles/catalog_test.dir/src/storage/rid.cpp.o"
@@ -322,5 +358,167 @@
   "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/lexer_test.dir/src/parser/lexer.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/parser/lexer.cpp",
   "file": "/Users/jaswanth/Desktop/miniDB/src/parser/lexer.cpp",
   "output": "CMakeFiles/lexer_test.dir/src/parser/lexer.cpp.o"
+},
+{
+  "directory": "/Users/jaswanth/Desktop/miniDB/build",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/lexer_test.dir/src/parser/parser.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/parser/parser.cpp",
+  "file": "/Users/jaswanth/Desktop/miniDB/src/parser/parser.cpp",
+  "output": "CMakeFiles/lexer_test.dir/src/parser/parser.cpp.o"
+},
+{
+  "directory": "/Users/jaswanth/Desktop/miniDB/build",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/binder_test.dir/test/binder_test.cpp.o -c /Users/jaswanth/Desktop/miniDB/test/binder_test.cpp",
+  "file": "/Users/jaswanth/Desktop/miniDB/test/binder_test.cpp",
+  "output": "CMakeFiles/binder_test.dir/test/binder_test.cpp.o"
+},
+{
+  "directory": "/Users/jaswanth/Desktop/miniDB/build",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/binder_test.dir/src/storage/DiskManager.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/DiskManager.cpp",
+  "file": "/Users/jaswanth/Desktop/miniDB/src/storage/DiskManager.cpp",
+  "output": "CMakeFiles/binder_test.dir/src/storage/DiskManager.cpp.o"
+},
+{
+  "directory": "/Users/jaswanth/Desktop/miniDB/build",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/binder_test.dir/src/storage/BufferPool.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/BufferPool.cpp",
+  "file": "/Users/jaswanth/Desktop/miniDB/src/storage/BufferPool.cpp",
+  "output": "CMakeFiles/binder_test.dir/src/storage/BufferPool.cpp.o"
+},
+{
+  "directory": "/Users/jaswanth/Desktop/miniDB/build",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/binder_test.dir/src/storage/page.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/page.cpp",
+  "file": "/Users/jaswanth/Desktop/miniDB/src/storage/page.cpp",
+  "output": "CMakeFiles/binder_test.dir/src/storage/page.cpp.o"
+},
+{
+  "directory": "/Users/jaswanth/Desktop/miniDB/build",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/binder_test.dir/src/catalog/tuple.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/catalog/tuple.cpp",
+  "file": "/Users/jaswanth/Desktop/miniDB/src/catalog/tuple.cpp",
+  "output": "CMakeFiles/binder_test.dir/src/catalog/tuple.cpp.o"
+},
+{
+  "directory": "/Users/jaswanth/Desktop/miniDB/build",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/binder_test.dir/src/catalog/catalog.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/catalog/catalog.cpp",
+  "file": "/Users/jaswanth/Desktop/miniDB/src/catalog/catalog.cpp",
+  "output": "CMakeFiles/binder_test.dir/src/catalog/catalog.cpp.o"
+},
+{
+  "directory": "/Users/jaswanth/Desktop/miniDB/build",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/binder_test.dir/src/catalog/schema.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/catalog/schema.cpp",
+  "file": "/Users/jaswanth/Desktop/miniDB/src/catalog/schema.cpp",
+  "output": "CMakeFiles/binder_test.dir/src/catalog/schema.cpp.o"
+},
+{
+  "directory": "/Users/jaswanth/Desktop/miniDB/build",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/binder_test.dir/src/storage/rid.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/rid.cpp",
+  "file": "/Users/jaswanth/Desktop/miniDB/src/storage/rid.cpp",
+  "output": "CMakeFiles/binder_test.dir/src/storage/rid.cpp.o"
+},
+{
+  "directory": "/Users/jaswanth/Desktop/miniDB/build",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/binder_test.dir/src/storage/TableHeap.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/TableHeap.cpp",
+  "file": "/Users/jaswanth/Desktop/miniDB/src/storage/TableHeap.cpp",
+  "output": "CMakeFiles/binder_test.dir/src/storage/TableHeap.cpp.o"
+},
+{
+  "directory": "/Users/jaswanth/Desktop/miniDB/build",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/binder_test.dir/src/storage/TableIterator.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/TableIterator.cpp",
+  "file": "/Users/jaswanth/Desktop/miniDB/src/storage/TableIterator.cpp",
+  "output": "CMakeFiles/binder_test.dir/src/storage/TableIterator.cpp.o"
+},
+{
+  "directory": "/Users/jaswanth/Desktop/miniDB/build",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/binder_test.dir/src/parser/lexer.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/parser/lexer.cpp",
+  "file": "/Users/jaswanth/Desktop/miniDB/src/parser/lexer.cpp",
+  "output": "CMakeFiles/binder_test.dir/src/parser/lexer.cpp.o"
+},
+{
+  "directory": "/Users/jaswanth/Desktop/miniDB/build",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/binder_test.dir/src/parser/parser.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/parser/parser.cpp",
+  "file": "/Users/jaswanth/Desktop/miniDB/src/parser/parser.cpp",
+  "output": "CMakeFiles/binder_test.dir/src/parser/parser.cpp.o"
+},
+{
+  "directory": "/Users/jaswanth/Desktop/miniDB/build",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/binder_test.dir/src/binder/binder.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/binder/binder.cpp",
+  "file": "/Users/jaswanth/Desktop/miniDB/src/binder/binder.cpp",
+  "output": "CMakeFiles/binder_test.dir/src/binder/binder.cpp.o"
+},
+{
+  "directory": "/Users/jaswanth/Desktop/miniDB/build",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/binder_debug.dir/test/binder_debug.cpp.o -c /Users/jaswanth/Desktop/miniDB/test/binder_debug.cpp",
+  "file": "/Users/jaswanth/Desktop/miniDB/test/binder_debug.cpp",
+  "output": "CMakeFiles/binder_debug.dir/test/binder_debug.cpp.o"
+},
+{
+  "directory": "/Users/jaswanth/Desktop/miniDB/build",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/binder_debug.dir/src/storage/DiskManager.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/DiskManager.cpp",
+  "file": "/Users/jaswanth/Desktop/miniDB/src/storage/DiskManager.cpp",
+  "output": "CMakeFiles/binder_debug.dir/src/storage/DiskManager.cpp.o"
+},
+{
+  "directory": "/Users/jaswanth/Desktop/miniDB/build",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/binder_debug.dir/src/storage/BufferPool.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/BufferPool.cpp",
+  "file": "/Users/jaswanth/Desktop/miniDB/src/storage/BufferPool.cpp",
+  "output": "CMakeFiles/binder_debug.dir/src/storage/BufferPool.cpp.o"
+},
+{
+  "directory": "/Users/jaswanth/Desktop/miniDB/build",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/binder_debug.dir/src/storage/page.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/page.cpp",
+  "file": "/Users/jaswanth/Desktop/miniDB/src/storage/page.cpp",
+  "output": "CMakeFiles/binder_debug.dir/src/storage/page.cpp.o"
+},
+{
+  "directory": "/Users/jaswanth/Desktop/miniDB/build",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/binder_debug.dir/src/catalog/tuple.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/catalog/tuple.cpp",
+  "file": "/Users/jaswanth/Desktop/miniDB/src/catalog/tuple.cpp",
+  "output": "CMakeFiles/binder_debug.dir/src/catalog/tuple.cpp.o"
+},
+{
+  "directory": "/Users/jaswanth/Desktop/miniDB/build",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/binder_debug.dir/src/catalog/catalog.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/catalog/catalog.cpp",
+  "file": "/Users/jaswanth/Desktop/miniDB/src/catalog/catalog.cpp",
+  "output": "CMakeFiles/binder_debug.dir/src/catalog/catalog.cpp.o"
+},
+{
+  "directory": "/Users/jaswanth/Desktop/miniDB/build",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/binder_debug.dir/src/catalog/schema.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/catalog/schema.cpp",
+  "file": "/Users/jaswanth/Desktop/miniDB/src/catalog/schema.cpp",
+  "output": "CMakeFiles/binder_debug.dir/src/catalog/schema.cpp.o"
+},
+{
+  "directory": "/Users/jaswanth/Desktop/miniDB/build",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/binder_debug.dir/src/storage/rid.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/rid.cpp",
+  "file": "/Users/jaswanth/Desktop/miniDB/src/storage/rid.cpp",
+  "output": "CMakeFiles/binder_debug.dir/src/storage/rid.cpp.o"
+},
+{
+  "directory": "/Users/jaswanth/Desktop/miniDB/build",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/binder_debug.dir/src/storage/TableHeap.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/TableHeap.cpp",
+  "file": "/Users/jaswanth/Desktop/miniDB/src/storage/TableHeap.cpp",
+  "output": "CMakeFiles/binder_debug.dir/src/storage/TableHeap.cpp.o"
+},
+{
+  "directory": "/Users/jaswanth/Desktop/miniDB/build",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/binder_debug.dir/src/storage/TableIterator.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/storage/TableIterator.cpp",
+  "file": "/Users/jaswanth/Desktop/miniDB/src/storage/TableIterator.cpp",
+  "output": "CMakeFiles/binder_debug.dir/src/storage/TableIterator.cpp.o"
+},
+{
+  "directory": "/Users/jaswanth/Desktop/miniDB/build",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/binder_debug.dir/src/parser/lexer.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/parser/lexer.cpp",
+  "file": "/Users/jaswanth/Desktop/miniDB/src/parser/lexer.cpp",
+  "output": "CMakeFiles/binder_debug.dir/src/parser/lexer.cpp.o"
+},
+{
+  "directory": "/Users/jaswanth/Desktop/miniDB/build",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/binder_debug.dir/src/parser/parser.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/parser/parser.cpp",
+  "file": "/Users/jaswanth/Desktop/miniDB/src/parser/parser.cpp",
+  "output": "CMakeFiles/binder_debug.dir/src/parser/parser.cpp.o"
+},
+{
+  "directory": "/Users/jaswanth/Desktop/miniDB/build",
+  "command": "/usr/bin/c++  -I/Users/jaswanth/Desktop/miniDB/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/binder_debug.dir/src/binder/binder.cpp.o -c /Users/jaswanth/Desktop/miniDB/src/binder/binder.cpp",
+  "file": "/Users/jaswanth/Desktop/miniDB/src/binder/binder.cpp",
+  "output": "CMakeFiles/binder_debug.dir/src/binder/binder.cpp.o"
 }
 ]

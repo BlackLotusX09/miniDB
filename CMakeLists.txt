@@ -12,12 +12,18 @@ set(STORAGE_SOURCES
     src/storage/page.cpp
     src/catalog/tuple.cpp
     src/catalog/catalog.cpp
+    src/catalog/schema.cpp
     src/storage/rid.cpp
     src/storage/TableHeap.cpp
     src/storage/TableIterator.cpp
 )
 set(PARSER_SOURCES
     src/parser/lexer.cpp
+    src/parser/parser.cpp
+)
+
+set(BINDER_SOURCES
+    src/binder/binder.cpp
 )
 
 set(BTREE_SOURCES
@@ -40,6 +46,8 @@ enable_testing()
 add_executable(minidb
     src/main.cpp
     ${STORAGE_SOURCES}
+    ${PARSER_SOURCES}
+    ${BINDER_SOURCES}
 )
 target_include_directories(minidb PRIVATE include)
 
@@ -102,3 +110,21 @@ add_executable(lexer_test
 )
 target_include_directories(lexer_test PRIVATE include)
 add_test(NAME lexer_test COMMAND lexer_test)
+
+# ── Test: Binder — semantic validation ────────────────────────────────────────
+add_executable(binder_test
+    test/binder_test.cpp
+    ${STORAGE_SOURCES}
+    ${PARSER_SOURCES}
+    ${BINDER_SOURCES}
+)
+target_include_directories(binder_test PRIVATE include)
+add_test(NAME binder_test COMMAND binder_test)
+
+add_executable(binder_debug
+    test/binder_debug.cpp
+    ${STORAGE_SOURCES}
+    ${PARSER_SOURCES}
+    ${BINDER_SOURCES}
+)
+target_include_directories(binder_debug PRIVATE include)

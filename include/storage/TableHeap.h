@@ -28,4 +28,5 @@ public:
     page_id_t GetFirstPageId() const { return first_page_id; }
 
     TableIterator Begin() { return TableIterator(buffer_pool_manager, first_page_id); }
+    TableIterator End() {return TableIterator();}
 };

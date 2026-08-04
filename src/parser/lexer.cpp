@@ -42,14 +42,19 @@ Token Lexer::ScanIdentifierOrKeyword(){
             break;
         }
     }
-    for(auto &c:store){
-        c=toupper(c);
+    // Uppercase copy for keyword matching; identifiers keep original case
+    string upper = store;
+    for(auto &c : upper){ c = toupper(c); }
+
+    // Boolean literals (case-insensitive)
+    if(upper == "TRUE" || upper == "FALSE"){
+        return Token{TokenType::BOOL_LITERAL, upper, start_line_};
     }
-    if(IsKeyword(store)){
-        return Token{TokenType::KEYWORD,store,start_line_};
+    if(IsKeyword(upper)){
+        return Token{TokenType::KEYWORD, upper, start_line_};
     }
     else{
-        return Token{TokenType::IDENTIFIER,store,start_line_};
+        return Token{TokenType::IDENTIFIER, store, start_line_};
     }
 }
 

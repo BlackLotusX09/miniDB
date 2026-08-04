@@ -1,1 +1,1 @@
-/usr/bin/c++ -g -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/lexer_test.dir/test/lexer_test.cpp.o CMakeFiles/lexer_test.dir/src/parser/lexer.cpp.o -o lexer_test
+/usr/bin/c++ -g -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/lexer_test.dir/test/lexer_test.cpp.o CMakeFiles/lexer_test.dir/src/parser/lexer.cpp.o CMakeFiles/lexer_test.dir/src/parser/parser.cpp.o -o lexer_test
